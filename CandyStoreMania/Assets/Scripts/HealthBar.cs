@@ -6,13 +6,13 @@ public class HealthBar : MonoBehaviour {
 
 	public int maxHealth;
 
-	int currentHealth;
-	bool depleted;
-	Slider healthBar;
+	public int currentHealth;
+	public bool depleted;
+	public Slider healthBar;
 
 	Vector3 attachedPosition;
 
-	Camera cam;
+	public Camera cam;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour {
 		healthBar = GetComponent<Slider> ();
 		healthBar.maxValue = maxHealth;
 		healthBar.value = maxHealth;
-		cam = GameObject.Find ("MainCamera").GetComponent<Camera> ();
+		cam = GameObject.Find ("PlayerCamera").GetComponent<Camera> ();
 	}
 	
 	// Update is called once per frame

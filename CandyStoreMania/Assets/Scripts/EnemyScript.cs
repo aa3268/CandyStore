@@ -383,4 +383,17 @@ public class EnemyScript : MonoBehaviour {
 	{
 		searchType = type;
 	}
+
+
+	void OnCollisionEnter(Collision bullet)
+	{
+		if (bullet.gameObject.name.Contains("Bullet")) {
+			health -= 20;
+			healthBar.currentHealth = health;
+			healthBar.healthBar.value = healthBar.currentHealth;
+
+		}
+	}
+
+
 }

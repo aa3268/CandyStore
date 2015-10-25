@@ -25,4 +25,9 @@ public class Bullet : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+
+	void OnCollisionEnter(Collision other)
+	{
+			Destroy(gameObject);
+	}
 }
