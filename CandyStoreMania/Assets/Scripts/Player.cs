@@ -32,11 +32,9 @@ public class Player : MonoBehaviour {
 	public GameObject left;
 
 	public Camera player;
-	public Camera pause;
-	public Camera upgrade;
 
 	public bool paused;
-	public static bool gunTwoSelectable = false;
+	public static bool gunTwoSelectable = true;
 
 	public GameObject gunOne;
 	public GameObject gunTwo;
@@ -50,13 +48,6 @@ public class Player : MonoBehaviour {
 
 		KeyboardMouseControls ();
 		//JoystickControls ();
-		if (player.enabled) {
-			paused = false;
-			Cursor.visible = false;
-		} else {
-			paused = true;
-			Cursor.visible = true;
-		}
 
 		if (gun_one_cooldown < 2) {
 			gun_one_cooldown += Time.deltaTime * 2f;
@@ -180,21 +171,23 @@ public class Player : MonoBehaviour {
 				//left.transform.Rotate(new Vector3(0,0,0));
 			}
 		}
-			if (Input.GetKeyDown (KeyCode.Escape)) {
-				if (player.enabled == true) {
-					player.enabled = false;
-					pause.enabled = true;
-					Time.timeScale = 0.00000000000000000000000001f;
-					Cursor.visible = true;
-
-					
-				} else {
-					pause.enabled = false;
-					player.enabled = true;
-					Time.timeScale = 1;
-					Cursor.visible = false;
-				}
+			
+		if (Input.GetKeyDown (KeyCode.Escape)) 
+		{
+			if (!paused) 
+			{
+				Time.timeScale = 0.00000000000000000000000001f;
+				Cursor.visible = true;
+				paused = true;
+				PauseMenu.instance.ScaleUp();
+			} 
+			else 
+			{
+				Time.timeScale = 1;
+				Cursor.visible = false;
+				paused = false;
+				PauseMenu.instance.ScaleUp();
 			}
-		
+		}
 	}
 }

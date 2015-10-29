@@ -38,6 +38,12 @@ public class Director : MonoBehaviour {
 		if (poolReady && (enemiesCreated < totalEnemies)) {
 			placeEnemy ();
 		}
+
+		if(levelOver())
+		{
+			UpgradeMenu.instance.ScaleUp();
+			Time.timeScale = 0.00000000001f;
+		}
 	}
 
 	public void createPool()
@@ -88,22 +94,24 @@ public class Director : MonoBehaviour {
 	{
 		e.SetActive (true);
 		e.transform.position = pointsOfEntry.transform.position;
-		e.GetComponent<EnemyScript> ().readyEnemy ();
+		EnemyScript enemy = e.GetComponent<EnemyScript> ();
+		enemy.enabled = true;
+		enemy.readyEnemy ();
 
 		int type = Random.Range (0, 4);
 
 		switch (type) {
 			case 0:
-				setEnemyBehavior (e.GetComponent<EnemyScript> (), EnemyType.AGGRESSIVE);
+				setEnemyBehavior (enemy, EnemyType.AGGRESSIVE);
 				break;
 			case 1:
-				setEnemyBehavior (e.GetComponent<EnemyScript> (), EnemyType.RUNNER);
+				setEnemyBehavior (enemy, EnemyType.RUNNER);
 				break;
 			case 2:
-				setEnemyBehavior (e.GetComponent<EnemyScript> (), EnemyType.VANGUARD);
+				setEnemyBehavior (enemy, EnemyType.VANGUARD);
 				break;
 			case 3:
-				setEnemyBehavior (e.GetComponent<EnemyScript> (), EnemyType.SUPPORTER);
+				setEnemyBehavior (enemy, EnemyType.SUPPORTER);
 				break;
 		}
 
@@ -111,14 +119,12 @@ public class Director : MonoBehaviour {
 
 	void setEnemyBehavior(EnemyScript e, EnemyType type)
 	{
-		Debug.Log (type);
 		switch(type)
 		{
 			case EnemyType.AGGRESSIVE:
 				e.boardingForce = 6;
 				e.boardingSpeed = 0.3f;
 				e.getAgent().speed = 2f;
-				e.getAgent().radius = 1.5f;
 				e.health = 75;	
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
@@ -126,7 +132,6 @@ public class Director : MonoBehaviour {
 				e.boardingForce = 2;
 				e.boardingSpeed = 0.1f;
 				e.getAgent().speed = 4f;
-				e.getAgent().radius = 0.5f;
 				e.health = 100;
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
@@ -134,7 +139,6 @@ public class Director : MonoBehaviour {
 				e.boardingForce = 3;
 				e.boardingSpeed = 0.15f;
 				e.getAgent().speed = 3f;
-				e.getAgent().radius = 0.75f;
 				e.health = 70;
 				e.setSearchType(EnemyScript.SearchTypes.FARTHEST);
 			break;
@@ -143,7 +147,6 @@ public class Director : MonoBehaviour {
 				e.boardingForce = 1;
 				e.boardingSpeed = 0.1f;
 				e.getAgent().speed = 3f;
-				e.getAgent().radius = 0.75f;
 				e.health = 125;
 				e.setSearchType(EnemyScript.SearchTypes.AID);
 			break;
@@ -152,12 +155,23 @@ public class Director : MonoBehaviour {
 
 	public void removeEnemy(EnemyScript e)
 	{
-		e.getHealthBar ().enabled = false;
+		e.getHealthBar ().gameObject.SetActive (false);
 		e.gameObject.SetActive (false);
+		e.enabled = false;
 
 		enemyPool.Add (e.gameObject);
 		enemyInUse.Remove (e.gameObject);
 
 		numAvailable ++;
+	}
+
+	bool levelOver()
+	{
+		if(numAvailable == waveSize && enemiesCreated == totalEnemies)
+		{
+			return true;
+		}
+
+		return false;
 	}
 }

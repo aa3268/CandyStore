@@ -35,7 +35,6 @@ public class EnemyScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		Debug.Log ("starting enemy");
 		nav = GetComponent<NavMeshAgent> ();
 		windows = GameObject.Find ("WindowLocators");
 		door = GameObject.Find ("Door");
@@ -50,6 +49,12 @@ public class EnemyScript : MonoBehaviour {
 
 		takeAction ();
 		healthBar.setAttachedObjectPos (transform.position);
+		if(healthBar.currentHealth <= 0)
+		{
+			
+			healthBar.gameObject.SetActive (false);
+			currentState = States.EXIT;
+		}
 	}
 
 
@@ -109,7 +114,6 @@ public class EnemyScript : MonoBehaviour {
 		bool first = true;
 		bool firstUnoccupied = true;
 
-		Debug.Log ("looking for closest");
 		foreach (Transform t in windowLocs) 
 		{
 			if(first || firstUnoccupied)
@@ -327,14 +331,12 @@ public class EnemyScript : MonoBehaviour {
 		{
 			nav.destination = door.transform.position;
 		}
+
 		Vector3 targetDestination = new Vector3 (nav.destination.x, 0f, nav.destination.z);
 		Vector3 currentPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
 
-		if(Vector3.Distance(targetDestination, currentPosition) < 0.05f)
+		if(Vector3.Distance(targetDestination, currentPosition) < 1f)
 		{
-			//GameObject.Destroy (healthBar.gameObject);
-		
-			//GameObject.Destroy(gameObject);
 			currentTarget.getEnemies().Remove(this);
 			director.removeEnemy(this);
 		}
@@ -350,6 +352,7 @@ public class EnemyScript : MonoBehaviour {
 		healthBar = bar.GetComponent<HealthBar> ();
 		healthBar.transform.SetParent (worldCanvas.transform, false);
 		healthBar.setAttachedObjectPos (transform.position);
+		healthBar.gameObject.SetActive (false);
 	
 	}
 
@@ -370,7 +373,8 @@ public class EnemyScript : MonoBehaviour {
 		currentState = States.SEARCH;
 
 		healthBar.reFillHealth ();
-		
+		healthBar.setAttachedObjectPos (transform.position);
+		healthBar.gameObject.SetActive (true);
 		time = 0f;
 	}
 
@@ -388,9 +392,7 @@ public class EnemyScript : MonoBehaviour {
 	void OnCollisionEnter(Collision bullet)
 	{
 		if (bullet.gameObject.name.Contains("Bullet")) {
-			health -= 20;
-			healthBar.currentHealth = health;
-			healthBar.healthBar.value = healthBar.currentHealth;
+			healthBar.doDamage(20);
 
 		}
 	}

@@ -15,7 +15,7 @@ public class HealthBar : MonoBehaviour {
 	public Camera cam;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		currentHealth = maxHealth;
 		depleted = false;
 		healthBar = GetComponent<Slider> ();
