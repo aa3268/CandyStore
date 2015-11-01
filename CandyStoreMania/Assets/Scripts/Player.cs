@@ -19,9 +19,6 @@ public class Player : MonoBehaviour {
 	public float gun_one_cooldown = 2f;
 	public float gun_two_cooldown = 15f;
 
-	public ParticleSystem ps1;
-	public ParticleSystem ps2;
-
 	public GameObject nozzle;
 	public GameObject bulletOnePrefab;
 	public GameObject bulletTwoPrefab;
@@ -36,7 +33,7 @@ public class Player : MonoBehaviour {
 	public Camera upgrade;
 
 	public bool paused;
-	public static bool gunTwoSelectable = false;
+	public static bool gunTwoSelectable = true;
 
 	public GameObject gunOne;
 	public GameObject gunTwo;
@@ -116,9 +113,18 @@ public class Player : MonoBehaviour {
 			ps2.Play();
 		}
 	}*/
+
 	void KeyboardMouseControls()
 	{
 		if (!paused) {
+
+			float y = Input.GetAxis ("Mouse X");
+			float x = 0;
+			float z = 0;
+			
+			Vector3 v = new Vector3 (x, y, z);
+			transform.Rotate (v * 5f);
+
 			if (Input.GetKey (KeyCode.W)) {
 				transform.Translate (Vector3.forward * Time.deltaTime * movementSpeed);
 			}
@@ -148,36 +154,11 @@ public class Player : MonoBehaviour {
 				right.transform.GetChild (1).gameObject.SetActive (false);
 				}
 			}
-			if (Input.GetMouseButtonDown (0)) {
-				if (gunOne.activeInHierarchy) 
-				{
-					if(gun_one_cooldown >= 2f)
-					{
-						Vector3 pos = nozzle.GetComponent<Transform> ().position;
-						Quaternion rot = new Quaternion (0, 0, 0, 0);
-						bulletOne = (GameObject)Instantiate (bulletOnePrefab, pos, rot);
-						bulletOne.GetComponent<Rigidbody> ().AddForce (nozzle.transform.forward * 15f);
-						gun_one_cooldown = 0;
-					}
-				}
-				if(gunTwo.activeInHierarchy)
-				{
-					if(gun_two_cooldown >= 15f)
-					{
-						Vector3 pos = nozzle.GetComponent<Transform> ().position;
-						Quaternion rot = new Quaternion (0, 0, 0, 0);
-						bulletTwo = (GameObject)Instantiate (bulletTwoPrefab, pos, rot);
-						bulletTwo.GetComponent<Rigidbody> ().AddForce (nozzle.transform.forward * 15f);
-						gun_two_cooldown = 0;
-					}
-				}
-			}
+
+		
 			if (Input.GetMouseButtonDown (1)) {
 
-				left.transform.Rotate(Vector3.back * Time.deltaTime * 1000);
-			
 
-				//left.transform.Rotate(new Vector3(0,0,0));
 			}
 		}
 			if (Input.GetKeyDown (KeyCode.Escape)) {
