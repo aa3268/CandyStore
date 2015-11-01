@@ -4,12 +4,15 @@ using System.Collections.Generic;
 
 public class Director : MonoBehaviour {
 
+	public static Director instance;
+	public GameObject doorLocator;
 	enum State { FREE, USED };
 	enum EnemyType { AGGRESSIVE, SUPPORTER, RUNNER, VANGUARD };
 
 	private List<GameObject> enemyPool;
 	private List<GameObject> enemyInUse;
-	private GameObject pointsOfEntry;
+	
+	List<SpawnPoint> spawnPoints;
 
 	private int numAvailable;
 
@@ -28,10 +31,17 @@ public class Director : MonoBehaviour {
 		enemyPool = new List<GameObject> ();
 		enemyInUse = new List<GameObject> ();
 
-		pointsOfEntry = GameObject.Find ("Door");
+		spawnPoints = new List<SpawnPoint>();
+		
+		foreach(Transform t in doorLocator.transform)
+		{
+			spawnPoints.Add(t.gameObject.GetComponent<SpawnPoint>());
+		}
+
 		createPool ();
+		instance = this;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -52,7 +62,7 @@ public class Director : MonoBehaviour {
 		{
 			GameObject e = (GameObject)Instantiate (Resources.Load ("prefabs/enemy"));
 			e.GetComponent<EnemyScript> ().createHealthBar ();
-
+			e.GetComponent<EnemyScript>().setExits(spawnPoints);
 			e.SetActive (false);
 
 			e.transform.SetParent(gameObject.transform);
@@ -62,6 +72,13 @@ public class Director : MonoBehaviour {
 		}
 
 		poolReady = true;
+	}
+
+	public void reset()
+	{
+		enemyPool.Clear ();
+		numAvailable = 0;
+		enemiesCreated = 0;
 	}
 
 	public void placeEnemy()
@@ -80,7 +97,6 @@ public class Director : MonoBehaviour {
 					numAvailable--;
 					enemyPool.RemoveAt(enemyPool.Count -1);
 					enemiesCreated++;
-
 				}
 
 				time = 0f;
@@ -88,15 +104,17 @@ public class Director : MonoBehaviour {
 
 			time += Time.deltaTime;
 		}
+
+
 	}
 
 	void readyEnemy(GameObject e)
 	{
-		e.SetActive (true);
-		e.transform.position = pointsOfEntry.transform.position;
+		int point = Random.Range (0, spawnPoints.Count);
+		e.transform.position = spawnPoints [point].transform.position;
 		EnemyScript enemy = e.GetComponent<EnemyScript> ();
-		enemy.enabled = true;
 		enemy.readyEnemy ();
+		e.SetActive (true);
 
 		int type = Random.Range (0, 4);
 
@@ -157,8 +175,6 @@ public class Director : MonoBehaviour {
 	{
 		e.getHealthBar ().gameObject.SetActive (false);
 		e.gameObject.SetActive (false);
-		e.enabled = false;
-
 		enemyPool.Add (e.gameObject);
 		enemyInUse.Remove (e.gameObject);
 
@@ -173,5 +189,11 @@ public class Director : MonoBehaviour {
 		}
 
 		return false;
+	}
+
+	
+	public List<SpawnPoint> getSpawnPoints()
+	{
+		return spawnPoints;
 	}
 }

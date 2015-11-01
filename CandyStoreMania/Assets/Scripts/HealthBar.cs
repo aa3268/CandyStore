@@ -8,11 +8,12 @@ public class HealthBar : MonoBehaviour {
 
 	public int currentHealth;
 	public bool depleted;
-	public Slider healthBar;
+	Slider healthBar;
 
 	Vector3 attachedPosition;
 
-	public Camera cam;
+	Camera cam;
+	public Image fill;
 
 	// Use this for initialization
 	void Awake () {
@@ -58,7 +59,7 @@ public class HealthBar : MonoBehaviour {
 		{
 			currentHealth = max;
 		}
-
+		healthBar.maxValue = max;
 		maxHealth = max;
 	}
 
@@ -78,6 +79,12 @@ public class HealthBar : MonoBehaviour {
 	public void setAttachedObjectPos(Vector3 pos)
 	{
 		attachedPosition = pos;
+	}
+
+	public void setColor(Color c)
+	{
+		Debug.Log (c);
+		fill.color = c;
 	}
 
 }

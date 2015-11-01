@@ -1,8 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../Starbright/Starbright Game/Assets/Scripts/OnlineScoreManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LevelDirector.cs">
     <Files>
-      <File FileName="../../Starbright/Starbright Game/Assets/Scripts/OnlineScoreManager.cs" Line="30" Column="1" />
+      <File FileName="Assets/Scripts/EnemyScript.cs" Line="360" Column="32" />
+      <File FileName="Assets/Scripts/Director.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LevelDirector.cs" Line="50" Column="4" />
+      <File FileName="Assets/Scripts/WindowBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HealthBar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UpgradeMenu.cs" Line="20" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
