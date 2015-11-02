@@ -15,22 +15,27 @@ public class GumballGun : MonoBehaviour {
 
 	public float cooldown;
 
+
+	public GameObject player;
 	// Use this for initialization
 	void Start () {
 		ammo = 20;
 		rate = 1;
 		damage = 20;
-		cooldown = 2;
+		cooldown = 1;
+
+		player = GameObject.Find ("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetMouseButton(0))
-		{
-			Fire();
+		if (player.GetComponent<Player> ().paused != true) {
+			if (Input.GetMouseButton (0)) {
+				Fire ();
+			}
+			Cooldown ();
 		}
-		Cooldown ();
 	}
 
 

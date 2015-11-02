@@ -3,9 +3,9 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
 
-	public void StartLevel()
+	public void StartLevel(string level)
 	{
-		Application.LoadLevel ("control_test");
+		Application.LoadLevel (level);
 	}
 
 	public void SettingsLevel()

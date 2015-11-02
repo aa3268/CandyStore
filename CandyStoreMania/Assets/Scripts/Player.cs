@@ -16,28 +16,15 @@ public class Player : MonoBehaviour {
 	
     public float movementSpeed = 2.0f;
 	public float rotationSpeed = 100f;
-	public float gun_one_cooldown = 2f;
-	public float gun_two_cooldown = 15f;
-
-	public GameObject nozzle;
-	public GameObject bulletOnePrefab;
-	public GameObject bulletTwoPrefab;
-	public GameObject bulletOne;
-	public GameObject bulletTwo;
 
 	public GameObject right;
 	public GameObject left;
 
 	public Camera player;
-	public Camera pause;
-	public Camera upgrade;
 
 	public bool paused;
 	public static bool gunTwoSelectable = true;
-
-	public GameObject gunOne;
-	public GameObject gunTwo;
-
+	
     void Start () {
 		paused = false;
 		Cursor.visible = false;
@@ -47,20 +34,7 @@ public class Player : MonoBehaviour {
 
 		KeyboardMouseControls ();
 		//JoystickControls ();
-		if (player.enabled) {
-			paused = false;
-			Cursor.visible = false;
-		} else {
-			paused = true;
-			Cursor.visible = true;
-		}
 
-		if (gun_one_cooldown < 2) {
-			gun_one_cooldown += Time.deltaTime * 2f;
-		}
-		if (gun_two_cooldown < 15) {
-			gun_two_cooldown += Time.deltaTime * 5f;
-		}
 	}
 			
 	/*void JoystickControls()
@@ -113,17 +87,15 @@ public class Player : MonoBehaviour {
 			ps2.Play();
 		}
 	}*/
-
 	void KeyboardMouseControls()
 	{
 		if (!paused) {
-
 			float y = Input.GetAxis ("Mouse X");
-			float x = 0;
-			float z = 0;
+			float x = transform.rotation.x;
+			float z = transform.rotation.z;
 			
-			Vector3 v = new Vector3 (x, y, z);
-			transform.Rotate (v * 5f);
+			Vector3 r = new Vector3 (x, y, z);
+			transform.Rotate (r * 1.5f);
 
 			if (Input.GetKey (KeyCode.W)) {
 				transform.Translate (Vector3.forward * Time.deltaTime * movementSpeed);
@@ -150,32 +122,29 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey (KeyCode.Alpha2)) {
 				if(gunTwoSelectable)
 				{
-				right.transform.GetChild (2).gameObject.SetActive (true);
-				right.transform.GetChild (1).gameObject.SetActive (false);
+					right.transform.GetChild (2).gameObject.SetActive (true);
+					right.transform.GetChild (1).gameObject.SetActive (false);
 				}
 			}
 
-		
-			if (Input.GetMouseButtonDown (1)) {
-
-
+		}
+			
+		if (Input.GetKeyDown (KeyCode.Escape)) 
+		{
+			if (!paused) 
+			{
+				Time.timeScale = 0.00000000000000000000000001f;
+				Cursor.visible = true;
+				paused = true;
+				PauseMenu.instance.ScaleUp();
+			} 
+			else 
+			{
+				Time.timeScale = 1;
+				Cursor.visible = false;
+				paused = false;
+				PauseMenu.instance.ScaleDown();
 			}
 		}
-			if (Input.GetKeyDown (KeyCode.Escape)) {
-				if (player.enabled == true) {
-					player.enabled = false;
-					pause.enabled = true;
-					Time.timeScale = 0.00000000000000000000000001f;
-					Cursor.visible = true;
-
-					
-				} else {
-					pause.enabled = false;
-					player.enabled = true;
-					Time.timeScale = 1;
-					Cursor.visible = false;
-				}
-			}
-		
 	}
 }

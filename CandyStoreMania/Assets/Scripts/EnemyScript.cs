@@ -18,8 +18,9 @@ public class EnemyScript : MonoBehaviour {
 	NavMeshAgent nav;
 
 	List<Transform> windowLocs;
+	List<SpawnPoint>exitPoints;
+	
 	GameObject windows;
-	GameObject door;
 
 	WindowBehavior currentTarget;
 
@@ -33,16 +34,19 @@ public class EnemyScript : MonoBehaviour {
 
 	SearchTypes searchType;
 
+	Vector3 exitPoint;
+
+
 	// Use this for initialization
 	void Awake () {
-		Debug.Log ("starting enemy");
 		nav = GetComponent<NavMeshAgent> ();
 		windows = GameObject.Find ("WindowLocators");
-		door = GameObject.Find ("Door");
 
 		worldCanvas = GameObject.Find ("HealthBarCanvas");
 
-		director = GameObject.Find ("EnemyDirector").GetComponent<Director> ();;
+		director = GameObject.Find ("EnemyDirector").GetComponent<Director> ();
+
+		exitPoint = Vector3.zero;
 	}
 	
 	// Update is called once per frame
@@ -50,6 +54,12 @@ public class EnemyScript : MonoBehaviour {
 
 		takeAction ();
 		healthBar.setAttachedObjectPos (transform.position);
+		if(healthBar.currentHealth <= 0)
+		{
+			
+			healthBar.gameObject.SetActive (false);
+			currentState = States.EXIT;
+		}
 	}
 
 
@@ -82,6 +92,7 @@ public class EnemyScript : MonoBehaviour {
 
 	Vector3 searchWindow()
 	{
+		Debug.Log ("searching");
 		Vector3 target = Vector3.zero;
 
 		switch (searchType) 
@@ -106,10 +117,10 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 closestWithoutOccupant = Vector3.zero;
 
 		Vector3 currentPos = transform.position;
+		Debug.Log ("am i here");
 		bool first = true;
 		bool firstUnoccupied = true;
 
-		Debug.Log ("looking for closest");
 		foreach (Transform t in windowLocs) 
 		{
 			if(first || firstUnoccupied)
@@ -226,7 +237,6 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 currentPos = transform.position;
 		int currentPeopleCount = 0;
 		bool first = true;
-		
 		foreach (Transform t in windowLocs) 
 		{
 			if(first)
@@ -305,6 +315,7 @@ public class EnemyScript : MonoBehaviour {
 
 		if(Vector3.Distance(targetDestination, currentPosition) < 1f)
 		{
+			nav.destination = currentPosition;
 			return true;
 		}
 		return false;
@@ -323,18 +334,16 @@ public class EnemyScript : MonoBehaviour {
 
 	void exit()
 	{
-		if(!nav.destination.Equals(door.transform.position))
+		if(exitPoint.Equals(Vector3.zero))
 		{
-			nav.destination = door.transform.position;
+			nav.destination = SearchExitPoint();
 		}
+
 		Vector3 targetDestination = new Vector3 (nav.destination.x, 0f, nav.destination.z);
 		Vector3 currentPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
 
-		if(Vector3.Distance(targetDestination, currentPosition) < 0.05f)
+		if(Vector3.Distance(targetDestination, currentPosition) < 1f)
 		{
-			//GameObject.Destroy (healthBar.gameObject);
-		
-			//GameObject.Destroy(gameObject);
 			currentTarget.getEnemies().Remove(this);
 			director.removeEnemy(this);
 		}
@@ -348,8 +357,10 @@ public class EnemyScript : MonoBehaviour {
 		}
 		GameObject bar = (GameObject)Instantiate (Resources.Load ("prefabs/healthBar"));
 		healthBar = bar.GetComponent<HealthBar> ();
+		healthBar.setColor (Color.red);
 		healthBar.transform.SetParent (worldCanvas.transform, false);
 		healthBar.setAttachedObjectPos (transform.position);
+		healthBar.gameObject.SetActive (false);
 	
 	}
 
@@ -370,7 +381,8 @@ public class EnemyScript : MonoBehaviour {
 		currentState = States.SEARCH;
 
 		healthBar.reFillHealth ();
-		
+		healthBar.setAttachedObjectPos (transform.position);
+		healthBar.gameObject.SetActive (true);
 		time = 0f;
 	}
 
@@ -382,6 +394,64 @@ public class EnemyScript : MonoBehaviour {
 	public void setSearchType(SearchTypes type)
 	{
 		searchType = type;
+	}
+
+
+	void OnCollisionEnter(Collision bullet)
+	{
+		if (bullet.gameObject.name.Contains("Bullet")) {
+			healthBar.doDamage(20);
+
+		}
+	}
+
+	public Vector3 SearchExitPoint()
+	{
+		Vector3 exit = Vector3.zero;
+
+		if(exitPoints != null)
+		{
+			exitPoints = Director.instance.getSpawnPoints();
+		}
+
+		for(int i = 0; i < exitPoints.Count; i++)
+		{
+			if(!exitPoints[i].getClaimed())
+			{
+				if(exit.Equals(Vector3.zero))
+				{
+					exit = exitPoints[i].transform.position;
+				}
+				else
+				{
+					if(Vector3.Distance(transform.position, exitPoints[i].transform.position) < Vector3.Distance(transform.position, exit))
+					{
+						exit = exitPoints[i].transform.position;
+					}
+				}
+			}
+		}
+		
+		if(exit.Equals (Vector3.zero))
+		{
+			for(int i = 0; i < exitPoints.Count; i++)
+			{
+				if(!exitPoints[i].getClaimed())
+				{
+					if(Vector3.Distance(transform.position, exitPoints[i].transform.position) < Vector3.Distance(transform.position, exit))
+					{
+						exit = exitPoints[i].transform.position;
+					}
+				}
+			}
+		}
+
+		return exit;
+	}
+
+	public void setExits(List<SpawnPoint> points)
+	{
+		exitPoints = points;
 	}
 
 }

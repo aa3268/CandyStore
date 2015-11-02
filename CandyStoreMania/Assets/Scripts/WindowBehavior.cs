@@ -7,6 +7,7 @@ public class WindowBehavior : MonoBehaviour {
 	HealthBar healthBar;
 	GameObject worldCanvas;
 	List<EnemyScript> enemiesAtWindow;
+	public int maxHealth;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +25,16 @@ public class WindowBehavior : MonoBehaviour {
 	{
 		GameObject bar = (GameObject)Instantiate (Resources.Load ("prefabs/healthBar"));
 		healthBar = bar.GetComponent<HealthBar> ();
+		healthBar.setMaxHealth (maxHealth);
 		healthBar.transform.SetParent (worldCanvas.transform, false);
 		healthBar.setAttachedObjectPos (transform.position);
+	}
+
+	public void refreshHealth()
+	{
+		if (healthBar != null) {
+			healthBar.reFillHealth ();
+		}
 	}
 
 	public bool boardUp(int force)

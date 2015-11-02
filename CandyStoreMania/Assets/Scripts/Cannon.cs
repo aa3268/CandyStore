@@ -14,6 +14,8 @@ public class Cannon : MonoBehaviour {
 	public GameObject nozzle;
 	
 	public float cooldown;
+
+	public GameObject player;
 	
 	// Use this for initialization
 	void Start () {
@@ -21,16 +23,18 @@ public class Cannon : MonoBehaviour {
 		rate = 5;
 		damage = 20;
 		cooldown = 5;
+		player = GameObject.Find ("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetMouseButtonDown(0))
-		{
-			Fire();
+		if (player.GetComponent<Player> ().paused != true) {
+			if (Input.GetMouseButtonDown (0)) {
+				Fire ();
+			}
+			Cooldown ();
 		}
-		Cooldown ();
 	}
 	
 	

@@ -33,7 +33,10 @@ public class Bullet_GumballGun : MonoBehaviour {
 		{
 			other.gameObject.GetComponent<EnemyScript>().health -= 20;
 		}
+
+		if (!other.gameObject.name.Contains ("Player")) {
 			Destroy(gameObject);
+		}
 
 	}
 }
