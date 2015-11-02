@@ -38,7 +38,7 @@ public class Bullet_Cannon : MonoBehaviour {
 	{
 		if(obj.gameObject.name.Contains("Enemy"))
 		{
-			obj.GetComponent<EnemyScript>().health -= 50;
+			obj.GetComponent<EnemyScript>().getHealthBar().doDamage(50);
 		}
 
 	}

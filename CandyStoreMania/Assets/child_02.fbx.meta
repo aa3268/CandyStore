@@ -1,0 +1,136 @@
+fileFormatVersion: 2
+guid: dc7483b0d00fc4065865ce5edcedea76
+timeCreated: 1446449015
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: arm and hand resubmit
+    100002: Backdrop Item
+    100004: Backdrop Item (2)
+    100006: Backdrop Item (3)
+    100008: Camera
+    100010: Camera (2)
+    100012: Camera (5)
+    100014: //RootNode
+    100016: Directional Light
+    100018: Directional Light (2)
+    100020: Directional Light (5)
+    100022: hand 10
+    100024: HumanEye
+    100026: Inner
+    100028: kid
+    100030: kid (2)
+    100032: Outer
+    100034: teeth
+    100036: teeth (2)
+    100038: w
+    100040: w (2)
+    400000: arm and hand resubmit
+    400002: Backdrop Item
+    400004: Backdrop Item (2)
+    400006: Backdrop Item (3)
+    400008: Camera
+    400010: Camera (2)
+    400012: Camera (5)
+    400014: //RootNode
+    400016: Directional Light
+    400018: Directional Light (2)
+    400020: Directional Light (5)
+    400022: hand 10
+    400024: HumanEye
+    400026: Inner
+    400028: kid
+    400030: kid (2)
+    400032: Outer
+    400034: teeth
+    400036: teeth (2)
+    400038: w
+    400040: w (2)
+    2300000: Inner
+    2300002: kid
+    2300004: kid (2)
+    2300006: teeth
+    2300008: teeth (2)
+    2300010: w
+    2300012: w (2)
+    3300000: Inner
+    3300002: kid
+    3300004: kid (2)
+    3300006: teeth
+    3300008: teeth (2)
+    3300010: w
+    3300012: w (2)
+    4300000: teeth
+    4300002: w
+    4300004: w (2)
+    4300006: teeth (2)
+    4300008: kid
+    4300010: kid (2)
+    4300012: Inner
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

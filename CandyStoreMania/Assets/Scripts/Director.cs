@@ -22,6 +22,7 @@ public class Director : MonoBehaviour {
 
 	float time = 0f;
 	bool poolReady = false;
+	bool overStarted = false;
 
 	private int enemiesCreated = 0;
 
@@ -49,10 +50,10 @@ public class Director : MonoBehaviour {
 			placeEnemy ();
 		}
 
-		if(levelOver())
+		if(levelOver() && !overStarted)
 		{
-			UpgradeMenu.instance.ScaleUp();
-			Time.timeScale = 0.00000000001f;
+			LevelDirector.instance.levelOver();
+			overStarted = true;
 		}
 	}
 
@@ -79,6 +80,7 @@ public class Director : MonoBehaviour {
 		enemyPool.Clear ();
 		numAvailable = 0;
 		enemiesCreated = 0;
+		overStarted = false;
 	}
 
 	public void placeEnemy()
@@ -140,7 +142,7 @@ public class Director : MonoBehaviour {
 		switch(type)
 		{
 			case EnemyType.AGGRESSIVE:
-				e.boardingForce = 6;
+				e.boardingForce = 4;
 				e.boardingSpeed = 0.3f;
 				e.getAgent().speed = 2f;
 				e.health = 75;	
@@ -154,7 +156,7 @@ public class Director : MonoBehaviour {
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
 			case EnemyType.VANGUARD:
-				e.boardingForce = 3;
+				e.boardingForce = 2;
 				e.boardingSpeed = 0.15f;
 				e.getAgent().speed = 3f;
 				e.health = 70;

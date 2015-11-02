@@ -19,7 +19,7 @@ public class Cannon : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		ammo = 5;
+		ammo = 1000;
 		rate = 5;
 		damage = 20;
 		cooldown = 5;

@@ -31,7 +31,7 @@ public class Bullet_GumballGun : MonoBehaviour {
 	{
 		if(other.gameObject.name.Contains("Enemy"))
 		{
-			other.gameObject.GetComponent<EnemyScript>().health -= 20;
+			other.gameObject.GetComponent<EnemyScript>().getHealthBar().doDamage(1);
 		}
 
 		if (!other.gameObject.name.Contains ("Player")) {

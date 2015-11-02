@@ -40,7 +40,6 @@ public class HealthBar : MonoBehaviour {
 		}
 
 		healthBar.value = currentHealth;
-
 	}
 
 	public bool isDepleted()
@@ -67,6 +66,7 @@ public class HealthBar : MonoBehaviour {
 	{
 		currentHealth = maxHealth;
 		healthBar.value = currentHealth;
+		depleted = false;
 	}
 
 	void setPosition()
@@ -83,7 +83,6 @@ public class HealthBar : MonoBehaviour {
 
 	public void setColor(Color c)
 	{
-		Debug.Log (c);
 		fill.color = c;
 	}
 

@@ -19,7 +19,7 @@ public class GumballGun : MonoBehaviour {
 	public GameObject player;
 	// Use this for initialization
 	void Start () {
-		ammo = 20;
+		ammo = 1000;
 		rate = 1;
 		damage = 20;
 		cooldown = 1;

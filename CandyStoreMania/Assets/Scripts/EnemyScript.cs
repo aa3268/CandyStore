@@ -92,7 +92,6 @@ public class EnemyScript : MonoBehaviour {
 
 	Vector3 searchWindow()
 	{
-		Debug.Log ("searching");
 		Vector3 target = Vector3.zero;
 
 		switch (searchType) 

@@ -12,7 +12,7 @@ public class WindowBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		worldCanvas = GameObject.Find ("HealthBarCanvas");
-		createHealthBar ();
+		Debug.Log (worldCanvas);
 		enemiesAtWindow = new List<EnemyScript> ();
 	}
 	
@@ -23,11 +23,15 @@ public class WindowBehavior : MonoBehaviour {
 
 	public void createHealthBar()
 	{
+		if (worldCanvas == null) {
+			worldCanvas = GameObject.Find ("HealthBarCanvas");
+		}
 		GameObject bar = (GameObject)Instantiate (Resources.Load ("prefabs/healthBar"));
 		healthBar = bar.GetComponent<HealthBar> ();
 		healthBar.setMaxHealth (maxHealth);
 		healthBar.transform.SetParent (worldCanvas.transform, false);
 		healthBar.setAttachedObjectPos (transform.position);
+		LevelDirector.instance.addMaxHealth (maxHealth);
 	}
 
 	public void refreshHealth()
@@ -40,6 +44,8 @@ public class WindowBehavior : MonoBehaviour {
 	public bool boardUp(int force)
 	{
 		healthBar.doDamage(force);
+		
+		LevelDirector.instance.updateHealth (-force);
 		if (healthBar.isDepleted ()) 
 		{
 			return true;

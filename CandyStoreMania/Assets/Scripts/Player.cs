@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 	
   //Joystick button variables
+	public static Player instance;
 	public float xr;
 	public float yr;
 	public float xl;
@@ -23,11 +25,23 @@ public class Player : MonoBehaviour {
 	public Camera player;
 
 	public bool paused;
-	public static bool gunTwoSelectable = true;
-	
+	public bool gunTwoSelectable = false;
+
+	List<GameObject> unlockedWeapons;
+	GameObject activeWeapon;
+
     void Start () {
+		instance = this;
 		paused = false;
 		Cursor.visible = false;
+		unlockedWeapons = new List<GameObject> ();
+
+		foreach(Transform t in right.transform)
+		{
+			unlockedWeapons.Add(t.gameObject);
+		}
+
+		activeWeapon = unlockedWeapons [0];
 	}
     void Update()
     {
@@ -93,7 +107,7 @@ public class Player : MonoBehaviour {
 			float y = Input.GetAxis ("Mouse X");
 			float x = transform.rotation.x;
 			float z = transform.rotation.z;
-			
+
 			Vector3 r = new Vector3 (x, y, z);
 			transform.Rotate (r * 1.5f);
 
@@ -116,14 +130,17 @@ public class Player : MonoBehaviour {
 				transform.Rotate (Vector3.up * Time.deltaTime * rotationSpeed);
 			}
 			if (Input.GetKey (KeyCode.Alpha1)) {
-				right.transform.GetChild (1).gameObject.SetActive (true);
-				right.transform.GetChild (2).gameObject.SetActive (false);
+				activeWeapon.SetActive (false);
+				unlockedWeapons[0].gameObject.SetActive (true);
+				activeWeapon = unlockedWeapons[0].gameObject;
 			}
 			if (Input.GetKey (KeyCode.Alpha2)) {
+				Debug.Log (unlockedWeapons.Count);
 				if(gunTwoSelectable)
 				{
-					right.transform.GetChild (2).gameObject.SetActive (true);
-					right.transform.GetChild (1).gameObject.SetActive (false);
+					activeWeapon.SetActive (false);
+					unlockedWeapons[1].gameObject.SetActive (true);
+					activeWeapon = unlockedWeapons[1].gameObject;
 				}
 			}
 
@@ -146,5 +163,12 @@ public class Player : MonoBehaviour {
 				PauseMenu.instance.ScaleDown();
 			}
 		}
+	}
+
+	public void addWeapon(GameObject weapon)
+	{
+		//unlockedWeapons.Add (weapon);
+		Debug.Log (weapon);
+		gunTwoSelectable = true;
 	}
 }

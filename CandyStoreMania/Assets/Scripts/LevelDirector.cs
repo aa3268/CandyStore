@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class LevelDirector : MonoBehaviour {
 
 	public static LevelDirector instance;
+	public Slider totalHealth;
 	public Director enemyDirector;
 	public GameObject windLocs;
 	public AnimationCurve waveSizePerLevel;
@@ -15,40 +17,64 @@ public class LevelDirector : MonoBehaviour {
 
 	List<WindowBehavior> windows;
 	int currentLevel;
+	int maxHealth;
+	int currentHealth;
+	GameObject player;
+
+	int totalScore;
+	int available;
 
 	// Use this for initialization
 	void Start () {
-		currentLevel = 0;
+		Debug.Log ("heyo");
 		instance = this;
-		
-		windows = new List<WindowBehavior> ();
+		currentLevel = 0;
+		maxHealth = 0;
+		currentHealth = 0;
+		totalScore = 0;
+		available = 0;
 
+		windows = new List<WindowBehavior> ();
+		player = GameObject.Find ("Player");
 		setUpLevel ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		totalHealth.maxValue = maxHealth;
+		totalHealth.value = currentHealth;
+
+		checkGameOver ();
 	}
 
 	public void setUpLevel()
 	{
+		Player.instance.enabled = true;
 		currentLevel++;
+		totalHealth.gameObject.SetActive (true);
 
-		windows.Clear ();
+		if (currentLevel == 1) {
 
-		foreach (Transform t in windLocs.transform) 
-		{
-			windows.Add(t.GetComponent<WindowBehavior>());
+			foreach (Transform t in windLocs.transform) {
+				windows.Add (t.GetComponent<WindowBehavior> ());
+				windows [windows.Count - 1].createHealthBar ();
+			}
 		}
-
-		enemyDirector.waveSize = (int) (waveSizePerLevel.Evaluate (((float)currentLevel) / maxLevels) * maxWaveSize);
-		enemyDirector.totalEnemies = (int) (maxEnemiesPerLevel.Evaluate(((float)currentLevel)/maxLevels) * maxEnemies);
-
+		
 		for(int i =  0; i < windows.Count; i++)
 		{
 			windows[i].refreshHealth();
 		}
+	
+
+		enemyDirector.waveSize = (int) (waveSizePerLevel.Evaluate (((float)currentLevel) / maxLevels) * maxWaveSize);
+		enemyDirector.totalEnemies = (int) (maxEnemiesPerLevel.Evaluate(((float)currentLevel)/maxLevels) * maxEnemies);
+
+		totalHealth.maxValue = maxHealth;
+		currentHealth = maxHealth;
+		totalHealth.value = currentHealth;
+
+
 
 		if(currentLevel > 1)
 		{
@@ -62,4 +88,48 @@ public class LevelDirector : MonoBehaviour {
 		return currentLevel;
 	}
 
+	public void addMaxHealth(int max)
+	{
+		maxHealth += max;
+		currentHealth = maxHealth;
+	}
+
+	public void updateHealth(int health)
+	{
+		currentHealth += health;
+	}
+
+	public void checkGameOver()
+	{
+		if(currentHealth <= 0)
+		{
+			Application.LoadLevel ("GameOver");
+		}
+	}
+
+	public void levelOver()
+	{
+		totalScore += (currentHealth * currentLevel);
+		available += (currentHealth * currentLevel);
+		UpgradeMenu.instance.ScaleUp();
+		Time.timeScale = 0.00000000001f;
+		Player.instance.paused = true;
+		Player.instance.enabled = false;
+		totalHealth.gameObject.SetActive (false);
+	}
+
+	public int getScore()
+	{
+		return totalScore;
+	}
+
+	public int getAvailablePoints()
+	{
+		return available;
+	}
+
+	public void purchase(int cost)
+	{
+		available -= cost;
+	}
 }
