@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Cannon : MonoBehaviour {
+public class Cannon : MonoBehaviour, WeaponsInterface {
 	
 	
+	public int maxAmmo;
 	public int ammo;
 	public float rate;
 	public float damage;
@@ -16,13 +17,11 @@ public class Cannon : MonoBehaviour {
 	public float cooldown;
 
 	public GameObject player;
-	
+
+	int upgradeStage = 0;
 	// Use this for initialization
 	void Start () {
-		ammo = 1000;
-		rate = 5;
-		damage = 20;
-		cooldown = 5;
+
 		player = GameObject.Find ("Player");
 	}
 	
@@ -56,5 +55,72 @@ public class Cannon : MonoBehaviour {
 			cooldown += Time.deltaTime;
 		}
 		
+	}
+
+	
+	public void upgrade()
+	{
+		if(upgradeStage % 3 == 0)
+		{
+			upgradeStage++;
+			setCooldown(cooldown * 0.9f);
+		}
+		else if(upgradeStage % 3 == 1)
+		{
+			upgradeStage++;
+			setAmmo(maxAmmo + 1);
+		}
+		else if(upgradeStage % 3 == 2)
+		{
+			upgradeStage++;
+			setBaseDamage(damage * 1.1f);
+		}
+	}
+	
+	public int getAmmo()
+	{
+		return ammo;
+	}
+
+	public int getMaxAmmo()
+	{
+		return maxAmmo;
+	}
+	
+	public float getCooldown()
+	{
+		return rate;
+	}
+	
+	public float getBaseDamage()
+	{
+		return damage;
+	}
+
+	public int upgradeCost()
+	{
+		return 50 * (upgradeStage + 1);
+	}
+
+	public void setAmmo(int a)
+	{
+		ammo = a;
+		maxAmmo = ammo;
+	}
+	
+	public void setCooldown(float cd)
+	{
+		cooldown = cd;
+		rate = cd;
+	}
+	
+	public void setBaseDamage(float d)
+	{
+		damage = d;
+	}
+
+	public void reload()
+	{
+		ammo = maxAmmo;
 	}
 }

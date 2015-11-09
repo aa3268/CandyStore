@@ -8,6 +8,8 @@ public class PauseMenu : MonoBehaviour {
 	public Player player;
 
 	RectTransform rectTransform;
+	public Canvas HealthBarCanvas;
+	public GameObject totalHealth;
 
 	public void Start()
 	{
@@ -21,11 +23,15 @@ public class PauseMenu : MonoBehaviour {
 		player.paused = false;
 		Cursor.visible = true;
 		Time.timeScale = 1;
+		HealthBarCanvas.enabled = true;
+		totalHealth.SetActive (true);
 	}
 
 	public void ScaleUp()
 	{
 		rectTransform.localScale = new Vector3(1, 1, 1);
+		HealthBarCanvas.enabled = false;
+		totalHealth.SetActive (false);
 	}
 
 	public void Exit()

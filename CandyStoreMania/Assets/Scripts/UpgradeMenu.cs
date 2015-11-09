@@ -11,8 +11,8 @@ public class UpgradeMenu : MonoBehaviour {
 
 	public GameObject unlockButton;
 	public GameObject Gun2;
+	public Canvas HealthBarCanvas;
 	RectTransform rectTransform;
-	bool unlocked = false;
 
 	public void Start()
 	{
@@ -26,13 +26,14 @@ public class UpgradeMenu : MonoBehaviour {
 		player.paused = false;
 		Cursor.visible = true;
 		Time.timeScale = 1;
+		HealthBarCanvas.enabled = true;
 	}
 	
 	public void ScaleUp()
 	{
 		rectTransform.localScale = new Vector3(1, 1, 1);
+		HealthBarCanvas.enabled = false;
 		setScore ();
-		checkUnlockable ();
 	}
 	
 	public void Exit()
@@ -48,25 +49,5 @@ public class UpgradeMenu : MonoBehaviour {
 		score.text = "Total score: " + LevelDirector.instance.getScore ();
 		available.text = "Points available: " + LevelDirector.instance.getAvailablePoints ();
 	}
-
-	public void checkUnlockable()
-	{
-		if(LevelDirector.instance.getAvailablePoints() >= 150 && !unlocked)
-		{
-			unlockButton.SetActive(true);
-			unlocked = true;
-		}
-		else
-		{
-			unlockButton.SetActive(false);
-		}
-	}
-
-	public void unlock()
-	{
-		LevelDirector.instance.purchase (150);
-		available.text = "Points available: " + LevelDirector.instance.getAvailablePoints ();
-		//GameObject gun2 = (GameObject)Instantiate (Resources.Load ("prefabs/Gun2"));
-		Player.instance.addWeapon (Gun2);
-	}
+	
 }

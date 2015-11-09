@@ -25,20 +25,17 @@ public class Player : MonoBehaviour {
 	public Camera player;
 
 	public bool paused;
-	public bool gunTwoSelectable = false;
+	public RechargeStation reload;
 
-	List<GameObject> unlockedWeapons;
+	List<GameObject> unlockedWeapons = new List<GameObject>();
 	GameObject activeWeapon;
 
     void Start () {
 		instance = this;
 		paused = false;
-		Cursor.visible = false;
-		unlockedWeapons = new List<GameObject> ();
 
-		foreach(Transform t in right.transform)
-		{
-			unlockedWeapons.Add(t.gameObject);
+		if (WeaponsUnit.instance != null) {
+			WeaponsUnit.instance.setUnlockedWeapons ();
 		}
 
 		activeWeapon = unlockedWeapons [0];
@@ -136,13 +133,22 @@ public class Player : MonoBehaviour {
 			}
 			if (Input.GetKey (KeyCode.Alpha2)) {
 				Debug.Log (unlockedWeapons.Count);
-				if(gunTwoSelectable)
+				if(unlockedWeapons.Count > 2)
 				{
 					activeWeapon.SetActive (false);
 					unlockedWeapons[1].gameObject.SetActive (true);
 					activeWeapon = unlockedWeapons[1].gameObject;
 				}
 			}
+			if(Input.GetKeyDown(KeyCode.Space))
+			{
+				if(Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), 
+				                    new Vector3(reload.transform.position.x, 0f, reload.transform.position.z)) < 5f)
+				{
+					reload.reload(activeWeapon);
+				}
+			}
+
 
 		}
 			
@@ -151,14 +157,12 @@ public class Player : MonoBehaviour {
 			if (!paused) 
 			{
 				Time.timeScale = 0.00000000000000000000000001f;
-				Cursor.visible = true;
 				paused = true;
 				PauseMenu.instance.ScaleUp();
 			} 
 			else 
 			{
 				Time.timeScale = 1;
-				Cursor.visible = false;
 				paused = false;
 				PauseMenu.instance.ScaleDown();
 			}
@@ -167,8 +171,11 @@ public class Player : MonoBehaviour {
 
 	public void addWeapon(GameObject weapon)
 	{
-		//unlockedWeapons.Add (weapon);
-		Debug.Log (weapon);
-		gunTwoSelectable = true;
+		unlockedWeapons.Add (weapon);
+	}
+
+	public int getAmmoCount()
+	{
+		return activeWeapon.GetComponent<WeaponsInterface> ().getAmmo ();
 	}
 }

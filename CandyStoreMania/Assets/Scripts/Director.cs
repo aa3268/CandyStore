@@ -77,6 +77,10 @@ public class Director : MonoBehaviour {
 
 	public void reset()
 	{
+		foreach(GameObject e in enemyPool)
+		{
+			GameObject.Destroy(e);
+		}
 		enemyPool.Clear ();
 		numAvailable = 0;
 		enemiesCreated = 0;
