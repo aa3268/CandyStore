@@ -26,7 +26,6 @@ public class LevelDirector : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("heyo");
 		instance = this;
 		currentLevel = 0;
 		maxHealth = 0;
@@ -75,7 +74,7 @@ public class LevelDirector : MonoBehaviour {
 		totalHealth.value = currentHealth;
 
 
-
+		Debug.Log (enemyDirector.waveSize + " " + enemyDirector.totalEnemies);
 		if(currentLevel > 1)
 		{
 			enemyDirector.reset();
@@ -111,6 +110,7 @@ public class LevelDirector : MonoBehaviour {
 	{
 		totalScore += (currentHealth * currentLevel);
 		available += (currentHealth * currentLevel);
+		WeaponsUnit.instance.performChecks ();
 		UpgradeMenu.instance.ScaleUp();
 		Time.timeScale = 0.00000000001f;
 		Player.instance.paused = true;
@@ -131,5 +131,6 @@ public class LevelDirector : MonoBehaviour {
 	public void purchase(int cost)
 	{
 		available -= cost;
+		UpgradeMenu.instance.available.text = "Points available: " + LevelDirector.instance.getAvailablePoints ();
 	}
 }

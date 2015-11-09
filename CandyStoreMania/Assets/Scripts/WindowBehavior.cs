@@ -43,14 +43,12 @@ public class WindowBehavior : MonoBehaviour {
 
 	public bool boardUp(int force)
 	{
-		healthBar.doDamage(force);
-		
-		LevelDirector.instance.updateHealth (-force);
+		healthBar.doWideEffectDamage(force);
+	
 		if (healthBar.isDepleted ()) 
 		{
 			return true;
 		}
-
 		return false;
 	}
 

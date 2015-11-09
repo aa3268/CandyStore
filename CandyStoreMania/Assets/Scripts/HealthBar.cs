@@ -42,6 +42,23 @@ public class HealthBar : MonoBehaviour {
 		healthBar.value = currentHealth;
 	}
 
+	public void doWideEffectDamage(int damage)
+	{
+		currentHealth -= damage;
+		if(currentHealth <= 0)
+		{
+			LevelDirector.instance.updateHealth (-(damage + currentHealth));
+			depleted = true;
+			currentHealth = 0;
+		}
+		else
+		{
+			LevelDirector.instance.updateHealth (-damage);
+		}
+		
+		healthBar.value = currentHealth;
+	}
+
 	public bool isDepleted()
 	{
 		return depleted;

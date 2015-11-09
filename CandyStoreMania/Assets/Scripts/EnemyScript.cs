@@ -336,6 +336,7 @@ public class EnemyScript : MonoBehaviour {
 		if(exitPoint.Equals(Vector3.zero))
 		{
 			nav.destination = SearchExitPoint();
+			nav.speed = 10f;
 		}
 
 		Vector3 targetDestination = new Vector3 (nav.destination.x, 0f, nav.destination.z);
