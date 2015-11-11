@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: 1a016f4dd59753745b9c098afb0ac231
+timeCreated: 1447274753
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: _Barrel
+    100002: _Barrel 1
+    100004: _Barrel 10
+    100006: _Barrel 11
+    100008: _Barrel 12
+    100010: _Barrel 13
+    100012: _Barrel 14
+    100014: _Barrel 15
+    100016: _Barrel 16
+    100018: _Barrel 17
+    100020: _Barrel 18
+    100022: _Barrel 19
+    100024: _Barrel 2
+    100026: _Barrel 20
+    100028: _Barrel 3
+    100030: _Barrel 4
+    100032: _Barrel 5
+    100034: _Barrel 6
+    100036: _Barrel 7
+    100038: _Barrel 8
+    100040: _Barrel 9
+    100042: _BarrelGroup
+    100044: _BarrelGroup1
+    100046: _BarrelGroup10
+    100048: _BarrelGroup11
+    100050: _BarrelGroup14
+    100052: _BarrelGroup15
+    100054: _BarrelGroup16
+    100056: _BarrelGroup17
+    100058: _BarrelGroup18
+    100060: _BarrelGroup19
+    100062: _BarrelGroup2
+    100064: _BarrelGroup20
+    100066: _BarrelGroup21
+    100068: _BarrelGroup22
+    100070: _BarrelGroup3
+    100072: _BarrelGroup4
+    100074: _BarrelGroup5
+    100076: _BarrelGroup6
+    100078: _BarrelGroup7
+    100080: _BarrelGroup8
+    100082: _BarrelGroup9
+    100084: _CandyHill
+    100086: //RootNode
+    400000: _Barrel
+    400002: _Barrel 1
+    400004: _Barrel 10
+    400006: _Barrel 11
+    400008: _Barrel 12
+    400010: _Barrel 13
+    400012: _Barrel 14
+    400014: _Barrel 15
+    400016: _Barrel 16
+    400018: _Barrel 17
+    400020: _Barrel 18
+    400022: _Barrel 19
+    400024: _Barrel 2
+    400026: _Barrel 20
+    400028: _Barrel 3
+    400030: _Barrel 4
+    400032: _Barrel 5
+    400034: _Barrel 6
+    400036: _Barrel 7
+    400038: _Barrel 8
+    400040: _Barrel 9
+    400042: _BarrelGroup
+    400044: _BarrelGroup1
+    400046: _BarrelGroup10
+    400048: _BarrelGroup11
+    400050: _BarrelGroup14
+    400052: _BarrelGroup15
+    400054: _BarrelGroup16
+    400056: _BarrelGroup17
+    400058: _BarrelGroup18
+    400060: _BarrelGroup19
+    400062: _BarrelGroup2
+    400064: _BarrelGroup20
+    400066: _BarrelGroup21
+    400068: _BarrelGroup22
+    400070: _BarrelGroup3
+    400072: _BarrelGroup4
+    400074: _BarrelGroup5
+    400076: _BarrelGroup6
+    400078: _BarrelGroup7
+    400080: _BarrelGroup8
+    400082: _BarrelGroup9
+    400084: _CandyHill
+    400086: //RootNode
+    2300000: _Barrel
+    2300002: _Barrel 1
+    2300004: _Barrel 10
+    2300006: _Barrel 11
+    2300008: _Barrel 12
+    2300010: _Barrel 13
+    2300012: _Barrel 14
+    2300014: _Barrel 15
+    2300016: _Barrel 16
+    2300018: _Barrel 17
+    2300020: _Barrel 18
+    2300022: _Barrel 19
+    2300024: _Barrel 2
+    2300026: _Barrel 20
+    2300028: _Barrel 3
+    2300030: _Barrel 4
+    2300032: _Barrel 5
+    2300034: _Barrel 6
+    2300036: _Barrel 7
+    2300038: _Barrel 8
+    2300040: _Barrel 9
+    2300042: _CandyHill
+    3300000: _Barrel
+    3300002: _Barrel 1
+    3300004: _Barrel 10
+    3300006: _Barrel 11
+    3300008: _Barrel 12
+    3300010: _Barrel 13
+    3300012: _Barrel 14
+    3300014: _Barrel 15
+    3300016: _Barrel 16
+    3300018: _Barrel 17
+    3300020: _Barrel 18
+    3300022: _Barrel 19
+    3300024: _Barrel 2
+    3300026: _Barrel 20
+    3300028: _Barrel 3
+    3300030: _Barrel 4
+    3300032: _Barrel 5
+    3300034: _Barrel 6
+    3300036: _Barrel 7
+    3300038: _Barrel 8
+    3300040: _Barrel 9
+    3300042: _CandyHill
+    4300000: _Barrel
+    4300002: _Barrel
+    4300004: _Barrel
+    4300006: _Barrel
+    4300008: _Barrel
+    4300010: _Barrel
+    4300012: _Barrel
+    4300014: _Barrel
+    4300016: _Barrel
+    4300018: _Barrel
+    4300020: _Barrel
+    4300022: _Barrel
+    4300024: _Barrel
+    4300026: _Barrel
+    4300028: _Barrel
+    4300030: _Barrel
+    4300032: _Barrel
+    4300034: _CandyHill
+    4300036: _Barrel
+    4300038: _Barrel
+    4300040: _Barrel
+    4300042: _Barrel
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
