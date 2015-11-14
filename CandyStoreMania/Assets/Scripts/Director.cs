@@ -179,7 +179,6 @@ public class Director : MonoBehaviour {
 
 	public void removeEnemy(EnemyScript e)
 	{
-		e.getHealthBar ().gameObject.SetActive (false);
 		e.gameObject.SetActive (false);
 		enemyPool.Add (e.gameObject);
 		enemyInUse.Remove (e.gameObject);

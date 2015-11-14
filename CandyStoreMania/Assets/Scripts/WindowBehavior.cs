@@ -38,6 +38,7 @@ public class WindowBehavior : MonoBehaviour {
 	{
 		if (healthBar != null) {
 			healthBar.reFillHealth ();
+			healthBar.showHealthbar(true);
 		}
 	}
 
@@ -47,6 +48,7 @@ public class WindowBehavior : MonoBehaviour {
 	
 		if (healthBar.isDepleted ()) 
 		{
+			healthBar.showHealthbar(false);
 			return true;
 		}
 		return false;

@@ -14,6 +14,7 @@ public class HealthBar : MonoBehaviour {
 
 	Camera cam;
 	public Image fill;
+	public Image bg;
 
 	// Use this for initialization
 	void Awake () {
@@ -101,6 +102,12 @@ public class HealthBar : MonoBehaviour {
 	public void setColor(Color c)
 	{
 		fill.color = c;
+	}
+
+	public void showHealthbar(bool show)
+	{
+		healthBar.gameObject.SetActive (show);
+
 	}
 
 }

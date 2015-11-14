@@ -46,6 +46,7 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 			bulletTemp.GetComponent<Rigidbody> ().AddForce (nozzle.transform.forward * 15f);
 			cooldown = 0;
 			ammo--;
+			SoundManager.instance.playSound("Cannon");
 		}
 	}
 	

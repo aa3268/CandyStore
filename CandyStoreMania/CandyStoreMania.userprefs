@@ -1,11 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AmmoCount.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SoundManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/AmmoCount.cs" Line="19" Column="84" />
+      <File FileName="Assets/Scripts/AmmoCount.cs" Line="20" Column="20" />
       <File FileName="Assets/Scripts/WeaponsInterface.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Cannon.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="199" Column="71" />
+      <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SoundManager.cs" Line="20" Column="3" />
+      <File FileName="Assets/Scripts/GumballGun.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

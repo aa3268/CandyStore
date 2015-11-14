@@ -56,8 +56,7 @@ public class EnemyScript : MonoBehaviour {
 		healthBar.setAttachedObjectPos (transform.position);
 		if(healthBar.currentHealth <= 0)
 		{
-			
-			healthBar.gameObject.SetActive (false);
+			healthBar.showHealthbar(false);
 			currentState = States.EXIT;
 		}
 	}
@@ -382,7 +381,7 @@ public class EnemyScript : MonoBehaviour {
 
 		healthBar.reFillHealth ();
 		healthBar.setAttachedObjectPos (transform.position);
-		healthBar.gameObject.SetActive (true);
+		healthBar.showHealthbar (true);
 		time = 0f;
 	}
 
