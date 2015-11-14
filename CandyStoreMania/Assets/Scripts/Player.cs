@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
 
 	public bool paused;
 	public RechargeStation reload;
+	public Animator animator;
 
 	List<GameObject> unlockedWeapons = new List<GameObject>();
 	GameObject activeWeapon;
@@ -143,13 +144,27 @@ public class Player : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				if(Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), 
-				                    new Vector3(reload.transform.position.x, 0f, reload.transform.position.z)) < 5f)
+				                    new Vector3(reload.transform.position.x, 0f, reload.transform.position.z)) < 8f)
 				{
 					reload.reload(activeWeapon);
 				}
 			}
 
-
+			if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) ||
+			   Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
+			{
+				if(!animator.GetBool("isWalking"))
+				{
+					animator.SetBool("isWalking", true);
+				}
+			}
+			else
+			{
+				if(animator.GetBool("isWalking"))
+				{
+					animator.SetBool("isWalking", false);
+				}
+			}
 		}
 			
 		if (Input.GetKeyDown (KeyCode.Escape)) 
@@ -177,5 +192,10 @@ public class Player : MonoBehaviour {
 	public int getAmmoCount()
 	{
 		return activeWeapon.GetComponent<WeaponsInterface> ().getAmmo ();
+	}
+
+	public int getMaxAmmo()
+	{
+		return activeWeapon.GetComponent<WeaponsInterface> ().getMaxAmmo ();
 	}
 }

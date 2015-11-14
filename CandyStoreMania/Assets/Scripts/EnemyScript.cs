@@ -17,10 +17,10 @@ public class EnemyScript : MonoBehaviour {
 
 	NavMeshAgent nav;
 
-	List<Transform> windowLocs;
+	List<Transform> targetLocs;
 	List<SpawnPoint>exitPoints;
 	
-	GameObject windows;
+	GameObject targets;
 
 	WindowBehavior currentTarget;
 
@@ -40,7 +40,7 @@ public class EnemyScript : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		nav = GetComponent<NavMeshAgent> ();
-		windows = GameObject.Find ("WindowLocators");
+		targets = GameObject.Find ("TargetLocators");
 
 		worldCanvas = GameObject.Find ("HealthBarCanvas");
 
@@ -69,7 +69,7 @@ public class EnemyScript : MonoBehaviour {
 		{
 			case States.SEARCH:
 				currentState = States.MOVE;
-				nav.destination = searchWindow ();
+				nav.destination = searchTarget ();
 				break;
 			case States.MOVE:
 				if(targetReached())
@@ -90,7 +90,7 @@ public class EnemyScript : MonoBehaviour {
 	}
 	// go look for a window
 
-	Vector3 searchWindow()
+	Vector3 searchTarget()
 	{
 		Vector3 target = Vector3.zero;
 
@@ -120,7 +120,7 @@ public class EnemyScript : MonoBehaviour {
 		bool first = true;
 		bool firstUnoccupied = true;
 
-		foreach (Transform t in windowLocs) 
+		foreach (Transform t in targetLocs) 
 		{
 			if(first || firstUnoccupied)
 			{
@@ -184,7 +184,7 @@ public class EnemyScript : MonoBehaviour {
 		bool first = true;
 		bool firstUnoccupied = true;
 		
-		foreach (Transform t in windowLocs) 
+		foreach (Transform t in targetLocs) 
 		{
 			if(first || firstUnoccupied)
 			{
@@ -236,7 +236,7 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 currentPos = transform.position;
 		int currentPeopleCount = 0;
 		bool first = true;
-		foreach (Transform t in windowLocs) 
+		foreach (Transform t in targetLocs) 
 		{
 			if(first)
 			{
@@ -290,7 +290,7 @@ public class EnemyScript : MonoBehaviour {
 				if (currentTarget.boardUp (boardingForce))
 				{
 					//currentTarget.markBoarded();
-					windowLocs.Remove(currentTarget.transform);
+					targetLocs.Remove(currentTarget.transform);
 					return true;
 				}
 			}
@@ -371,11 +371,11 @@ public class EnemyScript : MonoBehaviour {
 
 	public void readyEnemy()
 	{
-		windowLocs = new List<Transform> ();
+		targetLocs = new List<Transform> ();
 		
-		foreach (Transform t in windows.transform) 
+		foreach (Transform t in targets.transform) 
 		{
-			windowLocs.Add (t);
+			targetLocs.Add (t);
 		}
 		
 		currentState = States.SEARCH;
