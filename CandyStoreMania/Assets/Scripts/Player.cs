@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 
 	List<GameObject> unlockedWeapons = new List<GameObject>();
 	GameObject activeWeapon;
+	WeaponsInterface weapon;
 
     void Start () {
 		instance = this;
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour {
 		}
 
 		activeWeapon = unlockedWeapons [0];
+		weapon = activeWeapon.GetComponent<WeaponsInterface> ();
 	}
     void Update()
     {
@@ -131,6 +133,7 @@ public class Player : MonoBehaviour {
 				activeWeapon.SetActive (false);
 				unlockedWeapons[0].gameObject.SetActive (true);
 				activeWeapon = unlockedWeapons[0].gameObject;
+				weapon = activeWeapon.GetComponent<WeaponsInterface> ();
 			}
 			if (Input.GetKey (KeyCode.Alpha2)) {
 				Debug.Log (unlockedWeapons.Count);
@@ -139,6 +142,7 @@ public class Player : MonoBehaviour {
 					activeWeapon.SetActive (false);
 					unlockedWeapons[1].gameObject.SetActive (true);
 					activeWeapon = unlockedWeapons[1].gameObject;
+					weapon = activeWeapon.GetComponent<WeaponsInterface> ();
 				}
 			}
 			if(Input.GetKeyDown(KeyCode.Space))
@@ -191,11 +195,16 @@ public class Player : MonoBehaviour {
 
 	public int getAmmoCount()
 	{
-		return activeWeapon.GetComponent<WeaponsInterface> ().getAmmo ();
+		return weapon.getAmmo ();
 	}
 
 	public int getMaxAmmo()
 	{
-		return activeWeapon.GetComponent<WeaponsInterface> ().getMaxAmmo ();
+		return weapon.getMaxAmmo ();
+	}
+
+	public int getBaseDamage()
+	{
+		return (int)weapon.getBaseDamage ();
 	}
 }

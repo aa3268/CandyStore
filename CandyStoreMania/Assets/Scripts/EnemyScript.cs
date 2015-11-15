@@ -394,16 +394,7 @@ public class EnemyScript : MonoBehaviour {
 	{
 		searchType = type;
 	}
-
-
-	void OnCollisionEnter(Collision bullet)
-	{
-		if (bullet.gameObject.name.Contains("Bullet")) {
-			healthBar.doDamage(20);
-
-		}
-	}
-
+	
 	public Vector3 SearchExitPoint()
 	{
 		Vector3 exit = Vector3.zero;
