@@ -55,8 +55,10 @@ public class WeaponsUnit : MonoBehaviour {
 	{
 		foreach(UpgradeUnitBehavior units in unitBehavior)
 		{
-			Player.instance.addWeapon(units.associatedWeapon);
-			
+			if(units.unlockStatus)
+			{
+				Player.instance.addWeapon(units.associatedWeapon);
+			}
 		}
 	}
 }

@@ -18,7 +18,6 @@ public class RechargeStation : MonoBehaviour {
 		Vector3 screenPos = cam.WorldToScreenPoint (transform.position);
 		
 		text.transform.position = new Vector3 (screenPos.x, screenPos.y, screenPos.z);
-		Debug.Log (transform.position);
 	}
 
 	public void reload(GameObject weapon)
@@ -28,7 +27,6 @@ public class RechargeStation : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("hi");
 		if (other.name.Contains ("Player")) {
 
 			text.text = "RECHARGE [space]";
@@ -38,7 +36,6 @@ public class RechargeStation : MonoBehaviour {
 	void OnTriggerExit(Collider other)
 	{
 		if (other.name.Contains ("Player")) {
-			Debug.Log ("Exit!");
 			text.text = "";
 		}
 	}
