@@ -129,6 +129,8 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey (KeyCode.E)) {
 				transform.Rotate (Vector3.up * Time.deltaTime * rotationSpeed);
 			}
+
+
 			if (Input.GetKey (KeyCode.Alpha1)) {
 				activeWeapon.SetActive (false);
 				unlockedWeapons[0].gameObject.SetActive (true);
