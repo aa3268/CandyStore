@@ -66,19 +66,23 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 
 	}
 
-	public void upgradeAmmo()
+	public void upgrade()
 	{
-		setAmmo (maxAmmo + 5);
-	}
-
-	public void upgradeDamage()
-	{
-		setBaseDamage(damage * 1.1f);
-	}
-
-	public void upgradeFireRate()
-	{
-		setCooldown(cooldown * 0.85f);
+		if(upgradeStage % 3 == 0)
+		{
+			upgradeStage++;
+			setCooldown(cooldown * 0.9f);
+		}
+		else if(upgradeStage % 3 == 1)
+		{
+			upgradeStage++;
+			setAmmo (maxAmmo + 5);
+		}
+		else if(upgradeStage % 3 == 2)
+		{
+			upgradeStage++;
+			setBaseDamage(damage * 1.1f);
+		}
 	}
 
 	public int getAmmo()
@@ -100,7 +104,12 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 	{
 		return damage;
 	}
-	
+
+	public int upgradeCost()
+	{
+		return 50 * (upgradeStage + 1);
+	}
+
 	public void setAmmo(int a)
 	{
 		ammo = a;

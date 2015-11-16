@@ -31,7 +31,6 @@ public class Player : MonoBehaviour {
 	List<GameObject> unlockedWeapons = new List<GameObject>();
 	GameObject activeWeapon;
 	WeaponsInterface weapon;
-	int activeWeaponNum;
 
     void Start () {
 		instance = this;
@@ -41,8 +40,7 @@ public class Player : MonoBehaviour {
 			WeaponsUnit.instance.setUnlockedWeapons ();
 		}
 
-		activeWeaponNum = 0;
-		activeWeapon = unlockedWeapons [activeWeaponNum];
+		activeWeapon = unlockedWeapons [0];
 		weapon = activeWeapon.GetComponent<WeaponsInterface> ();
 	}
     void Update()
@@ -133,22 +131,22 @@ public class Player : MonoBehaviour {
 			}
 
 
-			if (Input.GetKeyDown(KeyCode.LeftShift)) {
-
-				if(activeWeaponNum == unlockedWeapons.Count-1)
-				{
-					activeWeaponNum = 0;
-				}
-				else
-				{
-					activeWeaponNum++;
-				}
+			if (Input.GetKey (KeyCode.Alpha1)) {
 				activeWeapon.SetActive (false);
-				unlockedWeapons[activeWeaponNum].gameObject.SetActive (true);
-				activeWeapon = unlockedWeapons[activeWeaponNum].gameObject;
+				unlockedWeapons[0].gameObject.SetActive (true);
+				activeWeapon = unlockedWeapons[0].gameObject;
 				weapon = activeWeapon.GetComponent<WeaponsInterface> ();
 			}
-		
+			if (Input.GetKey (KeyCode.Alpha2)) {
+				Debug.Log (unlockedWeapons.Count);
+				if(unlockedWeapons.Count > 2)
+				{
+					activeWeapon.SetActive (false);
+					unlockedWeapons[1].gameObject.SetActive (true);
+					activeWeapon = unlockedWeapons[1].gameObject;
+					weapon = activeWeapon.GetComponent<WeaponsInterface> ();
+				}
+			}
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				if(Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), 

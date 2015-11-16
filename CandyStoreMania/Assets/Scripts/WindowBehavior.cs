@@ -12,6 +12,7 @@ public class WindowBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		worldCanvas = GameObject.Find ("HealthBarCanvas");
+		Debug.Log (worldCanvas);
 		enemiesAtWindow = new List<EnemyScript> ();
 	}
 	

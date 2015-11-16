@@ -90,7 +90,7 @@ public class Director : MonoBehaviour {
 	public void placeEnemy()
 	{
 		int choice;
-		Debug.Log ("available " + numAvailable);
+
 		if(numAvailable > 0)
 		{
 			if(time >= timeDelay)
@@ -98,14 +98,11 @@ public class Director : MonoBehaviour {
 				choice = Random.Range (0, 2);
 				if (choice == 0) 
 				{	
-					GameObject en = enemyPool[0];
-					Debug.Log (en);
-					enemyInUse.Add (en);
-					readyEnemy (en);
+					enemyInUse.Add (enemyPool[enemyPool.Count - 1]);
+					readyEnemy (enemyPool[enemyPool.Count - 1]);
 					numAvailable--;
-					enemyPool.Remove(en);
+					enemyPool.RemoveAt(enemyPool.Count -1);
 					enemiesCreated++;
-					Debug.Log ("make enemy " + enemiesCreated + " " + en + " " + enemyPool.Count);
 				}
 
 				time = 0f;
@@ -122,6 +119,7 @@ public class Director : MonoBehaviour {
 		int point = Random.Range (0, spawnPoints.Count);
 		e.transform.position = spawnPoints [point].transform.position;
 		EnemyScript enemy = e.GetComponent<EnemyScript> ();
+		enemy.readyEnemy ();
 		e.SetActive (true);
 
 		int type = Random.Range (0, 4);
@@ -140,8 +138,6 @@ public class Director : MonoBehaviour {
 				setEnemyBehavior (enemy, EnemyType.SUPPORTER);
 				break;
 		}
-
-		enemy.readyEnemy ();
 
 	}
 
@@ -196,7 +192,6 @@ public class Director : MonoBehaviour {
 
 	bool levelOver()
 	{
-		Debug.Log (numAvailable + " " + waveSize + " : " + enemiesCreated + " " + totalEnemies);
 		if(numAvailable == waveSize && enemiesCreated == totalEnemies)
 		{
 			return true;

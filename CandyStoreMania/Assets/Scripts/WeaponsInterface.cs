@@ -3,14 +3,12 @@ using System.Collections;
 
 public interface WeaponsInterface {
 
-	void upgradeAmmo();
-	void upgradeDamage();
-	void upgradeFireRate();
-
+	void upgrade();
 	int getAmmo();
 	int getMaxAmmo();
 	float getCooldown();
 	float getBaseDamage();
+	int upgradeCost();
 
 	void setAmmo(int a);
 	void setCooldown(float cd);

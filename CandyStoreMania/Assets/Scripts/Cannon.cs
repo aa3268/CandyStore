@@ -28,7 +28,7 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Player.instance.paused != true) {
+		if (player.GetComponent<Player> ().paused != true) {
 			if (Input.GetMouseButtonDown (0)) {
 				Fire ();
 			}
@@ -58,21 +58,26 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 		
 	}
 
-	public void upgradeAmmo()
+	
+	public void upgrade()
 	{
-		setAmmo (maxAmmo + 1);
+		if(upgradeStage % 3 == 0)
+		{
+			upgradeStage++;
+			setCooldown(cooldown * 0.9f);
+		}
+		else if(upgradeStage % 3 == 1)
+		{
+			upgradeStage++;
+			setAmmo(maxAmmo + 1);
+		}
+		else if(upgradeStage % 3 == 2)
+		{
+			upgradeStage++;
+			setBaseDamage(damage * 1.1f);
+		}
 	}
 	
-	public void upgradeDamage()
-	{
-		setBaseDamage(damage * 1.15f);
-	}
-	
-	public void upgradeFireRate()
-	{
-		setCooldown(cooldown * 0.9f);
-	}
-
 	public int getAmmo()
 	{
 		return ammo;
@@ -92,7 +97,12 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 	{
 		return damage;
 	}
-	
+
+	public int upgradeCost()
+	{
+		return 50 * (upgradeStage + 1);
+	}
+
 	public void setAmmo(int a)
 	{
 		ammo = a;

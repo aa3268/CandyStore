@@ -35,7 +35,6 @@ public class EnemyScript : MonoBehaviour {
 	SearchTypes searchType;
 
 	Vector3 exitPoint;
-	bool setUpComplete = false;
 
 
 	// Use this for initialization
@@ -53,15 +52,12 @@ public class EnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(setUpComplete)
+		takeAction ();
+		healthBar.setAttachedObjectPos (transform.position);
+		if(healthBar.currentHealth <= 0)
 		{
-			takeAction ();
-			healthBar.setAttachedObjectPos (transform.position);
-			if(healthBar.currentHealth <= 0)
-			{
-				healthBar.showHealthbar(false);
-				currentState = States.EXIT;
-			}
+			healthBar.showHealthbar(false);
+			currentState = States.EXIT;
 		}
 	}
 
@@ -122,6 +118,7 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 closestWithoutOccupant = Vector3.zero;
 
 		Vector3 currentPos = transform.position;
+		Debug.Log ("am i here");
 		bool first = true;
 		bool firstUnoccupied = true;
 
@@ -349,7 +346,6 @@ public class EnemyScript : MonoBehaviour {
 
 	void exit()
 	{
-		Debug.Log ("leaving");
 		if(exitPoint.Equals(Vector3.zero))
 		{
 			nav.destination = SearchExitPoint();
@@ -363,7 +359,6 @@ public class EnemyScript : MonoBehaviour {
 		{
 			currentTarget.getEnemies().Remove(this);
 			director.removeEnemy(this);
-			setUpComplete = false;
 		}
 	}
 
@@ -401,9 +396,7 @@ public class EnemyScript : MonoBehaviour {
 		healthBar.reFillHealth ();
 		healthBar.setAttachedObjectPos (transform.position);
 		healthBar.showHealthbar (true);
-		Debug.Log ("health is " + healthBar.currentHealth);
 		time = 0f;
-		setUpComplete = true;
 	}
 
 	public NavMeshAgent getAgent()

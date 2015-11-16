@@ -14,14 +14,12 @@ public class LevelDirector : MonoBehaviour {
 	public int maxLevels;
 	public int maxWaveSize;
 	public int maxEnemies;
-	public GameObject ammo;
 
 	List<WindowBehavior> windows;
 	int currentLevel;
 	int maxHealth;
 	int currentHealth;
 	GameObject player;
-
 
 	int totalScore;
 	int available;
@@ -53,7 +51,7 @@ public class LevelDirector : MonoBehaviour {
 		Player.instance.enabled = true;
 		currentLevel++;
 		totalHealth.gameObject.SetActive (true);
-		ammo.SetActive (true);
+
 		if (currentLevel == 1) {
 
 			foreach (Transform t in windLocs.transform) {
@@ -75,6 +73,8 @@ public class LevelDirector : MonoBehaviour {
 		currentHealth = maxHealth;
 		totalHealth.value = currentHealth;
 
+
+		Debug.Log (enemyDirector.waveSize + " " + enemyDirector.totalEnemies);
 		if(currentLevel > 1)
 		{
 			enemyDirector.reset();
@@ -116,7 +116,6 @@ public class LevelDirector : MonoBehaviour {
 		Player.instance.paused = true;
 		Player.instance.enabled = false;
 		totalHealth.gameObject.SetActive (false);
-		ammo.SetActive (false);
 	}
 
 	public int getScore()
