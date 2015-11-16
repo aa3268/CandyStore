@@ -67,8 +67,11 @@ public class EnemyScript : MonoBehaviour {
 		switch (currentState) 
 		{
 			case States.SEARCH:
-				currentState = States.MOVE;
 				nav.destination = searchTarget ();
+				if(!nav.destination.Equals(Vector3.zero))
+				{
+					currentState = States.MOVE;
+				}
 				break;
 			case States.MOVE:
 				if(targetReached())
@@ -121,40 +124,43 @@ public class EnemyScript : MonoBehaviour {
 
 		foreach (Transform t in targetLocs) 
 		{
-			if(first || firstUnoccupied)
+			if(nav.destination != null && !nav.destination.Equals(t.position))
 			{
-				if(first)
+				if(first || firstUnoccupied)
 				{
-					if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
+					if(first)
+					{
+						if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
+						{
+							closestWithoutOccupant = t.position;
+							currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+							firstUnoccupied = false;
+						}
+						else
+						{
+							closest = t.position;
+							currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+						}
+						first = false;
+					}
+					else if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
 					{
 						closestWithoutOccupant = t.position;
 						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
 						firstUnoccupied = false;
 					}
-					else
-					{
-						closest = t.position;
-						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-					}
-					first = false;
 				}
-				else if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
+				else if(firstUnoccupied && Vector3.Distance(currentPos, t.position) < Vector3.Distance(currentPos, closest))
+				{
+					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+					closest = t.position;
+				}
+				else if(!firstUnoccupied && (t.GetComponent<WindowBehavior>().getEnemies().Count == 0 ) 
+				        && Vector3.Distance(currentPos, t.position) < Vector3.Distance(currentPos, closest))
 				{
 					closestWithoutOccupant = t.position;
 					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-					firstUnoccupied = false;
 				}
-			}
-			else if(firstUnoccupied && Vector3.Distance(currentPos, t.position) < Vector3.Distance(currentPos, closest))
-			{
-				currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-				closest = t.position;
-			}
-			else if(!firstUnoccupied && (t.GetComponent<WindowBehavior>().getEnemies().Count == 0 ) 
-			        && Vector3.Distance(currentPos, t.position) < Vector3.Distance(currentPos, closest))
-			{
-				closestWithoutOccupant = t.position;
-				currentTarget = t.gameObject.GetComponent<WindowBehavior>();
 			}
 		}
 
@@ -185,31 +191,35 @@ public class EnemyScript : MonoBehaviour {
 		
 		foreach (Transform t in targetLocs) 
 		{
-			if(first || firstUnoccupied)
+			
+			if(nav.destination != null && !nav.destination.Equals(t.position))
 			{
-				if(first)
+				if(first || firstUnoccupied)
 				{
-					furthest = t.position;
-					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-					first = false;
+					if(first)
+					{
+						furthest = t.position;
+						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+						first = false;
+					}
+					else if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
+					{
+						furthestWithoutOccupant = t.position;
+						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+						firstUnoccupied = false;
+					}
 				}
-				else if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
+				else if(firstUnoccupied && Vector3.Distance(currentPos, t.position) > Vector3.Distance(currentPos, furthest))
+				{
+					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+					furthest = t.position;
+				}
+				else if(!firstUnoccupied && (t.GetComponent<WindowBehavior>().getEnemies().Count == 0 ) 
+				        && Vector3.Distance(currentPos, t.position) > Vector3.Distance(currentPos, furthest))
 				{
 					furthestWithoutOccupant = t.position;
 					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-					firstUnoccupied = false;
 				}
-			}
-			else if(firstUnoccupied && Vector3.Distance(currentPos, t.position) > Vector3.Distance(currentPos, furthest))
-			{
-				currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-				furthest = t.position;
-			}
-			else if(!firstUnoccupied && (t.GetComponent<WindowBehavior>().getEnemies().Count == 0 ) 
-			        && Vector3.Distance(currentPos, t.position) > Vector3.Distance(currentPos, furthest))
-			{
-				furthestWithoutOccupant = t.position;
-				currentTarget = t.gameObject.GetComponent<WindowBehavior>();
 			}
 		}
 		
@@ -237,23 +247,27 @@ public class EnemyScript : MonoBehaviour {
 		bool first = true;
 		foreach (Transform t in targetLocs) 
 		{
-			if(first)
+			
+			if(nav.destination != null && !nav.destination.Equals(t.position))
 			{
-				if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count > 0)
+				if(first)
 				{
-					leastPeople = t.position;
-					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-					currentPeopleCount = t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count;
-					first = false;
+					if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count > 0)
+					{
+						leastPeople = t.position;
+						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+						currentPeopleCount = t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count;
+						first = false;
+					}
 				}
-			}
-			else 
-			{
-				if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count < currentPeopleCount)
+				else 
 				{
-					leastPeople = t.position;
-					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-					currentPeopleCount = t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count;
+					if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count < currentPeopleCount)
+					{
+						leastPeople = t.position;
+						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+						currentPeopleCount = t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count;
+					}
 				}
 			}
 		}
@@ -267,19 +281,6 @@ public class EnemyScript : MonoBehaviour {
 		return leastPeople;
 	}
 
-
-
-	/*
-	 * Get the hell outta dodge
-	 * 
-	 Vector3 dodge()
-	{
-
-	}*/
-
-
-	// board up windows
-	
 	bool sealUp()
 	{
 		if(time > boardingSpeed)
@@ -304,6 +305,19 @@ public class EnemyScript : MonoBehaviour {
 		time += Time.deltaTime;
 
 		return false;
+	}
+
+	
+	public void reactToBullet()
+	{
+		if(currentState.Equals(States.DESTROY))
+		{
+			int gen = Random.Range (0, 10);
+			if(gen >= windowAggression)
+			{
+				currentState = States.SEARCH;
+			}
+		}
 	}
 
 	bool targetReached()
@@ -378,7 +392,7 @@ public class EnemyScript : MonoBehaviour {
 		}
 		
 		currentState = States.SEARCH;
-
+		healthBar.setMaxHealth(health);
 		healthBar.reFillHealth ();
 		healthBar.setAttachedObjectPos (transform.position);
 		healthBar.showHealthbar (true);
@@ -443,5 +457,6 @@ public class EnemyScript : MonoBehaviour {
 	{
 		exitPoints = points;
 	}
+
 
 }

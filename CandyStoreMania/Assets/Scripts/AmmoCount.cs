@@ -15,7 +15,7 @@ public class AmmoCount : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		ammoLeft.text = "Ammo: " + Player.instance.getAmmoCount ();
+		ammoLeft.text = "" + Player.instance.getAmmoCount ();
 		float val = ((float) Player.instance.getAmmoCount())/Player.instance.getMaxAmmo();
 		ammoLeft.color = color.Evaluate(val);
 

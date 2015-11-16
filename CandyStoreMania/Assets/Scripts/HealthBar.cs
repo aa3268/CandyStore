@@ -16,6 +16,8 @@ public class HealthBar : MonoBehaviour {
 	public Image fill;
 	public Image bg;
 
+	bool isVisible = true;
+
 	// Use this for initialization
 	void Awake () {
 		currentHealth = maxHealth;
@@ -89,9 +91,34 @@ public class HealthBar : MonoBehaviour {
 
 	void setPosition()
 	{
-		Vector3 screenPos = cam.WorldToScreenPoint (attachedPosition);
+		Vector3 viewpoint = cam.WorldToViewportPoint (attachedPosition);
 
-		transform.position = new Vector3 (screenPos.x, screenPos.y, screenPos.z);
+		if(viewpoint.z > 0 && viewpoint.x > 0 && viewpoint.x < 1 && viewpoint.y > 0 && viewpoint.y < 1)
+		{
+			Vector3 screenPos = cam.WorldToScreenPoint (attachedPosition);
+
+			transform.position = new Vector3 (screenPos.x, screenPos.y, screenPos.z);
+
+			if(!isVisible)
+			{
+				foreach(Transform t in healthBar.transform)
+				{
+					t.gameObject.SetActive(true);
+				}
+				isVisible = true;
+			}
+		}
+		else
+		{
+			if(isVisible)
+			{
+				foreach(Transform t in healthBar.transform)
+				{
+					t.gameObject.SetActive(false);
+				}
+				isVisible = false;
+			}
+		}
 	}
 
 	public void setAttachedObjectPos(Vector3 pos)

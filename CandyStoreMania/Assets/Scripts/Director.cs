@@ -149,7 +149,8 @@ public class Director : MonoBehaviour {
 				e.boardingForce = 4;
 				e.boardingSpeed = 0.3f;
 				e.getAgent().speed = 2f;
-				e.health = 75;	
+				e.health = 125;	
+				e.windowAggression = 6;
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
 			case EnemyType.RUNNER:
@@ -157,6 +158,7 @@ public class Director : MonoBehaviour {
 				e.boardingSpeed = 0.1f;
 				e.getAgent().speed = 4f;
 				e.health = 100;
+				e.windowAggression = 1;
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
 			case EnemyType.VANGUARD:
@@ -164,6 +166,7 @@ public class Director : MonoBehaviour {
 				e.boardingSpeed = 0.15f;
 				e.getAgent().speed = 3f;
 				e.health = 70;
+				e.windowAggression = 4;
 				e.setSearchType(EnemyScript.SearchTypes.FARTHEST);
 			break;
 
@@ -171,7 +174,8 @@ public class Director : MonoBehaviour {
 				e.boardingForce = 1;
 				e.boardingSpeed = 0.1f;
 				e.getAgent().speed = 3f;
-				e.health = 125;
+				e.health = 150;
+				e.windowAggression = 7;
 				e.setSearchType(EnemyScript.SearchTypes.AID);
 			break;
 		}

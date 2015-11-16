@@ -29,11 +29,10 @@ public class Bullet_GumballGun : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other)
 	{
-
 		if(other.gameObject.name.Contains("Enemy"))
 		{
-			Debug.Log ("bullet it");
 			other.gameObject.GetComponent<EnemyScript>().getHealthBar().doDamage(Player.instance.getBaseDamage());
+			other.gameObject.GetComponent<EnemyScript>().reactToBullet();
 			Destroy (gameObject);
 		}
 

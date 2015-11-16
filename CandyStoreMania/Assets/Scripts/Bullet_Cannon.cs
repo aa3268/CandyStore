@@ -39,6 +39,7 @@ public class Bullet_Cannon : MonoBehaviour {
 		if(obj.gameObject.name.Contains("Enemy"))
 		{
 			obj.GetComponent<EnemyScript>().getHealthBar().doDamage(50);
+			obj.GetComponent<EnemyScript>().reactToBullet();
 		}
 
 	}

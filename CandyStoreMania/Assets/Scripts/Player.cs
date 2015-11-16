@@ -150,7 +150,7 @@ public class Player : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				if(Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), 
-				                    new Vector3(reload.transform.position.x, 0f, reload.transform.position.z)) < 8f)
+				                    new Vector3(reload.transform.position.x, 0f, reload.transform.position.z)) <= 8.5f)
 				{
 					reload.reload(activeWeapon);
 				}
