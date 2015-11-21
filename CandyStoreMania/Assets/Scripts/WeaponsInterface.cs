@@ -17,4 +17,5 @@ public interface WeaponsInterface {
 	void setBaseDamage(float d);
 	
 	void reload();
+	void switchToWeapon();
 }

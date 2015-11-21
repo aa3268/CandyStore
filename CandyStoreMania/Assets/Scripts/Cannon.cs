@@ -120,4 +120,9 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 	{
 		ammo = maxAmmo;
 	}
+
+	public void switchToWeapon()
+	{
+		Player.instance.getAnimator ().SetInteger ("weapon", 2);
+	}
 }

@@ -124,7 +124,6 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 closestWithoutOccupant = Vector3.zero;
 
 		Vector3 currentPos = transform.position;
-		Debug.Log ("am i here");
 		bool first = true;
 		bool firstUnoccupied = true;
 

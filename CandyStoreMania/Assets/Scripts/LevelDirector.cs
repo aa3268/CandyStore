@@ -73,8 +73,6 @@ public class LevelDirector : MonoBehaviour {
 		currentHealth = maxHealth;
 		totalHealth.value = currentHealth;
 
-
-		Debug.Log (enemyDirector.waveSize + " " + enemyDirector.totalEnemies);
 		if(currentLevel > 1)
 		{
 			enemyDirector.reset();

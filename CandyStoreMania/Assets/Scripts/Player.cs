@@ -112,7 +112,20 @@ public class Player : MonoBehaviour {
 			
 			Vector3 r = new Vector3 (x, y, z);
 			transform.Rotate (r * 1.5f);
-			
+
+			if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.R) )
+			{
+				animator.SetInteger("direction", 1);
+			}
+			else if(Input.GetKeyDown(KeyCode.S))
+			{
+				animator.SetInteger("direction", 2);
+			}
+			if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+			{
+				animator.SetInteger("direction", 3);
+			}
+
 			if (Input.GetKey (KeyCode.W)) {
 				transform.Translate (Vector3.forward * Time.deltaTime * movementSpeed);
 			}
@@ -158,20 +171,10 @@ public class Player : MonoBehaviour {
 				}
 			}
 			
-			if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) ||
-			   Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
+			if(!(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) ||
+			   Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E)))
 			{
-				if(!animator.GetBool("isWalking"))
-				{
-					animator.SetBool("isWalking", true);
-				}
-			}
-			else
-			{
-				if(animator.GetBool("isWalking"))
-				{
-					animator.SetBool("isWalking", false);
-				}
+				animator.SetInteger("direction", 0);
 			}
 		}
 		
@@ -210,5 +213,10 @@ public class Player : MonoBehaviour {
 	public int getBaseDamage()
 	{
 		return (int)weapon.getBaseDamage ();
+	}
+
+	public Animator getAnimator()
+	{
+		return animator;
 	}
 }

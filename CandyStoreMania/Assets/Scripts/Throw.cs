@@ -32,6 +32,7 @@ public class Throw : MonoBehaviour, WeaponsInterface  {
 		if (Player.instance.paused != true) {
 			if (Input.GetMouseButtonDown (0)) {
 				Fire ();
+				SoundManager.instance.playSound("Caramel");
 			}
 			Cooldown ();
 		}
@@ -108,5 +109,10 @@ public class Throw : MonoBehaviour, WeaponsInterface  {
 	public void reload()
 	{
 		ammo = maxAmmo;
+	}
+
+	public void switchToWeapon()
+	{
+		Player.instance.getAnimator ().SetInteger ("weapon", 3);
 	}
 }
