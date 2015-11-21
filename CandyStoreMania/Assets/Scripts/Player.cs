@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 	
-  //Joystick button variables
+	//Joystick button variables
 	public static Player instance;
 	public float xr;
 	public float yr;
@@ -16,41 +16,43 @@ public class Player : MonoBehaviour {
 	public float button2;
 	public float button3;
 	
-    public float movementSpeed = 2.0f;
+	public float movementSpeed = 2.0f;
 	public float rotationSpeed = 100f;
-
+	
 	public GameObject right;
 	public GameObject left;
-
+	
 	public Camera player;
-
+	
 	public bool paused;
 	public RechargeStation reload;
 	public Animator animator;
-
+	
 	List<GameObject> unlockedWeapons = new List<GameObject>();
 	GameObject activeWeapon;
 	WeaponsInterface weapon;
-
-    void Start () {
+	int activeWeaponNum;
+	
+	void Start () {
 		instance = this;
 		paused = false;
-
+		
 		if (WeaponsUnit.instance != null) {
 			WeaponsUnit.instance.setUnlockedWeapons ();
 		}
-
-		activeWeapon = unlockedWeapons [0];
+		
+		activeWeaponNum = 0;
+		activeWeapon = unlockedWeapons [activeWeaponNum];
 		weapon = activeWeapon.GetComponent<WeaponsInterface> ();
 	}
-    void Update()
-    {
-
+	void Update()
+	{
+		
 		KeyboardMouseControls ();
 		//JoystickControls ();
-
+		
 	}
-			
+	
 	/*void JoystickControls()
 	{
 		xr = Input.GetAxis ("RightStickH");
@@ -107,10 +109,10 @@ public class Player : MonoBehaviour {
 			float y = Input.GetAxis ("Mouse X");
 			float x = transform.rotation.x;
 			float z = transform.rotation.z;
-
+			
 			Vector3 r = new Vector3 (x, y, z);
 			transform.Rotate (r * 1.5f);
-
+			
 			if (Input.GetKey (KeyCode.W)) {
 				transform.Translate (Vector3.forward * Time.deltaTime * movementSpeed);
 			}
@@ -129,24 +131,24 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey (KeyCode.E)) {
 				transform.Rotate (Vector3.up * Time.deltaTime * rotationSpeed);
 			}
-
-
-			if (Input.GetKey (KeyCode.Alpha1)) {
+			
+			
+			if (Input.GetKeyDown(KeyCode.LeftShift)) {
+				
+				if(activeWeaponNum == unlockedWeapons.Count-1)
+				{
+					activeWeaponNum = 0;
+				}
+				else
+				{
+					activeWeaponNum++;
+				}
 				activeWeapon.SetActive (false);
-				unlockedWeapons[0].gameObject.SetActive (true);
-				activeWeapon = unlockedWeapons[0].gameObject;
+				unlockedWeapons[activeWeaponNum].gameObject.SetActive (true);
+				activeWeapon = unlockedWeapons[activeWeaponNum].gameObject;
 				weapon = activeWeapon.GetComponent<WeaponsInterface> ();
 			}
-			if (Input.GetKey (KeyCode.Alpha2)) {
-				Debug.Log (unlockedWeapons.Count);
-				if(unlockedWeapons.Count > 2)
-				{
-					activeWeapon.SetActive (false);
-					unlockedWeapons[1].gameObject.SetActive (true);
-					activeWeapon = unlockedWeapons[1].gameObject;
-					weapon = activeWeapon.GetComponent<WeaponsInterface> ();
-				}
-			}
+			
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				if(Vector3.Distance(new Vector3(transform.position.x, 0f, transform.position.z), 
@@ -155,7 +157,7 @@ public class Player : MonoBehaviour {
 					reload.reload(activeWeapon);
 				}
 			}
-
+			
 			if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) ||
 			   Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
 			{
@@ -172,7 +174,7 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
-			
+		
 		if (Input.GetKeyDown (KeyCode.Escape)) 
 		{
 			if (!paused) 
@@ -189,22 +191,22 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	public void addWeapon(GameObject weapon)
 	{
 		unlockedWeapons.Add (weapon);
 	}
-
+	
 	public int getAmmoCount()
 	{
 		return weapon.getAmmo ();
 	}
-
+	
 	public int getMaxAmmo()
 	{
 		return weapon.getMaxAmmo ();
 	}
-
+	
 	public int getBaseDamage()
 	{
 		return (int)weapon.getBaseDamage ();

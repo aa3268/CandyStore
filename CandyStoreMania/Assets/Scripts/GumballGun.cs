@@ -2,24 +2,24 @@
 using System.Collections;
 
 public class GumballGun : MonoBehaviour, WeaponsInterface {
-
-
+	
+	
 	public int ammo;
 	public float rate;
 	public float damage;
-
+	
 	public GameObject bulletPrefab;
-
+	
 	public GameObject bulletTemp;
 	public GameObject nozzle;
-
+	
 	public float cooldown;
-
+	
 	int upgradeStage;
-
+	
 	public GameObject player;
 	int maxAmmo;
-
+	
 	// Use this for initialization
 	void Start () {
 		ammo = 15;
@@ -28,7 +28,7 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 		damage = 20;
 		upgradeStage = 0;
 		cooldown = 1;
-
+		
 		player = GameObject.Find ("Player");
 	}
 	
@@ -42,8 +42,8 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 			Cooldown ();
 		}
 	}
-
-
+	
+	
 	void Fire()
 	{
 		if (ammo > 0 && cooldown >= rate) {
@@ -53,80 +53,71 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 			bulletTemp.GetComponent<Rigidbody> ().AddForce (nozzle.transform.forward * 15f);
 			cooldown = 0;
 			ammo--;
-
+			
 			SoundManager.instance.playSound("Bubblegum");
 		}
 	}
-
+	
 	void Cooldown()
 	{
 		if (cooldown < rate) {
 			cooldown += Time.deltaTime;
 		}
-
+		
 	}
-
-	public void upgrade()
+	
+	public void upgradeAmmo()
 	{
-		if(upgradeStage % 3 == 0)
-		{
-			upgradeStage++;
-			setCooldown(cooldown * 0.9f);
-		}
-		else if(upgradeStage % 3 == 1)
-		{
-			upgradeStage++;
-			setAmmo (maxAmmo + 5);
-		}
-		else if(upgradeStage % 3 == 2)
-		{
-			upgradeStage++;
-			setBaseDamage(damage * 1.1f);
-		}
+		setAmmo (maxAmmo + 5);
 	}
-
+	
+	public void upgradeDamage()
+	{
+		setBaseDamage(damage * 1.1f);
+	}
+	
+	public void upgradeFireRate()
+	{
+		setCooldown(cooldown * 0.85f);
+	}
+	
 	public int getAmmo()
 	{
 		return ammo;
 	}
-
+	
 	public int getMaxAmmo()
 	{
 		return maxAmmo;
 	}
-
+	
 	public float getCooldown()
 	{
 		return rate;
 	}
-
+	
 	public float getBaseDamage()
 	{
 		return damage;
 	}
-
-	public int upgradeCost()
-	{
-		return 50 * (upgradeStage + 1);
-	}
-
+	
 	public void setAmmo(int a)
 	{
 		ammo = a;
 		maxAmmo = ammo;
 	}
-
+	
 	public void setCooldown(float cd)
 	{
 		cooldown = cd;
 		rate = cd;
 	}
-
+	
 	public void setBaseDamage(float d)
 	{
 		damage = d;
 	}
-
+	
 	public void reload()
 	{
 		ammo = maxAmmo;

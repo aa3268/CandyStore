@@ -9,11 +9,9 @@ public class UpgradeMenu : MonoBehaviour {
 	public Text score;
 	public Text available;
 
-	public GameObject unlockButton;
-	public GameObject Gun2;
 	public Canvas HealthBarCanvas;
 	RectTransform rectTransform;
-
+	public GameObject ammo;
 	public void Start()
 	{
 		rectTransform = gameObject.GetComponent<RectTransform> ();
@@ -26,6 +24,7 @@ public class UpgradeMenu : MonoBehaviour {
 		player.paused = false;
 		Cursor.visible = true;
 		Time.timeScale = 1;
+		ammo.SetActive (true);
 		HealthBarCanvas.enabled = true;
 	}
 	
@@ -33,6 +32,7 @@ public class UpgradeMenu : MonoBehaviour {
 	{
 		rectTransform.localScale = new Vector3(1, 1, 1);
 		HealthBarCanvas.enabled = false;
+		ammo.SetActive (false);
 		setScore ();
 	}
 	

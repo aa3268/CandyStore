@@ -59,23 +59,19 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 	}
 
 	
-	public void upgrade()
+	public void upgradeAmmo()
 	{
-		if(upgradeStage % 3 == 0)
-		{
-			upgradeStage++;
-			setCooldown(cooldown * 0.9f);
-		}
-		else if(upgradeStage % 3 == 1)
-		{
-			upgradeStage++;
-			setAmmo(maxAmmo + 1);
-		}
-		else if(upgradeStage % 3 == 2)
-		{
-			upgradeStage++;
-			setBaseDamage(damage * 1.1f);
-		}
+		setAmmo (maxAmmo + 1);
+	}
+	
+	public void upgradeDamage()
+	{
+		setBaseDamage(damage * 1.15f);
+	}
+	
+	public void upgradeFireRate()
+	{
+		setCooldown(cooldown * 0.9f);
 	}
 	
 	public int getAmmo()

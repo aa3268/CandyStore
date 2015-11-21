@@ -1,12 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Director.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../CandyStore copy/CandyStoreMania/Assets/Scripts/HealthBar.cs">
     <Files>
-      <File FileName="Assets/Scripts/EnemyScript.cs" Line="476" Column="1" />
+      <File FileName="Assets/Scripts/UpgradeUnitBehavior.cs" Line="50" Column="1" />
       <File FileName="Assets/Scripts/Bullet_Cannon.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Bullet_GumballGun.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Director.cs" Line="236" Column="1" />
-      <File FileName="Assets/Scripts/LevelDirector.cs" Line="137" Column="1" />
+      <File FileName="Assets/Scripts/Director.cs" Line="120" Column="35" />
+      <File FileName="Assets/Scripts/WeaponsInterface.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Cannon.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GumballGun.cs" Line="125" Column="2" />
+      <File FileName="Assets/Scripts/UpgradeMenu.cs" Line="37" Column="26" />
+      <File FileName="Assets/Scripts/Throw.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WeaponsUnit.cs" Line="16" Column="56" />
+      <File FileName="Assets/Scripts/Player.cs" Line="214" Column="2" />
+      <File FileName="../../CandyStore copy/CandyStoreMania/Assets/Scripts/LevelDirector.cs" Line="1" Column="1" />
+      <File FileName="../../CandyStore copy/CandyStoreMania/Assets/Scripts/HealthBar.cs" Line="25" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -117,10 +117,11 @@ public class Director : MonoBehaviour {
 				choice = Random.Range (0, 2);
 				if (choice == 0) 
 				{	
-					enemyInUse.Add (enemyPool[enemyPool.Count - 1]);
-					readyEnemy (enemyPool[enemyPool.Count - 1]);
+					GameObject en = enemyPool[0];
+					enemyInUse.Add (en);
+					readyEnemy (en);
 					numAvailable--;
-					enemyPool.RemoveAt(enemyPool.Count -1);
+					enemyPool.Remove(en);
 					enemiesCreated++;
 				}
 

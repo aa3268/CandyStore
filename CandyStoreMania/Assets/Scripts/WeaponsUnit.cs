@@ -13,7 +13,7 @@ public class WeaponsUnit : MonoBehaviour {
 	void Start () {
 		instance = this;
 		trans = GetComponent<RectTransform> ();
-		trans.anchorMax = new Vector3 (weaponsUnits.Count, 0.95f);
+		trans.anchorMax = new Vector3 (weaponsUnits.Count, 1f);
 		placeUnits ();
 	}
 	
@@ -55,8 +55,10 @@ public class WeaponsUnit : MonoBehaviour {
 	{
 		foreach(UpgradeUnitBehavior units in unitBehavior)
 		{
-			Player.instance.addWeapon(units.associatedWeapon);
-			
+			if(units.unlockStatus)
+			{
+				Player.instance.addWeapon(units.associatedWeapon);
+			}
 		}
 	}
 }
