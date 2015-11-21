@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: 0e1afd4db24e69d439c1a2cb286c487e
+timeCreated: 1448060435
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: _Banner
+    100002: _CandyCane
+    100004: _CandyCane1
+    100006: _CenterCyl
+    100008: _ChangeTube
+    100010: _LeftBar
+    100012: _LeftTube
+    100014: _LollipopCane
+    100016: _LollipopLever
+    100018: _LollipopTop
+    100020: _MiddleSlab
+    100022: _Pwr2theChildren
+    100024: _RightBar
+    100026: _RightTube
+    100028: _Sign
+    100030: _SupportUnder
+    100032: _SupportUnder1
+    100034: BackTubes
+    100036: CandyTubing
+    100038: CandyTubing4
+    100040: CandyTubing_Bot
+    100042: CandyTubing_Bot 1
+    100044: CandyTubing_Handle
+    100046: CandyTubing_Handle 1
+    100048: CandyTubing_Handle_45Turn
+    100050: CandyTubing_Handle_45Turn 1
+    100052: CandyTubing_Handle_45Turn02
+    100054: CandyTubing_Handle_45Turn02 1
+    100056: CandyTubing_Handle_Circle
+    100058: CandyTubing_Handle_Circle 1
+    100060: CandyTubing_Top
+    100062: CandyTubing_Top 1
+    100064: CandyTubing_Tube
+    100066: CandyTubing_Tube 1
+    100068: //RootNode
+    100070: Station
+    400000: _Banner
+    400002: _CandyCane
+    400004: _CandyCane1
+    400006: _CenterCyl
+    400008: _ChangeTube
+    400010: _LeftBar
+    400012: _LeftTube
+    400014: _LollipopCane
+    400016: _LollipopLever
+    400018: _LollipopTop
+    400020: _MiddleSlab
+    400022: _Pwr2theChildren
+    400024: _RightBar
+    400026: _RightTube
+    400028: _Sign
+    400030: _SupportUnder
+    400032: _SupportUnder1
+    400034: BackTubes
+    400036: CandyTubing
+    400038: CandyTubing4
+    400040: CandyTubing_Bot
+    400042: CandyTubing_Bot 1
+    400044: CandyTubing_Handle
+    400046: CandyTubing_Handle 1
+    400048: CandyTubing_Handle_45Turn
+    400050: CandyTubing_Handle_45Turn 1
+    400052: CandyTubing_Handle_45Turn02
+    400054: CandyTubing_Handle_45Turn02 1
+    400056: CandyTubing_Handle_Circle
+    400058: CandyTubing_Handle_Circle 1
+    400060: CandyTubing_Top
+    400062: CandyTubing_Top 1
+    400064: CandyTubing_Tube
+    400066: CandyTubing_Tube 1
+    400068: //RootNode
+    400070: Station
+    2300000: _Banner
+    2300002: _CandyCane
+    2300004: _CandyCane1
+    2300006: _CenterCyl
+    2300008: _ChangeTube
+    2300010: _LeftBar
+    2300012: _LeftTube
+    2300014: _LollipopCane
+    2300016: _LollipopTop
+    2300018: _MiddleSlab
+    2300020: _RightBar
+    2300022: _RightTube
+    2300024: _Sign
+    2300026: _SupportUnder
+    2300028: _SupportUnder1
+    2300030: CandyTubing_Bot
+    2300032: CandyTubing_Bot 1
+    2300034: CandyTubing_Handle_45Turn
+    2300036: CandyTubing_Handle_45Turn 1
+    2300038: CandyTubing_Handle_45Turn02
+    2300040: CandyTubing_Handle_45Turn02 1
+    2300042: CandyTubing_Handle_Circle
+    2300044: CandyTubing_Handle_Circle 1
+    2300046: CandyTubing_Top
+    2300048: CandyTubing_Top 1
+    2300050: CandyTubing_Tube
+    2300052: CandyTubing_Tube 1
+    3300000: _Banner
+    3300002: _CandyCane
+    3300004: _CandyCane1
+    3300006: _CenterCyl
+    3300008: _ChangeTube
+    3300010: _LeftBar
+    3300012: _LeftTube
+    3300014: _LollipopCane
+    3300016: _LollipopTop
+    3300018: _MiddleSlab
+    3300020: _RightBar
+    3300022: _RightTube
+    3300024: _Sign
+    3300026: _SupportUnder
+    3300028: _SupportUnder1
+    3300030: CandyTubing_Bot
+    3300032: CandyTubing_Bot 1
+    3300034: CandyTubing_Handle_45Turn
+    3300036: CandyTubing_Handle_45Turn 1
+    3300038: CandyTubing_Handle_45Turn02
+    3300040: CandyTubing_Handle_45Turn02 1
+    3300042: CandyTubing_Handle_Circle
+    3300044: CandyTubing_Handle_Circle 1
+    3300046: CandyTubing_Top
+    3300048: CandyTubing_Top 1
+    3300050: CandyTubing_Tube
+    3300052: CandyTubing_Tube 1
+    4300000: CandyTubing_Handle_Circle
+    4300002: CandyTubing_Handle_45Turn
+    4300004: CandyTubing_Handle_45Turn02
+    4300006: CandyTubing_Bot
+    4300008: CandyTubing_Tube
+    4300010: CandyTubing_Top
+    4300012: CandyTubing_Handle_Circle
+    4300014: CandyTubing_Handle_45Turn
+    4300016: CandyTubing_Handle_45Turn02
+    4300018: CandyTubing_Bot
+    4300020: CandyTubing_Tube
+    4300022: CandyTubing_Top
+    4300024: _LeftTube
+    4300026: _RightTube
+    4300028: _LollipopCane
+    4300030: _LollipopTop
+    4300032: _SupportUnder1
+    4300034: _ChangeTube
+    4300036: _SupportUnder
+    4300038: _Banner
+    4300040: _CandyCane1
+    4300042: _CandyCane
+    4300044: _Sign
+    4300046: _MiddleSlab
+    4300048: _RightBar
+    4300050: _CenterCyl
+    4300052: _LeftBar
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
