@@ -5,6 +5,7 @@ public class Bullet_Cannon : MonoBehaviour {
 
 	public float health = 2.5f;
 	public float timer = 1.5f;
+	public int damage;
 
 	public ParticleSystem particles;
 
@@ -38,8 +39,7 @@ public class Bullet_Cannon : MonoBehaviour {
 	{
 		if(obj.gameObject.name.Contains("Enemy"))
 		{
-			obj.GetComponent<EnemyScript>().getHealthBar().doDamage(50);
-			obj.GetComponent<EnemyScript>().reactToBullet();
+			obj.GetComponent<EnemyScript>().reactToBullet(Player.instance.getBaseDamage());
 		}
 
 	}

@@ -28,6 +28,12 @@ public class EnemyScript : MonoBehaviour {
 	public int selfPreservasion;
 	public int supportDestruction;
 
+	public AnimationCurve defenseGrowth;
+	public AnimationCurve damageGrowth;
+
+	float defense;
+	float damageMultiplier;
+
 	States currentState;
 
 	Director director;
@@ -287,7 +293,7 @@ public class EnemyScript : MonoBehaviour {
 		{
 			if(currentTarget != null)
 			{
-				if (currentTarget.boardUp (boardingForce))
+				if (currentTarget.boardUp ((int)(boardingForce * damageMultiplier)))
 				{
 					//currentTarget.markBoarded();
 					targetLocs.Remove(currentTarget.transform);
@@ -308,7 +314,7 @@ public class EnemyScript : MonoBehaviour {
 	}
 
 	
-	public void reactToBullet()
+	public void reactToBullet(int damage)
 	{
 		if(currentState.Equals(States.DESTROY))
 		{
@@ -318,6 +324,8 @@ public class EnemyScript : MonoBehaviour {
 				currentState = States.SEARCH;
 			}
 		}
+
+		healthBar.doDamage ((int)(damage / defense));
 	}
 
 	bool targetReached()
@@ -396,6 +404,8 @@ public class EnemyScript : MonoBehaviour {
 		healthBar.reFillHealth ();
 		healthBar.setAttachedObjectPos (transform.position);
 		healthBar.showHealthbar (true);
+		defense = defenseGrowth.Evaluate ((float)(LevelDirector.instance.getLevel () / LevelDirector.instance.maxLevels));
+		damageMultiplier = damageGrowth.Evaluate ((float)(LevelDirector.instance.getLevel () / LevelDirector.instance.maxLevels));
 		time = 0f;
 	}
 

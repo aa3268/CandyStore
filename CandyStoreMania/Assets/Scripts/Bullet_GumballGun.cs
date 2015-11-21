@@ -31,8 +31,7 @@ public class Bullet_GumballGun : MonoBehaviour {
 	{
 		if(other.gameObject.name.Contains("Enemy"))
 		{
-			other.gameObject.GetComponent<EnemyScript>().getHealthBar().doDamage(Player.instance.getBaseDamage());
-			other.gameObject.GetComponent<EnemyScript>().reactToBullet();
+			other.gameObject.GetComponent<EnemyScript>().reactToBullet(Player.instance.getBaseDamage());
 			Destroy (gameObject);
 		}
 

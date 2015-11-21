@@ -49,5 +49,6 @@ public class UpgradeMenu : MonoBehaviour {
 		score.text = "Total score: " + LevelDirector.instance.getScore ();
 		available.text = "Points available: " + LevelDirector.instance.getAvailablePoints ();
 	}
-	
+
+
 }

@@ -4,6 +4,7 @@
 [Tt]emp/
 [Oo]bj/
 [Bb]uild
+[Bb]uilds/
 [Ll]ibrary/
 sysinfo.txt
 *.stackdump
@@ -37,4 +38,3 @@ ehthumbs.db
 
 *.userprefs
 
-CandyStoreMania/Library/metadata/83/83a872bc19adc41ee85f8a409cd45a6f

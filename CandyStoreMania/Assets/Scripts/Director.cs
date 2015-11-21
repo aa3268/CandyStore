@@ -60,8 +60,28 @@ public class Director : MonoBehaviour {
 	public void createPool()
 	{
 		for(int i = 0; i < waveSize; i++)
-		{
-			GameObject e = (GameObject)Instantiate (Resources.Load ("prefabs/enemy"));
+		{	
+			GameObject e = null;
+			int type = Random.Range(0, 4);
+			switch (type) {
+			case 0:
+				e = (GameObject)Instantiate (Resources.Load ("prefabs/AggressiveEnemy"));
+				setEnemyBehavior (e.GetComponent<EnemyScript>(), EnemyType.AGGRESSIVE);
+				break;
+			case 1:
+				e = (GameObject)Instantiate (Resources.Load ("prefabs/RunnerEnemy"));
+				setEnemyBehavior (e.GetComponent<EnemyScript>(), EnemyType.RUNNER);
+				break;
+			case 2:
+				e = (GameObject)Instantiate (Resources.Load ("prefabs/VanguardEnemy"));
+				setEnemyBehavior (e.GetComponent<EnemyScript>(), EnemyType.VANGUARD);
+				break;
+			case 3:
+				e = (GameObject)Instantiate (Resources.Load ("prefabs/HelperEnemy"));
+				setEnemyBehavior (e.GetComponent<EnemyScript>(), EnemyType.SUPPORTER);
+				break;
+			}
+
 			e.GetComponent<EnemyScript> ().createHealthBar ();
 			e.GetComponent<EnemyScript>().setExits(spawnPoints);
 			e.SetActive (false);
@@ -90,7 +110,6 @@ public class Director : MonoBehaviour {
 	public void placeEnemy()
 	{
 		int choice;
-
 		if(numAvailable > 0)
 		{
 			if(time >= timeDelay)
@@ -138,6 +157,7 @@ public class Director : MonoBehaviour {
 				setEnemyBehavior (enemy, EnemyType.SUPPORTER);
 				break;
 		}
+		enemy.readyEnemy ();
 
 	}
 
