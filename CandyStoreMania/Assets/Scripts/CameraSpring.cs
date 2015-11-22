@@ -27,11 +27,9 @@ public class CameraSpring : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 			
-			
 			Physics.Raycast (origin.transform.position, origin.transform.forward, out hit);
 			distanceObject = hit.distance ;
 
-		Debug.DrawRay (origin.transform.position, origin.transform.forward, Color.blue);
 
 		if (distanceObject < limit && cam.transform.localPosition.y > pos_y_close && cam.transform.localPosition.z < pos_z_close) {
 
