@@ -17,10 +17,7 @@ public class EnemyScript : MonoBehaviour {
 
 	NavMeshAgent nav;
 
-	List<Transform> targetLocs;
 	List<SpawnPoint>exitPoints;
-	
-	GameObject targets;
 
 	WindowBehavior currentTarget;
 
@@ -46,8 +43,6 @@ public class EnemyScript : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		nav = GetComponent<NavMeshAgent> ();
-		targets = GameObject.Find ("TargetLocators");
-
 		worldCanvas = GameObject.Find ("HealthBarCanvas");
 
 		director = GameObject.Find ("EnemyDirector").GetComponent<Director> ();
@@ -78,6 +73,7 @@ public class EnemyScript : MonoBehaviour {
 				{
 					currentState = States.MOVE;
 				}
+				Debug.Log (nav.destination);
 				break;
 			case States.MOVE:
 				if(targetReached())
@@ -126,6 +122,8 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 currentPos = transform.position;
 		bool first = true;
 		bool firstUnoccupied = true;
+
+		List<Transform> targetLocs = LevelDirector.instance.getTargets ();
 
 		foreach (Transform t in targetLocs) 
 		{
@@ -193,7 +191,8 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 currentPos = transform.position;
 		bool first = true;
 		bool firstUnoccupied = true;
-		
+
+		List<Transform> targetLocs = LevelDirector.instance.getTargets ();
 		foreach (Transform t in targetLocs) 
 		{
 			
@@ -250,6 +249,8 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 currentPos = transform.position;
 		int currentPeopleCount = 0;
 		bool first = true;
+
+		List<Transform> targetLocs = LevelDirector.instance.getTargets ();
 		foreach (Transform t in targetLocs) 
 		{
 			
@@ -295,7 +296,7 @@ public class EnemyScript : MonoBehaviour {
 				if (currentTarget.boardUp ((int)(boardingForce * damageMultiplier)))
 				{
 					//currentTarget.markBoarded();
-					targetLocs.Remove(currentTarget.transform);
+					LevelDirector.instance.removeTarget(currentTarget.transform);
 					return true;
 				}
 			}
@@ -332,7 +333,7 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 targetDestination = new Vector3 (nav.destination.x, 0f, nav.destination.z);
 		Vector3 currentPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
 
-		if(Vector3.Distance(targetDestination, currentPosition) < 1f)
+		if(Vector3.Distance(targetDestination, currentPosition) < 1.5f)
 		{
 			nav.destination = currentPosition;
 			return true;
@@ -391,13 +392,6 @@ public class EnemyScript : MonoBehaviour {
 
 	public void readyEnemy()
 	{
-		targetLocs = new List<Transform> ();
-		
-		foreach (Transform t in targets.transform) 
-		{
-			targetLocs.Add (t);
-		}
-		
 		currentState = States.SEARCH;
 		healthBar.setMaxHealth(health);
 		healthBar.reFillHealth ();
@@ -467,5 +461,14 @@ public class EnemyScript : MonoBehaviour {
 		exitPoints = points;
 	}
 
+	public void checkTargetValid(Transform removedTarget)
+	{
+		Vector3 remLoc = new Vector3 (removedTarget.position.x, 0, removedTarget.position.z);
+
+		if(Vector3.Distance(nav.destination, remLoc) < 1f)
+		{
+			currentState = States.SEARCH;
+		}
+	}
 
 }
