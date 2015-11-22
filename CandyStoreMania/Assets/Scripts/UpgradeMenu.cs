@@ -12,6 +12,7 @@ public class UpgradeMenu : MonoBehaviour {
 	public Canvas HealthBarCanvas;
 	RectTransform rectTransform;
 	public GameObject ammo;
+	public GameObject recharge;
 	public void Start()
 	{
 		rectTransform = gameObject.GetComponent<RectTransform> ();
@@ -26,6 +27,7 @@ public class UpgradeMenu : MonoBehaviour {
 		Time.timeScale = 1;
 		ammo.SetActive (true);
 		HealthBarCanvas.enabled = true;
+		recharge.SetActive (true);
 	}
 	
 	public void ScaleUp()
@@ -33,6 +35,7 @@ public class UpgradeMenu : MonoBehaviour {
 		rectTransform.localScale = new Vector3(1, 1, 1);
 		HealthBarCanvas.enabled = false;
 		ammo.SetActive (false);
+		recharge.SetActive (false);
 		setScore ();
 	}
 	

@@ -139,25 +139,11 @@ public class Director : MonoBehaviour {
 		int point = Random.Range (0, spawnPoints.Count);
 		e.transform.position = spawnPoints [point].transform.position;
 		EnemyScript enemy = e.GetComponent<EnemyScript> ();
-		enemy.readyEnemy ();
+
 		e.SetActive (true);
 
 		int type = Random.Range (0, 4);
 
-		switch (type) {
-			case 0:
-				setEnemyBehavior (enemy, EnemyType.AGGRESSIVE);
-				break;
-			case 1:
-				setEnemyBehavior (enemy, EnemyType.RUNNER);
-				break;
-			case 2:
-				setEnemyBehavior (enemy, EnemyType.VANGUARD);
-				break;
-			case 3:
-				setEnemyBehavior (enemy, EnemyType.SUPPORTER);
-				break;
-		}
 		enemy.readyEnemy ();
 
 	}
@@ -225,5 +211,10 @@ public class Director : MonoBehaviour {
 	public List<SpawnPoint> getSpawnPoints()
 	{
 		return spawnPoints;
+	}
+
+	public List<GameObject> getEnemiesInUse()
+	{
+		return enemyInUse;
 	}
 }
