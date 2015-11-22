@@ -1,18 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CameraSpring.cs">
     <Files>
       <File FileName="Assets/Scripts/Bullet_Cannon.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Bullet_GumballGun.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Director.cs" Line="69" Column="76" />
+      <File FileName="Assets/Scripts/Director.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Cannon.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GumballGun.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/CameraSpring.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UpgradeMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WeaponsUnit.cs" Line="53" Column="50" />
+      <File FileName="Assets/Scripts/WeaponsUnit.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LevelDirector.cs" Line="83" Column="3" />
-      <File FileName="Assets/Scripts/EnemyScript.cs" Line="469" Column="68" />
+      <File FileName="Assets/Scripts/LevelDirector.cs" Line="84" Column="56" />
+      <File FileName="Assets/Scripts/EnemyScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
