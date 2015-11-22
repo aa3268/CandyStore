@@ -156,6 +156,7 @@ public class Player : MonoBehaviour {
 				{
 					activeWeaponNum++;
 				}
+				Debug.Log (activeWeaponNum + " " + unlockedWeapons[activeWeaponNum]);
 				activeWeapon.SetActive (false);
 				unlockedWeapons[activeWeaponNum].gameObject.SetActive (true);
 				activeWeapon = unlockedWeapons[activeWeaponNum].gameObject;

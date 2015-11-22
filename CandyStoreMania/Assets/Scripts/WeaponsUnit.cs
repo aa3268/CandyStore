@@ -27,12 +27,12 @@ public class WeaponsUnit : MonoBehaviour {
 		placeUnits ();
 		RectTransform target = weaponsUnits [0].GetComponent<RectTransform>();
 		offset = weaponsUnits [1].GetComponent<RectTransform> ().position.x - weaponsUnits [2].GetComponent<RectTransform> ().position.x;
-		Debug.Log ("Rect position: " + trans.position + " Target: " + weaponsUnits [1].GetComponent<RectTransform>().position + " " + weaponsUnits [0].GetComponent<RectTransform>().position + " " + weaponsUnits [2].GetComponent<RectTransform>().position);
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (unitBehavior.Count);
 	}
 
 	public void placeUnits()
@@ -41,6 +41,7 @@ public class WeaponsUnit : MonoBehaviour {
 		UpgradeUnitBehavior b;
 		int i = 0;
 		float distance = 1f / weaponsUnits.Count;
+		Debug.Log (weaponsUnits.Count);
 		foreach(GameObject units in weaponsUnits)
 		{
 			unitTransform = units.GetComponent<RectTransform>();
@@ -50,7 +51,6 @@ public class WeaponsUnit : MonoBehaviour {
 			i++;
 
 			b = units.GetComponent<UpgradeUnitBehavior>();
-			unitBehavior.Add(b);
 
 		}
 	}
@@ -62,6 +62,25 @@ public class WeaponsUnit : MonoBehaviour {
 			unit.checkUnlockable();
 			unit.checkUpgradable();
 		}
+
+
+		if(current >= weaponsUnits.Count-1)
+		{
+			next.SetActive(false);
+		}
+		else
+		{
+			next.SetActive(true);
+		}
+		if(current <= 0)
+		{
+			previous.SetActive(false);
+		}
+		else
+		{
+			previous.SetActive(true);
+		}
+
 	}
 
 	public void setUnlockedWeapons()
@@ -71,6 +90,8 @@ public class WeaponsUnit : MonoBehaviour {
 			if(units.unlockStatus)
 			{
 				Player.instance.addWeapon(units.associatedWeapon);
+				Debug.Log (units.associatedWeapon);
+
 			}
 		}
 	}

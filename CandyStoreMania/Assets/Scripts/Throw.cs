@@ -42,7 +42,7 @@ public class Throw : MonoBehaviour, WeaponsInterface  {
 	{
 		bombTemp = (GameObject) Instantiate(bombPrefab, left.transform.position, rotation);
 		
-		bombTemp.GetComponent<Rigidbody>().AddForce(left.transform.forward * 10f);
+		bombTemp.GetComponent<Rigidbody>().AddForce(left.transform.forward * 5f);
 		timer = 0f;
 		ammo -= 1;
 	}
