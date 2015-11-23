@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
 	public Animator animator;
 	
 	List<GameObject> unlockedWeapons = new List<GameObject>();
+	List<int> unlockedWeaponNums = new List<int>();
 	GameObject activeWeapon;
 	WeaponsInterface weapon;
 	int activeWeaponNum;
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour {
 		activeWeaponNum = 0;
 		activeWeapon = unlockedWeapons [activeWeaponNum];
 		weapon = activeWeapon.GetComponent<WeaponsInterface> ();
+		animator.SetInteger ("weapon", 1);
 	}
 	void Update()
 	{
@@ -156,11 +158,12 @@ public class Player : MonoBehaviour {
 				{
 					activeWeaponNum++;
 				}
-				Debug.Log (activeWeaponNum + " " + unlockedWeapons[activeWeaponNum]);
+
 				activeWeapon.SetActive (false);
 				unlockedWeapons[activeWeaponNum].gameObject.SetActive (true);
 				activeWeapon = unlockedWeapons[activeWeaponNum].gameObject;
 				weapon = activeWeapon.GetComponent<WeaponsInterface> ();
+				animator.SetInteger("weapon", unlockedWeaponNums[activeWeaponNum]);
 			}
 			
 			if(Input.GetKeyDown(KeyCode.Space))
@@ -196,8 +199,9 @@ public class Player : MonoBehaviour {
 		}
 	}
 	
-	public void addWeapon(GameObject weapon)
+	public void addWeapon(GameObject weapon, int associated)
 	{
+		unlockedWeaponNums.Add (associated);
 		unlockedWeapons.Add (weapon);
 	}
 	

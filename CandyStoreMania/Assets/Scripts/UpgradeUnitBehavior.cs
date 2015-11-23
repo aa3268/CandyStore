@@ -8,7 +8,8 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 	public Text infoText;
 	public Text statusText;
 	public Image weaponPic;
-	
+	public int associatedNum;
+
 	public string weaponName;
 	public string info;
 	public string status;
@@ -65,7 +66,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 		unlockStatus = true;
 		unlockButton.SetActive (false);
 		LevelDirector.instance.purchase (unlockCost);
-		Player.instance.addWeapon(associatedWeapon);
+		Player.instance.addWeapon(associatedWeapon, associatedNum);
 		statusText.text = "UNLOCKED ";
 		WeaponsUnit.instance.performChecks ();
 	}

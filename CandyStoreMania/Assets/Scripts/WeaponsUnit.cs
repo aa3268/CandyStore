@@ -32,7 +32,6 @@ public class WeaponsUnit : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (unitBehavior.Count);
 	}
 
 	public void placeUnits()
@@ -89,7 +88,7 @@ public class WeaponsUnit : MonoBehaviour {
 		{
 			if(units.unlockStatus)
 			{
-				Player.instance.addWeapon(units.associatedWeapon);
+				Player.instance.addWeapon(units.associatedWeapon, units.associatedNum);
 				Debug.Log (units.associatedWeapon);
 
 			}

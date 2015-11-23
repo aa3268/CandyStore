@@ -73,7 +73,6 @@ public class EnemyScript : MonoBehaviour {
 				{
 					currentState = States.MOVE;
 				}
-				Debug.Log (nav.destination);
 				break;
 			case States.MOVE:
 				if(targetReached())
