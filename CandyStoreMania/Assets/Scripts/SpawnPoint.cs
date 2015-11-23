@@ -40,4 +40,17 @@ public class SpawnPoint : MonoBehaviour {
 		claimed = false;
 		numClaimed--;
 	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.name.Contains ("Enemy")) {
+
+			EnemyScript e= other.gameObject.GetComponent<EnemyScript>();
+
+			if(e.currentState.Equals(EnemyScript.States.EXIT))
+			{
+				other.gameObject.GetComponent<EnemyScript>().setTargetReached(true);
+			}
+		}
+	}
 }

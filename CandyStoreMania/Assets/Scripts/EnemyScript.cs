@@ -12,7 +12,7 @@ public class EnemyScript : MonoBehaviour {
 
 	float time;
 
-	enum States {SEARCH, MOVE, DESTROY, EXIT};
+	public enum States {SEARCH, MOVE, DESTROY, EXIT};
 	public enum SearchTypes { AID, FARTHEST, CLOSEST};
 
 	NavMeshAgent nav;
@@ -33,7 +33,7 @@ public class EnemyScript : MonoBehaviour {
 	float defense;
 	float damageMultiplier;
 
-	States currentState;
+	public States currentState;
 
 	Director director;
 
@@ -41,6 +41,7 @@ public class EnemyScript : MonoBehaviour {
 
 	Vector3 exitPoint;
 
+	private bool targetReached = false;
 
 	// Use this for initialization
 	void Awake () {
@@ -78,10 +79,11 @@ public class EnemyScript : MonoBehaviour {
 				}
 				break;
 			case States.MOVE:
-				if(targetReached())
+				if(targetReached)
 				{
 					currentState = States.DESTROY;
 					animator.SetInteger("State", 3);
+				targetReached = false;
 				}
 				break;
 			case States.DESTROY:
@@ -176,12 +178,12 @@ public class EnemyScript : MonoBehaviour {
 			currentState = States.EXIT;
 		}
 
+		currentTarget.getEnemies().Add(this);
+
 		if(!closestWithoutOccupant.Equals (Vector3.zero))
 		{
 			return closestWithoutOccupant;
 		}
-
-		currentTarget.getEnemies().Add(this);
 
 		return closest;
 	}
@@ -236,12 +238,11 @@ public class EnemyScript : MonoBehaviour {
 			currentState = States.EXIT;
 		}
 
-		if (furthestWithoutOccupant.Equals (Vector3.zero)) 
+		currentTarget.getEnemies().Add(this);
+		if (!furthestWithoutOccupant.Equals (Vector3.zero)) 
 		{
 			return furthestWithoutOccupant;
 		}
-
-		currentTarget.getEnemies().Add(this);
 		
 		return furthest;
 	}
@@ -295,6 +296,7 @@ public class EnemyScript : MonoBehaviour {
 	{
 		if(time > boardingSpeed)
 		{
+			Debug.Log (currentTarget);
 			if(currentTarget != null)
 			{
 				if (currentTarget.boardUp ((int)(boardingForce * damageMultiplier)))
@@ -332,18 +334,11 @@ public class EnemyScript : MonoBehaviour {
 		healthBar.doDamage ((int)(damage / defense));
 	}
 
-	bool targetReached()
+	public void setTargetReached(bool b)
 	{
-		Vector3 targetDestination = new Vector3 (nav.destination.x, 0f, nav.destination.z);
-		Vector3 currentPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
-
-		if(Vector3.Distance(targetDestination, currentPosition) < 1.5f)
-		{
-			nav.destination = currentPosition;
-			return true;
-		}
-		return false;
+		targetReached = b;
 	}
+	
 
 	// search for candy refill sources
 
@@ -367,8 +362,9 @@ public class EnemyScript : MonoBehaviour {
 		Vector3 targetDestination = new Vector3 (nav.destination.x, 0f, nav.destination.z);
 		Vector3 currentPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
 
-		if(Vector3.Distance(targetDestination, currentPosition) < 1f)
+		if(targetReached)
 		{
+			targetReached = false;
 			currentTarget.getEnemies().Remove(this);
 			director.removeEnemy(this);
 		}
@@ -474,5 +470,11 @@ public class EnemyScript : MonoBehaviour {
 			currentState = States.SEARCH;
 		}
 	}
+
+	public WindowBehavior getCurrentTarget()
+	{
+		return currentTarget;
+	}
+
 
 }
