@@ -28,6 +28,8 @@ public class EnemyScript : MonoBehaviour {
 	public AnimationCurve defenseGrowth;
 	public AnimationCurve damageGrowth;
 
+	public Animator animator;
+
 	float defense;
 	float damageMultiplier;
 
@@ -72,18 +74,21 @@ public class EnemyScript : MonoBehaviour {
 				if(!nav.destination.Equals(Vector3.zero))
 				{
 					currentState = States.MOVE;
+					animator.SetInteger("State", 1);
 				}
 				break;
 			case States.MOVE:
 				if(targetReached())
 				{
 					currentState = States.DESTROY;
+					animator.SetInteger("State", 3);
 				}
 				break;
 			case States.DESTROY:
 				if(sealUp ())
 				{
 					currentState = States.SEARCH;
+					animator.SetInteger("State", 0);
 				}
 				break;
 			case States.EXIT:

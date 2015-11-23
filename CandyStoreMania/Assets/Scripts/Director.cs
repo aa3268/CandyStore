@@ -156,7 +156,7 @@ public class Director : MonoBehaviour {
 				e.boardingForce = 4;
 				e.boardingSpeed = 0.3f;
 				e.getAgent().speed = 2f;
-				e.health = 125;	
+				e.health = 100;	
 				e.windowAggression = 6;
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
@@ -164,7 +164,7 @@ public class Director : MonoBehaviour {
 				e.boardingForce = 2;
 				e.boardingSpeed = 0.1f;
 				e.getAgent().speed = 4f;
-				e.health = 100;
+				e.health = 90;
 				e.windowAggression = 1;
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
@@ -181,7 +181,7 @@ public class Director : MonoBehaviour {
 				e.boardingForce = 1;
 				e.boardingSpeed = 0.1f;
 				e.getAgent().speed = 3f;
-				e.health = 150;
+				e.health = 120;
 				e.windowAggression = 7;
 				e.setSearchType(EnemyScript.SearchTypes.AID);
 			break;
