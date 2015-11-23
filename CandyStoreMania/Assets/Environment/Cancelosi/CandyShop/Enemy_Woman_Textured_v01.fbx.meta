@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 53fa17a62488c7448a8f3c57c1006309
-timeCreated: 1448216315
+guid: 5aeab7896fe533f45a6e19d17f2c9232
+timeCreated: 1448242126
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -303,51 +303,51 @@ ModelImporter:
     100590: polySurface7
     100592: polySurface8
     100594: polySurface9
-    100596: Rig
-    100598: teeth
-    100600: teeth1
-    100602: transform1
-    100604: transform10
-    100606: transform11
-    100608: transform12
-    100610: transform13
-    100612: transform14
-    100614: transform15
-    100616: transform16
-    100618: transform17
-    100620: transform18
-    100622: transform19
-    100624: transform2
-    100626: transform20
-    100628: transform21
-    100630: transform22
-    100632: transform23
-    100634: transform24
-    100636: transform25
-    100638: transform26
-    100640: transform27
-    100642: transform28
-    100644: transform29
-    100646: transform3
-    100648: transform30
-    100650: transform31
-    100652: transform32
-    100654: transform33
-    100656: transform34
-    100658: transform35
-    100660: transform36
-    100662: transform37
-    100664: transform38
-    100666: transform39
-    100668: transform4
-    100670: transform5
-    100672: transform6
-    100674: transform7
-    100676: transform8
-    100678: transform9
-    100680: woman1
-    100682: pSphere1
-    100684: woman
+    100596: pSphere1
+    100598: Rig
+    100600: teeth
+    100602: teeth1
+    100604: transform1
+    100606: transform10
+    100608: transform11
+    100610: transform12
+    100612: transform13
+    100614: transform14
+    100616: transform15
+    100618: transform16
+    100620: transform17
+    100622: transform18
+    100624: transform19
+    100626: transform2
+    100628: transform20
+    100630: transform21
+    100632: transform22
+    100634: transform23
+    100636: transform24
+    100638: transform25
+    100640: transform26
+    100642: transform27
+    100644: transform28
+    100646: transform29
+    100648: transform3
+    100650: transform30
+    100652: transform31
+    100654: transform32
+    100656: transform33
+    100658: transform34
+    100660: transform35
+    100662: transform36
+    100664: transform37
+    100666: transform38
+    100668: transform39
+    100670: transform4
+    100672: transform5
+    100674: transform6
+    100676: transform7
+    100678: transform8
+    100680: transform9
+    100682: woman
+    100684: woman1
     400000: Child_Rig_16:Base_Spine
     400002: Child_Rig_16:Base_Spine_Control
     400004: Child_Rig_16:Base_Spine_Control_Group
@@ -646,55 +646,55 @@ ModelImporter:
     400590: polySurface7
     400592: polySurface8
     400594: polySurface9
-    400596: Rig
-    400598: teeth
-    400600: teeth1
-    400602: transform1
-    400604: transform10
-    400606: transform11
-    400608: transform12
-    400610: transform13
-    400612: transform14
-    400614: transform15
-    400616: transform16
-    400618: transform17
-    400620: transform18
-    400622: transform19
-    400624: transform2
-    400626: transform20
-    400628: transform21
-    400630: transform22
-    400632: transform23
-    400634: transform24
-    400636: transform25
-    400638: transform26
-    400640: transform27
-    400642: transform28
-    400644: transform29
-    400646: transform3
-    400648: transform30
-    400650: transform31
-    400652: transform32
-    400654: transform33
-    400656: transform34
-    400658: transform35
-    400660: transform36
-    400662: transform37
-    400664: transform38
-    400666: transform39
-    400668: transform4
-    400670: transform5
-    400672: transform6
-    400674: transform7
-    400676: transform8
-    400678: transform9
-    400680: woman1
-    400682: pSphere1
-    400684: woman
-    2300000: teeth1
-    2300002: pSphere1
-    3300000: teeth1
-    3300002: pSphere1
+    400596: pSphere1
+    400598: Rig
+    400600: teeth
+    400602: teeth1
+    400604: transform1
+    400606: transform10
+    400608: transform11
+    400610: transform12
+    400612: transform13
+    400614: transform14
+    400616: transform15
+    400618: transform16
+    400620: transform17
+    400622: transform18
+    400624: transform19
+    400626: transform2
+    400628: transform20
+    400630: transform21
+    400632: transform22
+    400634: transform23
+    400636: transform24
+    400638: transform25
+    400640: transform26
+    400642: transform27
+    400644: transform28
+    400646: transform29
+    400648: transform3
+    400650: transform30
+    400652: transform31
+    400654: transform32
+    400656: transform33
+    400658: transform34
+    400660: transform35
+    400662: transform36
+    400664: transform37
+    400666: transform38
+    400668: transform39
+    400670: transform4
+    400672: transform5
+    400674: transform6
+    400676: transform7
+    400678: transform8
+    400680: transform9
+    400682: woman
+    400684: woman1
+    2300000: pSphere1
+    2300002: teeth1
+    3300000: pSphere1
+    3300002: teeth1
     4300000: teeth1
     4300002: pSphere1
     9500000: //RootNode
