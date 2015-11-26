@@ -63,6 +63,7 @@ public class Director : MonoBehaviour {
 		{	
 			GameObject e = null;
 			int type = Random.Range(0, 4);
+		
 			switch (type) {
 			case 0:
 				e = (GameObject)Instantiate (Resources.Load ("prefabs/AggressiveEnemy"));

@@ -27,7 +27,7 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 		rate = 1;
 		damage = 20;
 		upgradeStage = 0;
-		cooldown = 1;
+		cooldown = 0.8f;
 		
 		player = GameObject.Find ("Player");
 	}

@@ -82,8 +82,9 @@ public class EnemyScript : MonoBehaviour {
 				if(targetReached)
 				{
 					currentState = States.DESTROY;
+					transform.LookAt(currentTarget.transform);
 					animator.SetInteger("State", 3);
-				targetReached = false;
+					targetReached = false;
 				}
 				break;
 			case States.DESTROY:
@@ -357,6 +358,7 @@ public class EnemyScript : MonoBehaviour {
 		{
 			nav.destination = SearchExitPoint();
 			nav.speed = 10f;
+			animator.SetInteger("State", 2);
 		}
 
 		Vector3 targetDestination = new Vector3 (nav.destination.x, 0f, nav.destination.z);
