@@ -8,6 +8,7 @@ public class SpawnPoint : MonoBehaviour {
 	bool claimed = false;
 	int numClaimed;
 
+
 	// Use this for initialization
 	void Start () {
 		delay = 5f;
@@ -50,6 +51,7 @@ public class SpawnPoint : MonoBehaviour {
 			if(e.currentState.Equals(EnemyScript.States.EXIT))
 			{
 				other.gameObject.GetComponent<EnemyScript>().setTargetReached(true);
+				Debug.Log (other.gameObject.transform.position + " " + "INSIDE!");
 			}
 		}
 	}

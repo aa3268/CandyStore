@@ -76,11 +76,11 @@ public class LevelDirector : MonoBehaviour {
 		}
 	
 
-		/*enemyDirector.waveSize = (int) (waveSizePerLevel.Evaluate (((float)currentLevel) / maxLevels) * maxWaveSize);
-		enemyDirector.totalEnemies = (int) (maxEnemiesPerLevel.Evaluate(((float)currentLevel)/maxLevels) * maxEnemies);*/
+		enemyDirector.waveSize = (int) (waveSizePerLevel.Evaluate (((float)currentLevel) / maxLevels) * maxWaveSize);
+		enemyDirector.totalEnemies = (int) (maxEnemiesPerLevel.Evaluate(((float)currentLevel)/maxLevels) * maxEnemies);
 
-		enemyDirector.waveSize = 1;
-		enemyDirector.totalEnemies = 1;
+		//enemyDirector.waveSize = 1;
+		//enemyDirector.totalEnemies = 1;
 
 		if(enemyDirector.waveSize > enemyDirector.totalEnemies)
 		{

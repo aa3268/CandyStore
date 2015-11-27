@@ -24,8 +24,8 @@ public class Director : MonoBehaviour {
 	bool poolReady = false;
 	bool overStarted = false;
 
-	private int enemiesCreated = 0;
-
+	private int enemiesDestroyed;
+	private int enemiesCreated;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +41,8 @@ public class Director : MonoBehaviour {
 
 		createPool ();
 		instance = this;
+		enemiesDestroyed = 0;
+		enemiesCreated = 0;
 	}
 
 	// Update is called once per frame
@@ -53,6 +55,7 @@ public class Director : MonoBehaviour {
 		if(levelOver() && !overStarted)
 		{
 			LevelDirector.instance.levelOver();
+
 			overStarted = true;
 		}
 	}
@@ -102,7 +105,6 @@ public class Director : MonoBehaviour {
 
 		foreach(GameObject e in enemyPool)
 		{
-			Debug.Log ("Removing " + e);
 			GameObject.Destroy(e);
 
 		}
@@ -110,6 +112,7 @@ public class Director : MonoBehaviour {
 		numAvailable = 0;
 		enemiesCreated = 0;
 		overStarted = false;
+		enemiesDestroyed = 0;
 	}
 
 	public void placeEnemy()
@@ -204,7 +207,7 @@ public class Director : MonoBehaviour {
 
 	bool levelOver()
 	{
-		if(numAvailable == waveSize && enemiesCreated == totalEnemies)
+		if(enemiesDestroyed == totalEnemies)
 		{
 			return true;
 		}
@@ -221,5 +224,10 @@ public class Director : MonoBehaviour {
 	public List<GameObject> getEnemiesInUse()
 	{
 		return enemyInUse;
+	}
+
+	public void enemyDestroyed()
+	{
+		enemiesDestroyed++;
 	}
 }

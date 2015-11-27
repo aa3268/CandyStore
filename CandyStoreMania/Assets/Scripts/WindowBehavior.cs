@@ -8,6 +8,7 @@ public class WindowBehavior : MonoBehaviour {
 	GameObject worldCanvas;
 	List<EnemyScript> enemiesAtWindow;
 	public int maxHealth;
+	public GameObject associatedObject;
 
 	// Use this for initialization
 	void Start () {

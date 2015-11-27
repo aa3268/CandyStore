@@ -39,7 +39,7 @@ public class EnemyScript : MonoBehaviour {
 
 	SearchTypes searchType;
 
-	Vector3 exitPoint;
+	public Vector3 exitPoint;
 
 	public  bool targetReached = false;
 	public int state;
@@ -93,9 +93,9 @@ public class EnemyScript : MonoBehaviour {
 			case States.MOVE:
 				if(targetReached)
 				{
-					Debug.Break();
 					currentState = States.DESTROY;
-					transform.LookAt(currentTarget.transform);
+					transform.LookAt(currentTarget.associatedObject.transform);
+					nav.destination = transform.position;
 					animator.SetInteger("State", 3);
 					state = 3;
 					targetReached = false;
@@ -189,11 +189,6 @@ public class EnemyScript : MonoBehaviour {
 			}
 		}
 
-		if(closest.Equals(Vector3.zero) && closestWithoutOccupant.Equals (Vector3.zero))
-		{
-			currentState = States.EXIT;
-		}
-
 		currentTarget.addEnemy (this);
 
 		if(!closestWithoutOccupant.Equals (Vector3.zero))
@@ -246,11 +241,6 @@ public class EnemyScript : MonoBehaviour {
 					currentTarget = t;
 				}
 			}
-		}
-		
-		if(furthest.Equals(Vector3.zero) && furthestWithoutOccupant.Equals(Vector3.zero))
-		{
-			currentState = States.EXIT;
 		}
 
 		currentTarget.addEnemy (this);
@@ -373,16 +363,18 @@ public class EnemyScript : MonoBehaviour {
 		{
 			targetReached = false;
 			exitPoint = SearchExitPoint();
+
 			nav.destination = exitPoint;
 			nav.speed = 10f;
 		}
 
 		if(targetReached)
 		{
+			exitPoint = Vector3.zero;
 			targetReached = false;
+			director.enemyDestroyed();
 			currentTarget.getEnemies().Remove(this);
 			director.removeEnemy(this);
-			exitPoint = Vector3.zero;
 		}
 	}
 
