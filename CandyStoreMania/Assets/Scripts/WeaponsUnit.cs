@@ -40,7 +40,6 @@ public class WeaponsUnit : MonoBehaviour {
 		UpgradeUnitBehavior b;
 		int i = 0;
 		float distance = 1f / weaponsUnits.Count;
-		Debug.Log (weaponsUnits.Count);
 		foreach(GameObject units in weaponsUnits)
 		{
 			unitTransform = units.GetComponent<RectTransform>();
@@ -89,7 +88,6 @@ public class WeaponsUnit : MonoBehaviour {
 			if(units.unlockStatus)
 			{
 				Player.instance.addWeapon(units.associatedWeapon, units.associatedNum);
-				Debug.Log (units.associatedWeapon);
 
 			}
 		}

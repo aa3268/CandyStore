@@ -21,7 +21,7 @@ public class PauseMenu : MonoBehaviour {
 	{
 		rectTransform.localScale = new Vector3(0, 0, 0);
 		player.paused = false;
-		Cursor.visible = true;
+
 		Time.timeScale = 1;
 		HealthBarCanvas.enabled = true;
 		totalHealth.SetActive (true);
@@ -36,9 +36,6 @@ public class PauseMenu : MonoBehaviour {
 
 	public void Exit()
 	{
-		if (Cursor.visible) 
-		{
-			Application.LoadLevel ("main");
-		}
+		Application.LoadLevel ("main");
 	}
 }

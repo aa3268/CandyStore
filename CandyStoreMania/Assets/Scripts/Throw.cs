@@ -40,11 +40,13 @@ public class Throw : MonoBehaviour, WeaponsInterface  {
 	
 	void Fire()
 	{
-		bombTemp = (GameObject) Instantiate(bombPrefab, left.transform.position, rotation);
-		
-		bombTemp.GetComponent<Rigidbody>().AddForce(left.transform.forward * 10f);
-		timer = 0f;
-		ammo -= 1;
+		if (ammo > 0) {
+			bombTemp = (GameObject)Instantiate (bombPrefab, left.transform.position, rotation);
+			
+			bombTemp.GetComponent<Rigidbody> ().AddForce (left.transform.forward * 10f);
+			timer = 0f;
+			ammo -= 1;
+		}
 	}
 	
 	void Cooldown()

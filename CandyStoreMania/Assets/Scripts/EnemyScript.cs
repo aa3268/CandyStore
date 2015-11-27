@@ -41,8 +41,9 @@ public class EnemyScript : MonoBehaviour {
 
 	Vector3 exitPoint;
 
-	private bool targetReached = false;
-
+	public  bool targetReached = false;
+	public int state;
+	public GameObject t;
 	// Use this for initialization
 	void Awake () {
 		nav = GetComponent<NavMeshAgent> ();
@@ -60,6 +61,8 @@ public class EnemyScript : MonoBehaviour {
 		healthBar.setAttachedObjectPos (transform.position);
 		if(healthBar.currentHealth <= 0)
 		{
+			animator.SetInteger("State", 2);
+			state = 2;
 			healthBar.showHealthbar(false);
 			currentState = States.EXIT;
 		}
@@ -71,19 +74,30 @@ public class EnemyScript : MonoBehaviour {
 		switch (currentState) 
 		{
 			case States.SEARCH:
+				WindowBehavior oldTarget = currentTarget;
 				nav.destination = searchTarget ();
+
+				if(oldTarget != null && oldTarget.getEnemies().Contains(this))
+				{
+					oldTarget.getEnemies().Remove(this);
+					targetReached = false;
+				}
 				if(!nav.destination.Equals(Vector3.zero))
 				{
+					t = currentTarget.gameObject;
 					currentState = States.MOVE;
 					animator.SetInteger("State", 1);
+					state = 1;
 				}
 				break;
 			case States.MOVE:
 				if(targetReached)
 				{
+					Debug.Break();
 					currentState = States.DESTROY;
 					transform.LookAt(currentTarget.transform);
 					animator.SetInteger("State", 3);
+					state = 3;
 					targetReached = false;
 				}
 				break;
@@ -91,6 +105,7 @@ public class EnemyScript : MonoBehaviour {
 				if(sealUp ())
 				{
 					currentState = States.SEARCH;
+					state = 0;
 					animator.SetInteger("State", 0);
 				}
 				break;
@@ -130,46 +145,46 @@ public class EnemyScript : MonoBehaviour {
 		bool first = true;
 		bool firstUnoccupied = true;
 
-		List<Transform> targetLocs = LevelDirector.instance.getTargets ();
+		List<WindowBehavior> targetLocs = LevelDirector.instance.getTargets ();
 
-		foreach (Transform t in targetLocs) 
+		foreach (WindowBehavior t in targetLocs) 
 		{
-			if(nav.destination != null && !nav.destination.Equals(t.position))
+			if(nav.destination != null && !t.getEnemies().Contains(this))
 			{
 				if(first || firstUnoccupied)
 				{
 					if(first)
 					{
-						if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
+						if(t.getEnemies().Count == 0)
 						{
-							closestWithoutOccupant = t.position;
-							currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+							closestWithoutOccupant = t.transform.position;
+							currentTarget = t;
 							firstUnoccupied = false;
 						}
 						else
 						{
-							closest = t.position;
-							currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+							closest = t.transform.position;
+							currentTarget = t;
 						}
 						first = false;
 					}
-					else if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
+					else if(t.getEnemies().Count == 0)
 					{
-						closestWithoutOccupant = t.position;
+						closestWithoutOccupant = t.transform.position;
 						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
 						firstUnoccupied = false;
 					}
 				}
-				else if(firstUnoccupied && Vector3.Distance(currentPos, t.position) < Vector3.Distance(currentPos, closest))
+				else if(firstUnoccupied && Vector3.Distance(currentPos, t.transform.position) < Vector3.Distance(currentPos, closest))
 				{
-					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-					closest = t.position;
+					currentTarget = t;
+					closest = t.transform.position;
 				}
-				else if(!firstUnoccupied && (t.GetComponent<WindowBehavior>().getEnemies().Count == 0 ) 
-				        && Vector3.Distance(currentPos, t.position) < Vector3.Distance(currentPos, closest))
+				else if(!firstUnoccupied && (t.getEnemies().Count == 0 ) 
+				        && Vector3.Distance(currentPos, t.transform.position) < Vector3.Distance(currentPos, closest))
 				{
-					closestWithoutOccupant = t.position;
-					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+					closestWithoutOccupant = t.transform.position;
+					currentTarget = t;
 				}
 			}
 		}
@@ -179,7 +194,7 @@ public class EnemyScript : MonoBehaviour {
 			currentState = States.EXIT;
 		}
 
-		currentTarget.getEnemies().Add(this);
+		currentTarget.addEnemy (this);
 
 		if(!closestWithoutOccupant.Equals (Vector3.zero))
 		{
@@ -199,37 +214,36 @@ public class EnemyScript : MonoBehaviour {
 		bool first = true;
 		bool firstUnoccupied = true;
 
-		List<Transform> targetLocs = LevelDirector.instance.getTargets ();
-		foreach (Transform t in targetLocs) 
+		List<WindowBehavior> targetLocs = LevelDirector.instance.getTargets ();
+		foreach (WindowBehavior t in targetLocs) 
 		{
-			
-			if(nav.destination != null && !nav.destination.Equals(t.position))
+			if(nav.destination != null && !t.getEnemies().Contains(this))
 			{
 				if(first || firstUnoccupied)
 				{
 					if(first)
 					{
-						furthest = t.position;
-						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+						furthest = t.transform.position;
+						currentTarget = t;
 						first = false;
 					}
-					else if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count == 0)
+					else if(t.getEnemies().Count == 0)
 					{
-						furthestWithoutOccupant = t.position;
-						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+						furthestWithoutOccupant = t.transform.position;
+						currentTarget = t;
 						firstUnoccupied = false;
 					}
 				}
-				else if(firstUnoccupied && Vector3.Distance(currentPos, t.position) > Vector3.Distance(currentPos, furthest))
+				else if(firstUnoccupied && Vector3.Distance(currentPos, t.transform.position) > Vector3.Distance(currentPos, furthest))
 				{
-					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-					furthest = t.position;
+					currentTarget = t;
+					furthest = t.transform.position;
 				}
-				else if(!firstUnoccupied && (t.GetComponent<WindowBehavior>().getEnemies().Count == 0 ) 
-				        && Vector3.Distance(currentPos, t.position) > Vector3.Distance(currentPos, furthest))
+				else if(!firstUnoccupied && (t.getEnemies().Count == 0 ) 
+				        && Vector3.Distance(currentPos, t.transform.position) > Vector3.Distance(currentPos, furthest))
 				{
-					furthestWithoutOccupant = t.position;
-					currentTarget = t.gameObject.GetComponent<WindowBehavior>();
+					furthestWithoutOccupant = t.transform.position;
+					currentTarget = t;
 				}
 			}
 		}
@@ -239,7 +253,7 @@ public class EnemyScript : MonoBehaviour {
 			currentState = States.EXIT;
 		}
 
-		currentTarget.getEnemies().Add(this);
+		currentTarget.addEnemy (this);
 		if (!furthestWithoutOccupant.Equals (Vector3.zero)) 
 		{
 			return furthestWithoutOccupant;
@@ -256,29 +270,29 @@ public class EnemyScript : MonoBehaviour {
 		int currentPeopleCount = 0;
 		bool first = true;
 
-		List<Transform> targetLocs = LevelDirector.instance.getTargets ();
-		foreach (Transform t in targetLocs) 
+		List<WindowBehavior> targetLocs = LevelDirector.instance.getTargets ();
+		foreach (WindowBehavior t in targetLocs) 
 		{
 			
-			if(nav.destination != null && !nav.destination.Equals(t.position))
+			if(nav.destination != null && !t.getEnemies().Contains(this))
 			{
 				if(first)
 				{
-					if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count > 0)
+					if(t.getEnemies().Count > 0)
 					{
-						leastPeople = t.position;
-						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-						currentPeopleCount = t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count;
+						leastPeople = t.transform.position;
+						currentTarget = t;
+						currentPeopleCount = t.getEnemies().Count;
 						first = false;
 					}
 				}
 				else 
 				{
-					if(t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count < currentPeopleCount)
+					if(t.getEnemies().Count < currentPeopleCount)
 					{
-						leastPeople = t.position;
-						currentTarget = t.gameObject.GetComponent<WindowBehavior>();
-						currentPeopleCount = t.gameObject.GetComponent<WindowBehavior>().getEnemies().Count;
+						leastPeople = t.transform.position;
+						currentTarget = t;
+						currentPeopleCount = t.getEnemies().Count;
 					}
 				}
 			}
@@ -289,7 +303,7 @@ public class EnemyScript : MonoBehaviour {
 			leastPeople = searchClosest();
 		}
 
-		currentTarget.getEnemies().Add(this);
+		currentTarget.addEnemy (this);
 		return leastPeople;
 	}
 
@@ -297,13 +311,12 @@ public class EnemyScript : MonoBehaviour {
 	{
 		if(time > boardingSpeed)
 		{
-			Debug.Log (currentTarget);
 			if(currentTarget != null)
 			{
 				if (currentTarget.boardUp ((int)(boardingForce * damageMultiplier)))
 				{
 					//currentTarget.markBoarded();
-					LevelDirector.instance.removeTarget(currentTarget.transform);
+					LevelDirector.instance.removeTarget(currentTarget);
 					return true;
 				}
 			}
@@ -329,6 +342,8 @@ public class EnemyScript : MonoBehaviour {
 			if(gen >= windowAggression)
 			{
 				currentState = States.SEARCH;
+				animator.SetInteger("State", 0);
+				state = 0;
 			}
 		}
 
@@ -356,19 +371,18 @@ public class EnemyScript : MonoBehaviour {
 	{
 		if(exitPoint.Equals(Vector3.zero))
 		{
-			nav.destination = SearchExitPoint();
+			targetReached = false;
+			exitPoint = SearchExitPoint();
+			nav.destination = exitPoint;
 			nav.speed = 10f;
-			animator.SetInteger("State", 2);
 		}
-
-		Vector3 targetDestination = new Vector3 (nav.destination.x, 0f, nav.destination.z);
-		Vector3 currentPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
 
 		if(targetReached)
 		{
 			targetReached = false;
 			currentTarget.getEnemies().Remove(this);
 			director.removeEnemy(this);
+			exitPoint = Vector3.zero;
 		}
 	}
 
@@ -395,6 +409,7 @@ public class EnemyScript : MonoBehaviour {
 	public void readyEnemy()
 	{
 		currentState = States.SEARCH;
+		animator.SetInteger ("State", 0);
 		healthBar.setMaxHealth(health);
 		healthBar.reFillHealth ();
 		healthBar.setAttachedObjectPos (transform.position);
@@ -463,11 +478,9 @@ public class EnemyScript : MonoBehaviour {
 		exitPoints = points;
 	}
 
-	public void checkTargetValid(Transform removedTarget)
+	public void checkTargetValid(WindowBehavior loc)
 	{
-		Vector3 remLoc = new Vector3 (removedTarget.position.x, 0, removedTarget.position.z);
-
-		if(Vector3.Distance(nav.destination, remLoc) < 1f)
+		if(currentTarget.Equals(loc))
 		{
 			currentState = States.SEARCH;
 		}

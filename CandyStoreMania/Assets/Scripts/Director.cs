@@ -61,6 +61,7 @@ public class Director : MonoBehaviour {
 	{
 		for(int i = 0; i < waveSize; i++)
 		{	
+			Debug.Log ("Create " + LevelDirector.instance.getLevel() + " " + waveSize);
 			GameObject e = null;
 			int type = Random.Range(0, 4);
 		
@@ -98,9 +99,12 @@ public class Director : MonoBehaviour {
 
 	public void reset()
 	{
+
 		foreach(GameObject e in enemyPool)
 		{
+			Debug.Log ("Removing " + e);
 			GameObject.Destroy(e);
+
 		}
 		enemyPool.Clear ();
 		numAvailable = 0;

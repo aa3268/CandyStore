@@ -37,7 +37,7 @@ public class Player : MonoBehaviour {
 	void Start () {
 		instance = this;
 		paused = false;
-		
+		Cursor.lockState = CursorLockMode.Confined;
 		if (WeaponsUnit.instance != null) {
 			WeaponsUnit.instance.setUnlockedWeapons ();
 		}

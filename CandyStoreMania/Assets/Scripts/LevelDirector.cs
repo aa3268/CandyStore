@@ -16,7 +16,7 @@ public class LevelDirector : MonoBehaviour {
 	public int maxEnemies;
 
 	List<WindowBehavior> windows;
-	List<Transform> targetLocs;
+	List<WindowBehavior> targetLocs;
 	GameObject targets;
 	int currentLevel;
 	int maxHealth;
@@ -52,11 +52,11 @@ public class LevelDirector : MonoBehaviour {
 	public void setUpLevel()
 	{
 		Player.instance.enabled = true;
-		targetLocs = new List<Transform> ();
+		targetLocs = new List<WindowBehavior> ();
 		
 		foreach (Transform t in targets.transform) 
 		{
-			targetLocs.Add (t);
+			targetLocs.Add (t.gameObject.GetComponent<WindowBehavior>());
 		}
 
 		currentLevel++;
@@ -76,8 +76,11 @@ public class LevelDirector : MonoBehaviour {
 		}
 	
 
-		enemyDirector.waveSize = (int) (waveSizePerLevel.Evaluate (((float)currentLevel) / maxLevels) * maxWaveSize);
-		enemyDirector.totalEnemies = (int) (maxEnemiesPerLevel.Evaluate(((float)currentLevel)/maxLevels) * maxEnemies);
+		/*enemyDirector.waveSize = (int) (waveSizePerLevel.Evaluate (((float)currentLevel) / maxLevels) * maxWaveSize);
+		enemyDirector.totalEnemies = (int) (maxEnemiesPerLevel.Evaluate(((float)currentLevel)/maxLevels) * maxEnemies);*/
+
+		enemyDirector.waveSize = 1;
+		enemyDirector.totalEnemies = 1;
 
 		if(enemyDirector.waveSize > enemyDirector.totalEnemies)
 		{
@@ -146,12 +149,12 @@ public class LevelDirector : MonoBehaviour {
 		UpgradeMenu.instance.available.text = "Points available: " + LevelDirector.instance.getAvailablePoints ();
 	}
 
-	public List<Transform> getTargets()
+	public List<WindowBehavior> getTargets()
 	{
 		return targetLocs;
 	}
 
-	public void removeTarget(Transform t)
+	public void removeTarget(WindowBehavior t)
 	{
 		targetLocs.Remove (t);
 

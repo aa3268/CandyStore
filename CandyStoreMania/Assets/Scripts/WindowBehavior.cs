@@ -43,7 +43,6 @@ public class WindowBehavior : MonoBehaviour {
 
 	public bool boardUp(int force)
 	{
-		Debug.Log ("board it uppp");
 		healthBar.doWideEffectDamage(force);
 	
 		if (healthBar.isDepleted ()) 
@@ -73,7 +72,7 @@ public class WindowBehavior : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.name.Contains ("Enemy") && other.gameObject.GetComponent<EnemyScript>().getCurrentTarget().Equals(this)) {
-			
+
 			other.gameObject.GetComponent<EnemyScript>().setTargetReached(true);
 		}
 	}

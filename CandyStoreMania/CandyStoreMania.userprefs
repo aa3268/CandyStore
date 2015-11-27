@@ -1,18 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Director.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/SpawnPoint.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/EnemyScript.cs" Line="331" Column="34" />
-      <File FileName="Assets/Scripts/LoadLevel.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Bullet_GumballGun.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GumballGun.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/LevelDirector.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WindowBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/HealthBar.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Director.cs" Line="65" Column="4" />
-      <File FileName="../../CandyStore copy/CandyStoreMania/Assets/Scripts/RechargeStation.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WindowBehavior.cs" Line="45" Column="3" />
+      <File FileName="Assets/Scripts/EnemyScript.cs" Line="374" Column="26" />
+      <File FileName="Assets/Scripts/WeaponsUnit.cs" Line="42" Column="44" />
+      <File FileName="Assets/Scripts/Director.cs" Line="73" Column="11" />
+      <File FileName="Assets/Scripts/LevelDirector.cs" Line="83" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
