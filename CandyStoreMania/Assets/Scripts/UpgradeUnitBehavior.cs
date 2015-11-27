@@ -39,7 +39,8 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 	WeaponsInterface weaponBehavior;
 	
 	int[] upgradeLevel;
-	
+	int increment = 150;
+
 	// Use this for initialization
 	void Start () {
 		weaponBehavior = associatedWeapon.GetComponent<WeaponsInterface> ();
@@ -74,7 +75,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 	public void upgradeBaseDamage()
 	{
 		weaponBehavior.upgradeDamage ();
-		LevelDirector.instance.purchase (upgradeLevel[0] * 50);
+		LevelDirector.instance.purchase (upgradeLevel[0] * increment);
 		baseDamage.value = weaponBehavior.getBaseDamage ();
 		upgradeLevel [0] ++;
 		WeaponsUnit.instance.performChecks ();
@@ -83,7 +84,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 	public void upgradeCooldownTime()
 	{
 		weaponBehavior.upgradeFireRate ();
-		LevelDirector.instance.purchase (upgradeLevel[1] * 50);
+		LevelDirector.instance.purchase (upgradeLevel[1] * increment);
 		cooldown.value = weaponBehavior.getCooldown ();
 		upgradeLevel [1] ++;
 		WeaponsUnit.instance.performChecks ();
@@ -92,7 +93,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 	public void upgradeAmmo()
 	{
 		weaponBehavior.upgradeAmmo ();
-		LevelDirector.instance.purchase (upgradeLevel[2] * 50);
+		LevelDirector.instance.purchase (upgradeLevel[2] * increment);
 		ammo.value = weaponBehavior.getAmmo ();
 		upgradeLevel [2] ++;
 		WeaponsUnit.instance.performChecks ();
@@ -120,55 +121,60 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 	
 	public void checkUpgradable()
 	{
-		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[0] * 50) && weaponBehavior.getBaseDamage() < baseDamage.maxValue 
+		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[0] * increment) && weaponBehavior.getBaseDamage() < baseDamage.maxValue 
 		    && weaponBehavior.getBaseDamage() > 0 && unlockStatus) {
 			upgradeButtonBD.SetActive (true);
-			upgradeTextBD.text ="Base Damage: " + (upgradeLevel[0]*50);
-			BDvalue.text = "" + weaponBehavior.getBaseDamage ();
+			upgradeTextBD.text ="Base Damage: " + (upgradeLevel[0]*increment);
+			BDvalue.text = weaponBehavior.getBaseDamage ().ToString("F2");
 			baseDamage.value = weaponBehavior.getBaseDamage ();
 			
 			
-		} else if (LevelDirector.instance.getAvailablePoints () < (upgradeLevel[0] * 50) && unlockStatus) {
+		} else if (LevelDirector.instance.getAvailablePoints () < (upgradeLevel[0] * increment) && unlockStatus 
+		           && weaponBehavior.getBaseDamage() < baseDamage.maxValue && weaponBehavior.getBaseDamage() > 0) {
 			upgradeButtonBD.SetActive (false);
-			upgradeTextBD.text = "Base Damage: " + (upgradeLevel[0]*50);
-			BDvalue.text = "" + weaponBehavior.getBaseDamage ();
+			upgradeTextBD.text = "Base Damage: " + (upgradeLevel[0]*increment);
+			BDvalue.text = weaponBehavior.getBaseDamage ().ToString("F2");
 			baseDamage.value = weaponBehavior.getBaseDamage ();
 		} 
 		else {
 			upgradeButtonBD.SetActive (false);
 			upgradeTextBD.text = "Base Damage";
-			BDvalue.text = "" + weaponBehavior.getBaseDamage ();
+			BDvalue.text = weaponBehavior.getBaseDamage ().ToString("F2");
 			baseDamage.value = weaponBehavior.getBaseDamage ();
+
 		}
 		
-		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[1] * 50) && weaponBehavior.getCooldown() > cooldown.minValue
+		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[1] * increment) && weaponBehavior.getCooldown() > cooldown.minValue
 		    && weaponBehavior.getCooldown() > 0 && unlockStatus) {
 			upgradeButtonCS.SetActive (true);
-			upgradeTextCS.text = "Cooldown Time: " + (upgradeLevel[1]*50);
-			CSvalue.text = "" + weaponBehavior.getCooldown();
+			upgradeTextCS.text = "Cooldown Time: " + (upgradeLevel[1]*increment);
+			CSvalue.text = weaponBehavior.getCooldown().ToString("F2");
 			cooldown.value = (cooldown.maxValue - weaponBehavior.getCooldown ());
-		} else if (LevelDirector.instance.getAvailablePoints () < (upgradeLevel[1] * 50) && unlockStatus) {
+		} else if (LevelDirector.instance.getAvailablePoints () < (upgradeLevel[1] * increment) && unlockStatus && weaponBehavior.getCooldown() > cooldown.minValue
+		    && weaponBehavior.getCooldown() > 0 ) {
 			upgradeButtonCS.SetActive (false);
-			upgradeTextCS.text = "Cooldown Time: " + (upgradeLevel[1]*50);
-			CSvalue.text = "" + weaponBehavior.getCooldown();
+			upgradeTextCS.text = "Cooldown Time: " + (upgradeLevel[1]*increment);
+			CSvalue.text = weaponBehavior.getCooldown().ToString("F2");
 			cooldown.value = (cooldown.maxValue - weaponBehavior.getCooldown ());
 		} else {
 			upgradeButtonCS.SetActive (false);
 			upgradeTextCS.text = "Cooldown Time";
-			CSvalue.text = "" + (cooldown.maxValue - weaponBehavior.getCooldown());
+			CSvalue.text = weaponBehavior.getCooldown().ToString("F2");
 			cooldown.value = (cooldown.maxValue - weaponBehavior.getCooldown ());
 		}
 		
-		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[2] * 50) && weaponBehavior.getMaxAmmo() < ammo.maxValue 
+		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[2] * increment) && weaponBehavior.getMaxAmmo() < ammo.maxValue 
 		    && weaponBehavior.getMaxAmmo() > 0 && unlockStatus) {
 			upgradeButtonA.SetActive (true);
-			upgradeTextA.text = "Max Ammo: " + (upgradeLevel[2]*50);
+			upgradeTextA.text = "Max Ammo: " + (upgradeLevel[2]*increment);
 			Avalue.text = "" + weaponBehavior.getMaxAmmo();
 			ammo.value = weaponBehavior.getMaxAmmo ();
 			
-		} else if (LevelDirector.instance.getAvailablePoints () < (upgradeLevel[2] * 50) && unlockStatus) {
+		} else if (LevelDirector.instance.getAvailablePoints () < (upgradeLevel[2] * increment) && unlockStatus  
+		           && weaponBehavior.getMaxAmmo() < ammo.maxValue && weaponBehavior.getMaxAmmo() > 0) 
+		{
 			upgradeButtonA.SetActive (false);
-			upgradeTextA.text = "Max Ammo: " + (upgradeLevel[2]*50);
+			upgradeTextA.text = "Max Ammo: " + (upgradeLevel[2]*increment);
 			Avalue.text = "" + weaponBehavior.getMaxAmmo();
 			ammo.value = weaponBehavior.getMaxAmmo ();
 		} else {

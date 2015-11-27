@@ -51,6 +51,8 @@ public class LevelDirector : MonoBehaviour {
 
 	public void setUpLevel()
 	{
+		Debug.Log (System.Environment.StackTrace);
+
 		Player.instance.enabled = true;
 		targetLocs = new List<WindowBehavior> ();
 		
@@ -93,8 +95,9 @@ public class LevelDirector : MonoBehaviour {
 		if(currentLevel > 1)
 		{
 			enemyDirector.reset();
-			enemyDirector.createPool ();
 		}
+
+		enemyDirector.createPool ();
 	}
 
 	public int getLevel()

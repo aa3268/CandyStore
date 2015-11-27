@@ -9,8 +9,8 @@ public class Director : MonoBehaviour {
 	enum State { FREE, USED };
 	enum EnemyType { AGGRESSIVE, SUPPORTER, RUNNER, VANGUARD };
 
-	private List<GameObject> enemyPool;
-	private List<GameObject> enemyInUse;
+	private List<GameObject> enemyPool = new List<GameObject> ();
+	private List<GameObject> enemyInUse = new List<GameObject> ();
 	
 	List<SpawnPoint> spawnPoints;
 
@@ -28,10 +28,7 @@ public class Director : MonoBehaviour {
 	private int enemiesCreated;
 
 	// Use this for initialization
-	void Start () {
-		enemyPool = new List<GameObject> ();
-		enemyInUse = new List<GameObject> ();
-
+	void Awake () {
 		spawnPoints = new List<SpawnPoint>();
 		
 		foreach(Transform t in doorLocator.transform)
@@ -39,7 +36,6 @@ public class Director : MonoBehaviour {
 			spawnPoints.Add(t.gameObject.GetComponent<SpawnPoint>());
 		}
 
-		createPool ();
 		instance = this;
 		enemiesDestroyed = 0;
 		enemiesCreated = 0;

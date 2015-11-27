@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UpgradeMenu : MonoBehaviour {
 
@@ -28,6 +29,7 @@ public class UpgradeMenu : MonoBehaviour {
 		ammo.SetActive (true);
 		HealthBarCanvas.enabled = true;
 		recharge.SetActive (true);
+		EventSystem.current.SetSelectedGameObject (null);
 	}
 	
 	public void ScaleUp()
