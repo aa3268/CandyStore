@@ -25,7 +25,6 @@ public class Player : MonoBehaviour {
 	public Camera player;
 	
 	public bool paused;
-	public bool useMouse;
 	public RechargeStation reload;
 	public Animator animator;
 	
@@ -38,11 +37,6 @@ public class Player : MonoBehaviour {
 	void Start () {
 		instance = this;
 		paused = false;
-		useMouse = false;
-		
-		Cursor.lockState = CursorLockMode.Confined;
-		Cursor.visible = false;
-		
 		Cursor.lockState = CursorLockMode.Confined;
 		if (WeaponsUnit.instance != null) {
 			WeaponsUnit.instance.setUnlockedWeapons ();
@@ -114,15 +108,12 @@ public class Player : MonoBehaviour {
 	void KeyboardMouseControls()
 	{
 		if (!paused) {
-			if(useMouse)
-			{
-				float y = Input.GetAxis ("Mouse X");
-				float x = transform.rotation.x;
-				float z = transform.rotation.z;
-				
-				Vector3 r = new Vector3 (x, y, z);
-				transform.Rotate (r * 1.5f);
-			}
+			float y = Input.GetAxis ("Mouse X");
+			float x = transform.rotation.x;
+			float z = transform.rotation.z;
+			
+			Vector3 r = new Vector3 (x, y, z);
+			transform.Rotate (r * 1.5f);
 
 			if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.R) )
 			{
@@ -155,12 +146,9 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey (KeyCode.E)) {
 				transform.Rotate (Vector3.up * Time.deltaTime * rotationSpeed);
 			}
-
-			if (Input.GetKeyDown (KeyCode.M)) {
-				useMouse = !useMouse;
-			}
 			
-			if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
+			
+			if (Input.GetKeyDown(KeyCode.LeftShift)) {
 				
 				if(activeWeaponNum == unlockedWeapons.Count-1)
 				{
@@ -201,14 +189,12 @@ public class Player : MonoBehaviour {
 				Time.timeScale = 0.00000000000000000000000001f;
 				paused = true;
 				PauseMenu.instance.ScaleUp();
-				Cursor.visible = true;
 			} 
 			else 
 			{
 				Time.timeScale = 1;
 				paused = false;
 				PauseMenu.instance.ScaleDown();
-				Cursor.visible = false;
 			}
 		}
 	}
@@ -237,10 +223,5 @@ public class Player : MonoBehaviour {
 	public Animator getAnimator()
 	{
 		return animator;
-	}
-
-	public List<GameObject> getUnlockedWeapons()
-	{
-		return unlockedWeapons;
 	}
 }

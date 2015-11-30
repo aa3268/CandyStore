@@ -14,7 +14,6 @@ public class UpgradeMenu : MonoBehaviour {
 	RectTransform rectTransform;
 	public GameObject ammo;
 	public GameObject recharge;
-
 	public void Start()
 	{
 		rectTransform = gameObject.GetComponent<RectTransform> ();
@@ -30,13 +29,15 @@ public class UpgradeMenu : MonoBehaviour {
 		ammo.SetActive (true);
 		HealthBarCanvas.enabled = true;
 		recharge.SetActive (true);
-		Cursor.visible = false;
 		EventSystem.current.SetSelectedGameObject (null);
 	}
 	
 	public void ScaleUp()
 	{
 		rectTransform.localScale = new Vector3(1, 1, 1);
+		HealthBarCanvas.enabled = false;
+		ammo.SetActive (false);
+		recharge.SetActive (false);
 		setScore ();
 	}
 	
@@ -50,8 +51,8 @@ public class UpgradeMenu : MonoBehaviour {
 
 	public void setScore()
 	{
-		score.text = LevelDirector.instance.getScore ().ToString("C");
-		available.text = "" + LevelDirector.instance.getAvailablePoints ().ToString ("C");
+		score.text = "" + LevelDirector.instance.getScore ();
+		available.text = "" + LevelDirector.instance.getAvailablePoints ();
 	}
 
 

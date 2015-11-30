@@ -61,6 +61,7 @@ public class WeaponsUnit : MonoBehaviour {
 			unit.checkUpgradable();
 		}
 
+
 		if(current >= weaponsUnits.Count-1)
 		{
 			next.SetActive(false);

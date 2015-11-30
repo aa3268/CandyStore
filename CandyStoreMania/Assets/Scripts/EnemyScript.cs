@@ -58,15 +58,13 @@ public class EnemyScript : MonoBehaviour {
 	void Update () {
 
 		takeAction ();
-
-		if (!currentState.Equals (States.EXIT)) {
-			healthBar.setAttachedObjectPos (transform.position);
-			if (healthBar.currentHealth <= 0) {
-				animator.SetInteger ("State", 2);
-				state = 2;
-				healthBar.showHealthbar (false);
-				currentState = States.EXIT;
-			}
+		healthBar.setAttachedObjectPos (transform.position);
+		if(healthBar.currentHealth <= 0)
+		{
+			animator.SetInteger("State", 2);
+			state = 2;
+			healthBar.showHealthbar(false);
+			currentState = States.EXIT;
 		}
 	}
 

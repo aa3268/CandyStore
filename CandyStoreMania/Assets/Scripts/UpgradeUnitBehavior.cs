@@ -34,12 +34,12 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 	public Slider ammo;
 	
 	public GameObject associatedWeapon;
-	public double unlockCost;
+	public int unlockCost;
 	
 	WeaponsInterface weaponBehavior;
 	
 	int[] upgradeLevel;
-	double increment = 1.5;
+	int increment = 150;
 
 	// Use this for initialization
 	void Start () {
@@ -109,13 +109,13 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 		if(LevelDirector.instance.getAvailablePoints () >= unlockCost && !unlockStatus)
 		{
 			unlockButton.SetActive(true);
-			statusText.text = "LOCKED " + unlockCost.ToString("C");
+			statusText.text = "LOCKED " + unlockCost;
 			
 		}
 		else if(LevelDirector.instance.getAvailablePoints () < unlockCost && !unlockStatus)
 		{
 			unlockButton.SetActive(false);
-			statusText.text = "LOCKED " + unlockCost.ToString("C");
+			statusText.text = "LOCKED " + unlockCost;
 		}
 	}
 	
@@ -124,7 +124,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[0] * increment) && weaponBehavior.getBaseDamage() < baseDamage.maxValue 
 		    && weaponBehavior.getBaseDamage() > 0 && unlockStatus) {
 			upgradeButtonBD.SetActive (true);
-			upgradeTextBD.text ="Base Damage: " + (upgradeLevel[0]*increment).ToString("C");
+			upgradeTextBD.text ="Base Damage: " + (upgradeLevel[0]*increment);
 			BDvalue.text = weaponBehavior.getBaseDamage ().ToString("F2");
 			baseDamage.value = weaponBehavior.getBaseDamage ();
 			
@@ -132,7 +132,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 		} else if (LevelDirector.instance.getAvailablePoints () < (upgradeLevel[0] * increment) && unlockStatus 
 		           && weaponBehavior.getBaseDamage() < baseDamage.maxValue && weaponBehavior.getBaseDamage() > 0) {
 			upgradeButtonBD.SetActive (false);
-			upgradeTextBD.text = "Base Damage: " + (upgradeLevel[0]*increment).ToString("C");
+			upgradeTextBD.text = "Base Damage: " + (upgradeLevel[0]*increment);
 			BDvalue.text = weaponBehavior.getBaseDamage ().ToString("F2");
 			baseDamage.value = weaponBehavior.getBaseDamage ();
 		} 
@@ -147,13 +147,13 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[1] * increment) && weaponBehavior.getCooldown() > cooldown.minValue
 		    && weaponBehavior.getCooldown() > 0 && unlockStatus) {
 			upgradeButtonCS.SetActive (true);
-			upgradeTextCS.text = "Cooldown Time: " + (upgradeLevel[1]*increment).ToString("C");
+			upgradeTextCS.text = "Cooldown Time: " + (upgradeLevel[1]*increment);
 			CSvalue.text = weaponBehavior.getCooldown().ToString("F2");
 			cooldown.value = (cooldown.maxValue - weaponBehavior.getCooldown ());
 		} else if (LevelDirector.instance.getAvailablePoints () < (upgradeLevel[1] * increment) && unlockStatus && weaponBehavior.getCooldown() > cooldown.minValue
 		    && weaponBehavior.getCooldown() > 0 ) {
 			upgradeButtonCS.SetActive (false);
-			upgradeTextCS.text = "Cooldown Time: " + (upgradeLevel[1]*increment).ToString("C");
+			upgradeTextCS.text = "Cooldown Time: " + (upgradeLevel[1]*increment);
 			CSvalue.text = weaponBehavior.getCooldown().ToString("F2");
 			cooldown.value = (cooldown.maxValue - weaponBehavior.getCooldown ());
 		} else {
@@ -166,7 +166,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 		if (LevelDirector.instance.getAvailablePoints () >= (upgradeLevel[2] * increment) && weaponBehavior.getMaxAmmo() < ammo.maxValue 
 		    && weaponBehavior.getMaxAmmo() > 0 && unlockStatus) {
 			upgradeButtonA.SetActive (true);
-			upgradeTextA.text = "Max Ammo: " + (upgradeLevel[2]*increment).ToString("C");
+			upgradeTextA.text = "Max Ammo: " + (upgradeLevel[2]*increment);
 			Avalue.text = "" + weaponBehavior.getMaxAmmo();
 			ammo.value = weaponBehavior.getMaxAmmo ();
 			
@@ -174,7 +174,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 		           && weaponBehavior.getMaxAmmo() < ammo.maxValue && weaponBehavior.getMaxAmmo() > 0) 
 		{
 			upgradeButtonA.SetActive (false);
-			upgradeTextA.text = "Max Ammo: " + (upgradeLevel[2]*increment).ToString("C");
+			upgradeTextA.text = "Max Ammo: " + (upgradeLevel[2]*increment);
 			Avalue.text = "" + weaponBehavior.getMaxAmmo();
 			ammo.value = weaponBehavior.getMaxAmmo ();
 		} else {
