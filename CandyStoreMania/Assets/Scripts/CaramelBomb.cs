@@ -8,20 +8,28 @@ public class CaramelBomb : MonoBehaviour {
 	public float slowAmount = 1f;
 	public float timeOut = 5f;
 	public bool melt;
+
+	Rigidbody rigidBody;
+	SphereCollider collider;
+
+	public GameObject parent;
 	// Use this for initialization
 	void Start () {
 		melt = false;
+		rigidBody = GetComponent<Rigidbody> ();
+		collider = GetComponent<SphereCollider> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		if (transform.position.y > 0 && transform.position.y < 0.6) {
-			GetComponent<Rigidbody>().useGravity = false;
-			GetComponent<SphereCollider>().isTrigger = true;
-			GetComponent<Rigidbody>().velocity = Vector3.zero;
-			GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+			rigidBody.useGravity = false;
+			collider.isTrigger = true;
+			rigidBody.velocity = Vector3.zero;
+			rigidBody.angularVelocity = Vector3.zero;
 			melt = true;
+			Destroy(parent);
 		}
 
 		if (melt) {
@@ -40,8 +48,6 @@ public class CaramelBomb : MonoBehaviour {
 	void OnTriggerEnter(Collider obj)
 	{
 		if (obj.gameObject.name.Contains ("Enemy") && melt) {
-
-			//Destroy(obj.gameObject);
 			obj.gameObject.GetComponent<NavMeshAgent> ().speed = slowAmount;
 		} else {
 			melt = true;

@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour {
 	public static PauseMenu instance;
 	public Player player;
 
+	public GameObject recharge;
 	RectTransform rectTransform;
 	public Canvas HealthBarCanvas;
 	public GameObject totalHealth;
@@ -25,6 +26,8 @@ public class PauseMenu : MonoBehaviour {
 		Time.timeScale = 1;
 		HealthBarCanvas.enabled = true;
 		totalHealth.SetActive (true);
+		Cursor.visible = false;
+		recharge.SetActive (true);
 	}
 
 	public void ScaleUp()
@@ -32,6 +35,8 @@ public class PauseMenu : MonoBehaviour {
 		rectTransform.localScale = new Vector3(1, 1, 1);
 		HealthBarCanvas.enabled = false;
 		totalHealth.SetActive (false);
+		Cursor.visible = true;
+		recharge.SetActive (false);
 	}
 
 	public void Exit()
