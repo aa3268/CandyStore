@@ -23,8 +23,10 @@ public class LevelDirector : MonoBehaviour {
 	int currentHealth;
 	GameObject player;
 
-	int totalScore;
-	int available;
+	public double totalScore;
+	public double available;
+
+	bool betweenLevels;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +37,7 @@ public class LevelDirector : MonoBehaviour {
 		totalScore = 0;
 		available = 0;
 
+		betweenLevels = false;
 		windows = new List<WindowBehavior> ();
 		player = GameObject.Find ("Player");
 		targets = GameObject.Find ("TargetLocators");
@@ -43,19 +46,24 @@ public class LevelDirector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		totalHealth.maxValue = maxHealth;
-		totalHealth.value = currentHealth;
 
-		checkGameOver ();
+		if (!betweenLevels) {
+			totalHealth.maxValue = maxHealth;
+			totalHealth.value = currentHealth;
+			checkGameOver ();
+		}
 	}
 
 	public void setUpLevel()
 	{
-		Debug.Log (System.Environment.StackTrace);
-
+		betweenLevels = false;
 		Player.instance.enabled = true;
 		targetLocs = new List<WindowBehavior> ();
-		
+
+		foreach (GameObject w in Player.instance.getUnlockedWeapons()) {
+			w.GetComponent<WeaponsInterface>().reload();
+		}
+
 		foreach (Transform t in targets.transform) 
 		{
 			targetLocs.Add (t.gameObject.GetComponent<WindowBehavior>());
@@ -120,36 +128,31 @@ public class LevelDirector : MonoBehaviour {
 	{
 		if(currentHealth <= 0)
 		{
+			Cursor.visible = true;
 			Application.LoadLevel ("GameOver");
 		}
 	}
 
 	public void levelOver()
 	{
-		totalScore += (currentHealth * currentLevel);
-		available += (currentHealth * currentLevel);
-		WeaponsUnit.instance.performChecks ();
-		UpgradeMenu.instance.ScaleUp();
-		Time.timeScale = 0.00000000001f;
-		Player.instance.paused = true;
-		Player.instance.enabled = false;
-		totalHealth.gameObject.SetActive (false);
+		betweenLevels = true;
+		ScoreTally.instance.ScaleUp ();
 	}
 
-	public int getScore()
+	public double getScore()
 	{
 		return totalScore;
 	}
 
-	public int getAvailablePoints()
+	public double getAvailablePoints()
 	{
 		return available;
 	}
 
-	public void purchase(int cost)
+	public void purchase(double cost)
 	{
 		available -= cost;
-		UpgradeMenu.instance.available.text = "Points available: " + LevelDirector.instance.getAvailablePoints ();
+		UpgradeMenu.instance.available.text = LevelDirector.instance.getAvailablePoints ().ToString("C");
 	}
 
 	public List<WindowBehavior> getTargets()

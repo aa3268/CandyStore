@@ -51,7 +51,6 @@ public class SpawnPoint : MonoBehaviour {
 			if(e.currentState.Equals(EnemyScript.States.EXIT))
 			{
 				other.gameObject.GetComponent<EnemyScript>().setTargetReached(true);
-				Debug.Log (other.gameObject.transform.position + " " + "INSIDE!");
 			}
 		}
 	}
