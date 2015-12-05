@@ -3,15 +3,18 @@ using System.Collections;
 
 public class Bullet_Cannon : MonoBehaviour {
 
-	public float health = 2.5f;
+	public float health = 3.5f;
 	public float timer = 1.5f;
 	public int damage;
 
 	public ParticleSystem particles;
+	public MeshRenderer ren;
+
+	public bool played;
 
 	void Start()
 	{
-		particles = GetComponent<ParticleSystem> ();
+		played = false;
 	}
 
 	void Update()
@@ -23,24 +26,30 @@ public class Bullet_Cannon : MonoBehaviour {
 	{
 		timer -= Time.deltaTime;
 		if (timer < 0) {
-			gameObject.GetComponent<MeshRenderer>().enabled = false;
+			ren.enabled = false;
+			particles.transform.parent = null;
+
+			if(!played)
+			{
+				particles.Play();
+			}
+			played = true;
+
 		}
 	}
 	void Kill()
 	{
 		health -= Time.deltaTime;
 		if (health < 0) {
+			Destroy(particles.gameObject);
 			Destroy(gameObject);
 		}
 	}
-
-
-	void OnParticleCollision(GameObject obj)
+	void OnCollisionEnter(Collision obj)
 	{
 		if(obj.gameObject.name.Contains("Enemy"))
 		{
-			obj.GetComponent<EnemyScript>().reactToBullet(Player.instance.getBaseDamage());
+			timer = -1;	
 		}
-
 	}
 }

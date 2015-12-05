@@ -12,23 +12,23 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 	public GameObject bulletPrefab;
 	
 	public GameObject bulletTemp;
-	public GameObject nozzle;
+
+	public Transform nozzle;
 	
 	public float cooldown;
 
-	public GameObject player;
+	public Player player;
 
 	int upgradeStage = 0;
 	// Use this for initialization
 	void Start () {
-
-		player = GameObject.Find ("Player");
+	
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (player.GetComponent<Player> ().paused != true) {
+		if (player.paused != true) {
 			if (Input.GetMouseButtonDown (0)) {
 				Fire ();
 			}
@@ -40,7 +40,7 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 	void Fire()
 	{
 		if (ammo > 0 && cooldown >= rate) {
-			Vector3 pos = nozzle.GetComponent<Transform> ().position;
+			Vector3 pos = nozzle.position;
 			Quaternion rot = new Quaternion (0, 0, 0, 0);
 			bulletTemp = (GameObject)Instantiate (bulletPrefab, pos, rot);
 			bulletTemp.GetComponent<Rigidbody> ().AddForce (nozzle.transform.forward * 15f);

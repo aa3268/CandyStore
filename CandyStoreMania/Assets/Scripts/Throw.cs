@@ -7,45 +7,75 @@ public class Throw : MonoBehaviour, WeaponsInterface  {
 	public int ammo = 2;
 	public float cooldown = 5f;
 	public float timer;
-	
+	public float rate = 5f;
 	
 	public GameObject bombPrefab;
 	public GameObject bombTemp;
+
+	public GameObject jarPrefab;
+	public GameObject jarTemp;
+
 	public GameObject left;
 	
 	public Quaternion rotation;
 	public Vector3 position;
-	
-	Player player;
+
+
+	public Player player;
 	public int maxAmmo;
-	float rate = 5f;
-	
+
+	public float power;
+	public float multiplier;
 	
 	// Use this for initialization
 	void Start () {
 		rotation = new Quaternion (0, 0, 0,0);
 		maxAmmo = ammo;
+		power = 0;
+		timer = cooldown;
+		multiplier = 5;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Player.instance.paused != true) {
-			if (Input.GetMouseButtonDown (0)) {
+			if (Input.GetMouseButton(1) && ammo > 0) {
+				if(power < 5){
+					power += multiplier * Time.deltaTime; 
+				}
+			}
+			if(Input.GetMouseButtonUp(1) && ammo > 0)
+			{
 				Fire ();
 				SoundManager.instance.playSound("Caramel");
+				power = 0;
 			}
 			Cooldown ();
+
+			if(jarTemp != null)
+			{
+				if(jarTemp.transform.position.y < 0.7)
+				{
+					bombTemp = (GameObject) Instantiate(bombPrefab, jarTemp.transform.position, rotation);
+					Destroy(jarTemp.gameObject);
+					jarTemp = null;
+				}
+			}
 		}
 	}
 	
 	void Fire()
 	{
-		if (ammo > 0) {
-			bombTemp = (GameObject)Instantiate (bombPrefab, left.transform.position, rotation);
-			
-			bombTemp.GetComponent<Rigidbody> ().AddForce (left.transform.forward * 10f);
-			timer = 0f;
-			ammo -= 1;
+		if (timer >= cooldown) {
+
+			jarTemp = (GameObject)Instantiate (jarPrefab, left.transform.position, rotation);			
+			jarTemp.GetComponent<Rigidbody> ().AddForce (left.transform.forward * power);
+
+			if (ammo > 0) {
+				timer = 0f;
+				ammo -= 1;
+			}
 		}
 	}
 	

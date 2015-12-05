@@ -15,7 +15,8 @@ public class Player : MonoBehaviour {
 	public float button1;
 	public float button2;
 	public float button3;
-	
+
+	public bool useMouse;
 	public float movementSpeed = 2.0f;
 	public float rotationSpeed = 100f;
 	
@@ -35,9 +36,12 @@ public class Player : MonoBehaviour {
 	int activeWeaponNum;
 	
 	void Start () {
+		useMouse = false;
 		instance = this;
 		paused = false;
 		Cursor.lockState = CursorLockMode.Confined;
+
+
 		if (WeaponsUnit.instance != null) {
 			WeaponsUnit.instance.setUnlockedWeapons ();
 		}
@@ -49,10 +53,8 @@ public class Player : MonoBehaviour {
 	}
 	void Update()
 	{
-		
 		KeyboardMouseControls ();
-		//JoystickControls ();
-		
+		//JoystickControls ();	
 	}
 	
 	/*void JoystickControls()
@@ -108,12 +110,16 @@ public class Player : MonoBehaviour {
 	void KeyboardMouseControls()
 	{
 		if (!paused) {
-			float y = Input.GetAxis ("Mouse X");
-			float x = transform.rotation.x;
-			float z = transform.rotation.z;
-			
-			Vector3 r = new Vector3 (x, y, z);
-			transform.Rotate (r * 1.5f);
+
+			if(useMouse)
+			{
+				float y = Input.GetAxis ("Mouse X");
+				float x = transform.rotation.x;
+				float z = transform.rotation.z;
+				
+				Vector3 r = new Vector3 (x, y, z);
+				transform.Rotate (r * 1.5f);
+			}
 
 			if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.R) )
 			{
@@ -146,7 +152,9 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey (KeyCode.E)) {
 				transform.Rotate (Vector3.up * Time.deltaTime * rotationSpeed);
 			}
-			
+			if (Input.GetKey (KeyCode.M)) {
+				useMouse = !useMouse;
+			}
 			
 			if (Input.GetKeyDown(KeyCode.LeftShift)) {
 				
