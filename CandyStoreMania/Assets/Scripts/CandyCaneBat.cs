@@ -7,15 +7,24 @@ public class CandyCaneBat : MonoBehaviour, WeaponsInterface {
  	float rate = 0.7f;
 
 	float cooldown = 0.7f;
+	Animator animator;
 
 	// Use this for initialization
 	void Start () {
-
+		animator = Player.instance.getAnimator ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetMouseButtonDown(0))
+		{
+			Fire();
+		}
+	}
+
+	public void Fire()
+	{
+		animator.SetBool ("isAttacking", true);
 	}
 
 	public void upgradeAmmo()
