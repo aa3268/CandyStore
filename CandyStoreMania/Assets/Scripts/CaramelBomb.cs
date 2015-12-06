@@ -11,19 +11,14 @@ public class CaramelBomb : MonoBehaviour {
 	public float original;
 	public bool melt;
 
-<<<<<<< HEAD
-	Rigidbody rigidBody;
-	SphereCollider collider;
-
-	public GameObject parent;
-=======
 	public Rigidbody body;
 	public SphereCollider collider;
->>>>>>> origin/master
+	public GameObject parent;
+
 	// Use this for initialization
 	void Start () {
 		melt = false;
-		rigidBody = GetComponent<Rigidbody> ();
+		body = GetComponent<Rigidbody> ();
 		collider = GetComponent<SphereCollider> ();
 	}
 	
@@ -31,17 +26,12 @@ public class CaramelBomb : MonoBehaviour {
 	void Update () {
 
 		if (transform.position.y > 0 && transform.position.y < 0.6) {
-<<<<<<< HEAD
-			rigidBody.useGravity = false;
-			collider.isTrigger = true;
-			rigidBody.velocity = Vector3.zero;
-			rigidBody.angularVelocity = Vector3.zero;
-=======
+
 			body.useGravity = false;
 			collider.isTrigger = true;
 			body.velocity = Vector3.zero;
 			body.angularVelocity = Vector3.zero;
->>>>>>> origin/master
+
 			melt = true;
 			Destroy(parent);
 		}
@@ -61,16 +51,11 @@ public class CaramelBomb : MonoBehaviour {
 
 	void OnTriggerEnter(Collider obj)
 	{
-<<<<<<< HEAD
-		if (obj.gameObject.name.Contains ("Enemy") && melt) {
-			obj.gameObject.GetComponent<NavMeshAgent> ().speed = slowAmount;
-=======
 		if (obj.gameObject.name.Contains ("Enemy") && melt) 
 		{
 			float speed = obj.gameObject.GetComponent<NavMeshAgent> ().speed;
 			speed *= slowAmount;
 			obj.gameObject.GetComponent<NavMeshAgent> ().speed = speed;
->>>>>>> origin/master
 		} else {
 			melt = true;
 			Melt();

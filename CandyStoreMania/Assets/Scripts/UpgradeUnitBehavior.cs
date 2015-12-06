@@ -42,13 +42,13 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 	double increment = 1.5;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		weaponBehavior = associatedWeapon.GetComponent<WeaponsInterface> ();
 		nameText.text = name;
 		infoText.text = info;
 		statusText.text = status;
 		weaponPic.sprite = picture;
-		
+
 		baseDamage.value = weaponBehavior.getBaseDamage ();
 		cooldown.value = weaponBehavior.getCooldown ();
 		ammo.value = weaponBehavior.getAmmo ();

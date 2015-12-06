@@ -26,7 +26,6 @@ public class Player : MonoBehaviour {
 	public Camera player;
 	
 	public bool paused;
-	public bool useMouse;
 	public RechargeStation reload;
 	public Animator animator;
 	
@@ -43,7 +42,7 @@ public class Player : MonoBehaviour {
 		useMouse = false;
 		
 		Cursor.lockState = CursorLockMode.Confined;
-		Cursor.visible = false;
+		Cursor.visible = true;
 		
 		Cursor.lockState = CursorLockMode.Confined;
 
@@ -116,10 +115,6 @@ public class Player : MonoBehaviour {
 	void KeyboardMouseControls()
 	{
 		if (!paused) {
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 			if(useMouse)
 			{
 				float y = Input.GetAxis ("Mouse X");
@@ -161,21 +156,13 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey (KeyCode.E)) {
 				transform.Rotate (Vector3.up * Time.deltaTime * rotationSpeed);
 			}
-<<<<<<< HEAD
 
-			if (Input.GetKeyDown (KeyCode.M)) {
-				useMouse = !useMouse;
-			}
-			
-			if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
-=======
 			if (Input.GetKey (KeyCode.M)) {
 				useMouse = !useMouse;
 			}
 			
-			if (Input.GetKeyDown(KeyCode.LeftShift)) {
->>>>>>> origin/master
-				
+			if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
+	
 				if(activeWeaponNum == unlockedWeapons.Count-1)
 				{
 					activeWeaponNum = 0;
