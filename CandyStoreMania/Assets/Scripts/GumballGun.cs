@@ -11,13 +11,13 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 	public GameObject bulletPrefab;
 	
 	public GameObject bulletTemp;
-	public GameObject nozzle;
+	public Transform nozzle;
 	
 	public float cooldown;
 	
 	int upgradeStage;
 	
-	public GameObject player;
+	public Player player;
 	int maxAmmo;
 	
 	// Use this for initialization
@@ -28,14 +28,13 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 		damage = 20;
 		upgradeStage = 0;
 		cooldown = 1f;
-		
-		player = GameObject.Find ("Player");
+
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (player.GetComponent<Player> ().paused != true) {
+		if (player.paused != true) {
 			if (Input.GetMouseButton (0)) {
 				Fire ();
 			}
@@ -47,7 +46,7 @@ public class GumballGun : MonoBehaviour, WeaponsInterface {
 	void Fire()
 	{
 		if (ammo > 0 && cooldown >= rate) {
-			Vector3 pos = nozzle.GetComponent<Transform> ().position;
+			Vector3 pos = nozzle.position;
 			Quaternion rot = new Quaternion (0, 0, 0, 0);
 			bulletTemp = (GameObject)Instantiate (bulletPrefab, pos, rot);
 			bulletTemp.GetComponent<Rigidbody> ().AddForce (nozzle.transform.forward * 15f);

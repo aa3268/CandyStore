@@ -1,7 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{1942EBD3-B4E5-D53E-A115-B56EFC691C77}") = "CandyStoreMania", "Assembly-CSharp-firstpass.csproj", "{C1B66FF8-BB14-546C-08F9-250C335C54AA}"
+EndProject
 Project("{1942EBD3-B4E5-D53E-A115-B56EFC691C77}") = "CandyStoreMania", "Assembly-CSharp.csproj", "{95DCA7C0-B215-7691-AE0B-D74935FDCF73}"
+EndProject
+Project("{1942EBD3-B4E5-D53E-A115-B56EFC691C77}") = "CandyStoreMania", "Assembly-CSharp-Editor.csproj", "{B72F98A9-9A9D-A870-5D16-E63C8713EB35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,18 +13,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1B66FF8-BB14-546C-08F9-250C335C54AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1B66FF8-BB14-546C-08F9-250C335C54AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1B66FF8-BB14-546C-08F9-250C335C54AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1B66FF8-BB14-546C-08F9-250C335C54AA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95DCA7C0-B215-7691-AE0B-D74935FDCF73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95DCA7C0-B215-7691-AE0B-D74935FDCF73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95DCA7C0-B215-7691-AE0B-D74935FDCF73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95DCA7C0-B215-7691-AE0B-D74935FDCF73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B72F98A9-9A9D-A870-5D16-E63C8713EB35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72F98A9-9A9D-A870-5D16-E63C8713EB35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72F98A9-9A9D-A870-5D16-E63C8713EB35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72F98A9-9A9D-A870-5D16-E63C8713EB35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+<<<<<<< HEAD
 																																																																																																																																																																																																																																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																																																																																																																																																																																																																																																																																																																					GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> Stashed changes
+=======
+																																																																																																																																																																																																																																																																																																																																																																GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> origin/master
 =======
 																																																																																																																																																																																																																																																																																																																																										GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> origin/master

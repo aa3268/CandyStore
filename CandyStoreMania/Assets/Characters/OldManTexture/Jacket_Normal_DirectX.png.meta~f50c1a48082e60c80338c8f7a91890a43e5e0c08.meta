@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:CandyStoreMania/Assets/Characters/OldManTexture/Jacket_Normal_DirectX.png.meta~f50c1a48082e60c80338c8f7a91890a43e5e0c08.meta
 guid: b71c9c1194b0f4481be68cb31a351ee5
 timeCreated: 1449185988
+=======
+guid: 76b5349f8349b0b4e867481a92c3f41d
+timeCreated: 1449186855
+>>>>>>> origin/master:CandyStoreMania/Assets/Characters/OldManTexture/Jacket_Normal_DirectX.png.meta~f50c1a48082e60c80338c8f7a91890a43e5e0c08.meta
 licenseType: Free
 DefaultImporter:
   userData: 

@@ -15,7 +15,8 @@ public class Player : MonoBehaviour {
 	public float button1;
 	public float button2;
 	public float button3;
-	
+
+	public bool useMouse;
 	public float movementSpeed = 2.0f;
 	public float rotationSpeed = 100f;
 	
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour {
 	int activeWeaponNum;
 	
 	void Start () {
+		useMouse = false;
 		instance = this;
 		paused = false;
 		useMouse = false;
@@ -44,6 +46,8 @@ public class Player : MonoBehaviour {
 		Cursor.visible = false;
 		
 		Cursor.lockState = CursorLockMode.Confined;
+
+
 		if (WeaponsUnit.instance != null) {
 			WeaponsUnit.instance.setUnlockedWeapons ();
 		}
@@ -55,10 +59,8 @@ public class Player : MonoBehaviour {
 	}
 	void Update()
 	{
-		
 		KeyboardMouseControls ();
-		//JoystickControls ();
-		
+		//JoystickControls ();	
 	}
 	
 	/*void JoystickControls()
@@ -114,6 +116,10 @@ public class Player : MonoBehaviour {
 	void KeyboardMouseControls()
 	{
 		if (!paused) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 			if(useMouse)
 			{
 				float y = Input.GetAxis ("Mouse X");
@@ -155,12 +161,20 @@ public class Player : MonoBehaviour {
 			if (Input.GetKey (KeyCode.E)) {
 				transform.Rotate (Vector3.up * Time.deltaTime * rotationSpeed);
 			}
+<<<<<<< HEAD
 
 			if (Input.GetKeyDown (KeyCode.M)) {
 				useMouse = !useMouse;
 			}
 			
 			if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
+=======
+			if (Input.GetKey (KeyCode.M)) {
+				useMouse = !useMouse;
+			}
+			
+			if (Input.GetKeyDown(KeyCode.LeftShift)) {
+>>>>>>> origin/master
 				
 				if(activeWeaponNum == unlockedWeapons.Count-1)
 				{
