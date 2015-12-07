@@ -22,7 +22,7 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 	int upgradeStage = 0;
 	// Use this for initialization
 	void Start () {
-	
+		Debug.Log (nozzle);
 	}
 	
 	// Update is called once per frame
@@ -40,6 +40,7 @@ public class Cannon : MonoBehaviour, WeaponsInterface {
 	void Fire()
 	{
 		if (ammo > 0 && cooldown >= rate) {
+			Debug.Log (nozzle);
 			Vector3 pos = nozzle.position;
 			Quaternion rot = new Quaternion (0, 0, 0, 0);
 			bulletTemp = (GameObject)Instantiate (bulletPrefab, pos, rot);

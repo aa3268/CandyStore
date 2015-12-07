@@ -185,6 +185,7 @@ public class Player : MonoBehaviour {
 				                    new Vector3(reload.transform.position.x, 0f, reload.transform.position.z)) <= 8.5f)
 				{
 					reload.reload(activeWeapon);
+					SoundManager.instance.playSound("Reload");
 				}
 			}
 			
