@@ -14,9 +14,10 @@ public class DisplayBehavior : WindowBehavior {
 
 		if(currentStage == 1)
 		{
-			baseObject.SetActive(false);
+
 			if(firstStage != null)
 			{
+				baseObject.SetActive(false);
 				firstStage.SetActive(true);
 			}
 		}

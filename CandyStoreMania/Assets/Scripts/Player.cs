@@ -55,6 +55,15 @@ public class Player : MonoBehaviour {
 		activeWeapon = unlockedWeapons [activeWeaponNum];
 		weapon = activeWeapon.GetComponent<WeaponsInterface> ();
 		animator.SetInteger ("weapon", 1);
+
+		if(PlayerPrefs.GetString("MouseRotation") != null && PlayerPrefs.GetString("MouseRotation").Equals("On"))
+		{
+			useMouse = true;
+		}
+		else
+		{
+			useMouse = false;
+		}
 	}
 	void Update()
 	{
@@ -122,7 +131,7 @@ public class Player : MonoBehaviour {
 				float z = transform.rotation.z;
 				
 				Vector3 r = new Vector3 (x, y, z);
-				transform.Rotate (r * 1.5f);
+				transform.Rotate (r * 3f);
 			}
 
 			if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.R) )
@@ -157,9 +166,6 @@ public class Player : MonoBehaviour {
 				transform.Rotate (Vector3.up * Time.deltaTime * rotationSpeed);
 			}
 
-			if (Input.GetKey (KeyCode.M)) {
-				useMouse = !useMouse;
-			}
 			
 			if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) {
 	

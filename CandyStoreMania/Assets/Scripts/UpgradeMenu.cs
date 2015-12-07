@@ -20,6 +20,14 @@ public class UpgradeMenu : MonoBehaviour {
 		rectTransform = gameObject.GetComponent<RectTransform> ();
 		instance = this;
 	}
+
+	public void Update()
+	{
+		if (Input.GetKey (KeyCode.M)) {
+			LevelDirector.instance.available += 5f;
+			available.text = "" + LevelDirector.instance.getAvailablePoints ().ToString ("C");
+		}
+	}
 	// Use this for initialization
 	public void ScaleDown()
 	{
