@@ -70,6 +70,7 @@ public class UpgradeUnitBehavior : MonoBehaviour {
 		Player.instance.addWeapon(associatedWeapon, associatedNum);
 		statusText.text = "UNLOCKED ";
 		WeaponsUnit.instance.performChecks ();
+		SoundManager.instance.playSound ("Reload");
 	}
 	
 	public void upgradeBaseDamage()

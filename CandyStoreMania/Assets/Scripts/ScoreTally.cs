@@ -43,6 +43,7 @@ public class ScoreTally : MonoBehaviour {
 			totalHealth.value = totalHealth.value - 20f;
 			total += 0.2 * LevelDirector.instance.getLevel();
 			currentLevel.text = total.ToString("C");
+			SoundManager.instance.playSound("LoudClick");
 		}
 		else
 		{
