@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CandyCaneBat : MonoBehaviour, WeaponsInterface {
+public class CandyCaneBat: WeaponsInterface {
 
 	float baseDamage = 15f;
  	float rate = 0.7f;
@@ -27,63 +27,63 @@ public class CandyCaneBat : MonoBehaviour, WeaponsInterface {
 		animator.SetBool ("isAttacking", true);
 	}
 
-	public void upgradeAmmo()
+	public override void upgradeAmmo()
 	{
 
 	}
 	
-	public void upgradeDamage()
+	public override void upgradeDamage()
 	{
 		setBaseDamage(baseDamage * 1.2f);
 	}
 	
-	public void upgradeFireRate()
+	public override void upgradeFireRate()
 	{
 		setCooldown(rate * 0.9f);
 	}
 	
-	public int getAmmo()
+	public override int getAmmo()
 	{
 		return 0;
 	}
 	
-	public int getMaxAmmo()
+	public override int getMaxAmmo()
 	{
 		return 0;
 	}
 	
-	public float getCooldown()
+	public override float getCooldown()
 	{
 		return rate;
 	}
 	
-	public float getBaseDamage()
+	public override float getBaseDamage()
 	{
 		return baseDamage;
 	}
 	
-	public void setAmmo(int a)
+	public override void setAmmo(int a)
 	{
 
 	}
 	
-	public void setCooldown(float cd)
+	public override void setCooldown(float cd)
 	{
 		cooldown = cd;
 		rate = cd;
 	}
 	
-	public void setBaseDamage(float d)
+	public override void setBaseDamage(float d)
 	{
 		baseDamage = d;
 	}
 	
-	public void reload()
+	public override void reload()
 	{
 
 	}
 	
-	public void switchToWeapon()
+	public override void switchToWeapon()
 	{
 		Debug.Log ("gooo");
 		Player.instance.getAnimator ().SetInteger ("weapon", 3);

@@ -28,13 +28,15 @@ public class Player : MonoBehaviour {
 	public bool paused;
 	public RechargeStation reload;
 	public Animator animator;
-	
+	public Image ammoImage;
+
 	List<GameObject> unlockedWeapons = new List<GameObject>();
 	List<int> unlockedWeaponNums = new List<int>();
 	GameObject activeWeapon;
 	WeaponsInterface weapon;
 	int activeWeaponNum;
-	
+
+
 	void Start () {
 		useMouse = false;
 		instance = this;
@@ -42,7 +44,7 @@ public class Player : MonoBehaviour {
 		useMouse = false;
 		
 		Cursor.lockState = CursorLockMode.Confined;
-		Cursor.visible = true;
+		Cursor.visible = false;
 		
 		Cursor.lockState = CursorLockMode.Confined;
 
@@ -53,7 +55,9 @@ public class Player : MonoBehaviour {
 		
 		activeWeaponNum = 0;
 		activeWeapon = unlockedWeapons [activeWeaponNum];
+
 		weapon = activeWeapon.GetComponent<WeaponsInterface> ();
+		ammoImage.sprite = weapon.associatedImage;
 		animator.SetInteger ("weapon", 1);
 
 		if(PlayerPrefs.GetString("MouseRotation") != null && PlayerPrefs.GetString("MouseRotation").Equals("On"))
@@ -131,7 +135,7 @@ public class Player : MonoBehaviour {
 				float z = transform.rotation.z;
 				
 				Vector3 r = new Vector3 (x, y, z);
-				transform.Rotate (r * 3f);
+				transform.Rotate (r * 2f);
 			}
 
 			if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.R) )
@@ -182,6 +186,7 @@ public class Player : MonoBehaviour {
 				unlockedWeapons[activeWeaponNum].gameObject.SetActive (true);
 				activeWeapon = unlockedWeapons[activeWeaponNum].gameObject;
 				weapon = activeWeapon.GetComponent<WeaponsInterface> ();
+				ammoImage.sprite = weapon.associatedImage;
 				animator.SetInteger("weapon", unlockedWeaponNums[activeWeaponNum]);
 			}
 			

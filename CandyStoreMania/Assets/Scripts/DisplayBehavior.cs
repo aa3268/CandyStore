@@ -14,7 +14,6 @@ public class DisplayBehavior : WindowBehavior {
 
 		if(currentStage == 1)
 		{
-
 			if(firstStage != null)
 			{
 				baseObject.SetActive(false);
@@ -37,6 +36,7 @@ public class DisplayBehavior : WindowBehavior {
 		baseObject.SetActive (true);
 		if (secondStage != null) {
 			secondStage.SetActive (false);
+			firstStage.SetActive(false);
 		}
 	}
 }

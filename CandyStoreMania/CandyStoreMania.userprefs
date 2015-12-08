@@ -1,19 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.cs">
     <Files>
-      <File FileName="Assets/Scripts/UpgradeMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UpgradeUnitBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GumballGun.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Throw.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CaramelBomb.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/JarBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CandyCaneBat.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/OptionBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MainMenu.cs" Line="43" Column="3" />
-      <File FileName="Assets/Scripts/PauseMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Director.cs" Line="76" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="58" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

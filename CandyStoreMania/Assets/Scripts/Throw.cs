@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Throw : MonoBehaviour, WeaponsInterface  {
+public class Throw : WeaponsInterface  {
 	
 	
 	public int ammo = 2;
@@ -90,63 +90,63 @@ public class Throw : MonoBehaviour, WeaponsInterface  {
 		
 	}
 	
-	public void upgradeAmmo()
+	public override void upgradeAmmo()
 	{
 		setAmmo (maxAmmo + 1);
 	}
 	
-	public void upgradeDamage()
+	public override void upgradeDamage()
 	{
 		setBaseDamage(0);
 	}
 	
-	public void upgradeFireRate()
+	public override void upgradeFireRate()
 	{
 		setCooldown(cooldown * 0.9f);
 	}
 	
-	public int getAmmo()
+	public override int getAmmo()
 	{
 		return ammo;
 	}
 	
-	public int getMaxAmmo()
+	public override int getMaxAmmo()
 	{
 		return maxAmmo;
 	}
 	
-	public float getCooldown()
+	public override float getCooldown()
 	{
 		return rate;
 	}
 	
-	public float getBaseDamage()
+	public override float getBaseDamage()
 	{
 		return 0;
 	}
 	
-	public void setAmmo(int a)
+	public override void setAmmo(int a)
 	{
 		ammo = a;
 		maxAmmo = ammo;
 	}
 	
-	public void setCooldown(float cd)
+	public override void setCooldown(float cd)
 	{
 		cooldown = cd;
 		rate = cd;
 	}
 	
-	public void setBaseDamage(float d)
+	public override void setBaseDamage(float d)
 	{
 	}
 	
-	public void reload()
+	public override void reload()
 	{
 		ammo = maxAmmo;
 	}
 
-	public void switchToWeapon()
+	public override void switchToWeapon()
 	{
 		Player.instance.getAnimator ().SetInteger ("weapon", 4);
 	}
