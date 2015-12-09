@@ -21,8 +21,6 @@ public class LevelDirector : MonoBehaviour {
 	int currentLevel;
 	int maxHealth;
 	int currentHealth;
-	GameObject player;
-
 	public double totalScore;
 	public double available;
 
@@ -39,7 +37,6 @@ public class LevelDirector : MonoBehaviour {
 
 		betweenLevels = false;
 		windows = new List<WindowBehavior> ();
-		player = GameObject.Find ("Player");
 		targets = GameObject.Find ("TargetLocators");
 		setUpLevel ();
 	}
@@ -89,8 +86,8 @@ public class LevelDirector : MonoBehaviour {
 		enemyDirector.waveSize = (int) (waveSizePerLevel.Evaluate (((float)currentLevel) / maxLevels) * maxWaveSize);
 		enemyDirector.totalEnemies = (int) (maxEnemiesPerLevel.Evaluate(((float)currentLevel)/maxLevels) * maxEnemies);
 
-		//enemyDirector.waveSize = 1;
-		//enemyDirector.totalEnemies = 1;
+		/*enemyDirector.waveSize = 30;
+		enemyDirector.totalEnemies = 30;*/
 
 		if(enemyDirector.waveSize > enemyDirector.totalEnemies)
 		{

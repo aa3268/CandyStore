@@ -19,12 +19,7 @@ public class WeaponsUnit : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		instance = this;
-		UpgradeUnitBehavior b;
-		foreach(GameObject units in weaponsUnits)
-		{
-			b = units.GetComponent<UpgradeUnitBehavior>();
-		}
-
+	
 		for(int i  = 0; i < unitBehavior.Count; i++)
 		{
 			unitBehavior[i].gameObject.SetActive(false);

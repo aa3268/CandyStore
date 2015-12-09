@@ -5,11 +5,9 @@ using UnityEngine.UI;
 public class RechargeStation : MonoBehaviour {
 
 	public Text text;
-	Camera cam;
 
 	// Use this for initialization
 	void Start () {
-		cam = GameObject.Find ("PlayerCamera").GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame

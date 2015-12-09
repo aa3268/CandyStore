@@ -15,8 +15,6 @@ public class GumballGun : WeaponsInterface {
 	
 	public float cooldown;
 	
-	int upgradeStage;
-	
 	public Player player;
 	int maxAmmo;
 	
@@ -26,7 +24,6 @@ public class GumballGun : WeaponsInterface {
 		maxAmmo = ammo;
 		rate = 1;
 		damage = 20;
-		upgradeStage = 0;
 		cooldown = 1f;
 
 	}

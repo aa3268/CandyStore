@@ -26,6 +26,11 @@ public class Director : MonoBehaviour {
 
 	private int enemiesDestroyed;
 	private int enemiesCreated;
+	
+	int aggressiveEnemies;
+	int runnerEnemies;
+	int vanguardEnemies;
+	int helperEnemies;
 
 	// Use this for initialization
 	void Awake () {
@@ -39,6 +44,7 @@ public class Director : MonoBehaviour {
 		instance = this;
 		enemiesDestroyed = 0;
 		enemiesCreated = 0;
+
 	}
 
 	// Update is called once per frame
@@ -145,8 +151,6 @@ public class Director : MonoBehaviour {
 
 		e.SetActive (true);
 
-		int type = Random.Range (0, 4);
-
 		enemy.readyEnemy ();
 
 	}
@@ -158,34 +162,42 @@ public class Director : MonoBehaviour {
 			case EnemyType.AGGRESSIVE:
 				e.boardingForce = 4;
 				e.boardingSpeed = 0.3f;
-				e.getAgent().speed = 2f;
+				e.getAgent().speed = 3f;
 				e.health = 100;	
 				e.windowAggression = 6;
+				e.getAgent().avoidancePriority = aggressiveEnemies;
+				aggressiveEnemies++;
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
 			case EnemyType.RUNNER:
 				e.boardingForce = 2;
 				e.boardingSpeed = 0.1f;
-				e.getAgent().speed = 4f;
+				e.getAgent().speed = 5f;
 				e.health = 90;
 				e.windowAggression = 1;
+				e.getAgent().avoidancePriority = waveSize * 2 + runnerEnemies;
+				runnerEnemies ++;
 				e.setSearchType(EnemyScript.SearchTypes.CLOSEST);
 			break;
 			case EnemyType.VANGUARD:
 				e.boardingForce = 2;
 				e.boardingSpeed = 0.15f;
-				e.getAgent().speed = 3f;
+				e.getAgent().speed = 4f;
 				e.health = 70;
 				e.windowAggression = 4;
+				e.getAgent().avoidancePriority = waveSize + vanguardEnemies;
+				vanguardEnemies ++;
 				e.setSearchType(EnemyScript.SearchTypes.FARTHEST);
 			break;
 
 			case EnemyType.SUPPORTER:
 				e.boardingForce = 1;
 				e.boardingSpeed = 0.1f;
-				e.getAgent().speed = 3f;
+				e.getAgent().speed = 4f;
 				e.health = 120;
 				e.windowAggression = 7;
+				e.getAgent().avoidancePriority = waveSize * 3 + helperEnemies;
+				helperEnemies++;
 				e.setSearchType(EnemyScript.SearchTypes.AID);
 			break;
 		}

@@ -96,7 +96,6 @@ public class EnemyScript : MonoBehaviour {
 				if(targetReached)
 				{
 					currentState = States.DESTROY;
-					transform.LookAt(currentTarget.associatedObject.transform);
 					nav.destination = transform.position;
 					animator.SetInteger("State", 3);
 					state = 3;
@@ -104,6 +103,7 @@ public class EnemyScript : MonoBehaviour {
 				}
 				break;
 			case States.DESTROY:
+				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(currentTarget.associatedObject.transform.position), Time.deltaTime * 5f);
 				if(sealUp ())
 				{
 					currentState = States.SEARCH;
@@ -257,8 +257,7 @@ public class EnemyScript : MonoBehaviour {
 	Vector3 searchAid()
 	{
 		Vector3 leastPeople = Vector3.zero;
-		
-		Vector3 currentPos = transform.position;
+
 		int currentPeopleCount = 0;
 		bool first = true;
 

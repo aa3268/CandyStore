@@ -72,6 +72,15 @@ public class Player : MonoBehaviour {
 	void Update()
 	{
 		KeyboardMouseControls ();
+
+		if (weapon.getAmmo () <= 0 && reload.text.text.Equals("") && weapon.getMaxAmmo() > 0) 
+		{
+			reload.text.text = "OUT OF AMMO: GO TO [CANDY TUB] TO RELOAD";
+		}
+		else if((weapon.getAmmo() > 0 || weapon.getMaxAmmo() == 0) && !reload.text.text.Equals(""))
+		{
+			reload.text.text="";
+		}
 		//JoystickControls ();	
 	}
 	

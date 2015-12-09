@@ -3,16 +3,12 @@ using System.Collections;
 
 public class SpawnPoint : MonoBehaviour {
 
-	float delay;
-	float timePassed;
 	bool claimed = false;
 	int numClaimed;
 
 
 	// Use this for initialization
 	void Start () {
-		delay = 5f;
-		timePassed = 0f;
 		numClaimed = 0;
 	}
 	
