@@ -44,6 +44,8 @@ public class EnemyScript : MonoBehaviour {
 	public  bool targetReached = false;
 	public int state;
 	public GameObject t;
+
+	public GameObject referenceOb;
 	// Use this for initialization
 	void Awake () {
 		nav = GetComponent<NavMeshAgent> ();
@@ -52,6 +54,7 @@ public class EnemyScript : MonoBehaviour {
 		director = GameObject.Find ("EnemyDirector").GetComponent<Director> ();
 
 		exitPoint = Vector3.zero;
+
 	}
 	
 	// Update is called once per frame
@@ -103,7 +106,8 @@ public class EnemyScript : MonoBehaviour {
 				}
 				break;
 			case States.DESTROY:
-				transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(currentTarget.associatedObject.transform.position), Time.deltaTime * 5f);
+				transform.LookAt(currentTarget.associatedObject.transform.position);
+				//transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(referenceOb.transform.localPosition, transform.up), Time.deltaTime * 5f);
 				if(sealUp ())
 				{
 					currentState = States.SEARCH;
