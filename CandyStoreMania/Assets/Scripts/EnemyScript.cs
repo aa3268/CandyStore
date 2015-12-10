@@ -106,7 +106,9 @@ public class EnemyScript : MonoBehaviour {
 				}
 				break;
 			case States.DESTROY:
-				transform.LookAt(currentTarget.associatedObject.transform.position);
+			Vector3 t = new Vector3(currentTarget.associatedObject.transform.position.x, transform.position.y, currentTarget.associatedObject.transform.position.z);
+				transform.LookAt(t);
+				Debug.Log (t);
 				//transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(referenceOb.transform.localPosition, transform.up), Time.deltaTime * 5f);
 				if(sealUp ())
 				{
