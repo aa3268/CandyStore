@@ -1,0 +1,670 @@
+fileFormatVersion: 2
+guid: 6f8a7c1c9fd964fe6b91baa5930e72e6
+timeCreated: 1447480811
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Child_Rig
+    100004: Child_Rig_16:Base_Spine
+    100006: Child_Rig_16:Base_Spine_Control
+    100008: Child_Rig_16:Base_Spine_Control_Group
+    100010: Child_Rig_16:Chest_Control
+    100012: Child_Rig_16:Chest_Control_Group
+    100014: Child_Rig_16:Chest_Joint
+    100016: Child_Rig_16:Head_Control
+    100018: Child_Rig_16:Head_Control_Group
+    100020: Child_Rig_16:Head_Joint
+    100022: Child_Rig_16:IK
+    100024: Child_Rig_16:IK 1
+    100026: Child_Rig_16:IK1
+    100028: Child_Rig_16:IK2
+    100030: Child_Rig_16:Left_Ankle
+    100032: Child_Rig_16:Left_Ankle 1
+    100034: Child_Rig_16:Left_Ankle 2
+    100036: Child_Rig_16:Left_Ankle 3
+    100038: Child_Rig_16:Left_Ankle_FK
+    100040: Child_Rig_16:Left_Ankle_IK
+    100042: Child_Rig_16:Left_Ankle_Twist
+    100044: Child_Rig_16:Left_Ankle_Twist_Duplicate
+    100046: Child_Rig_16:Left_Arm
+    100048: Child_Rig_16:Left_Arm_FK
+    100050: Child_Rig_16:Left_Arm_IK
+    100052: Child_Rig_16:Left_Arm_ikHandle
+    100054: Child_Rig_16:Left_Arm_Twist
+    100056: Child_Rig_16:Left_Ball
+    100058: Child_Rig_16:Left_Ball_FK
+    100060: Child_Rig_16:Left_Ball_IK
+    100062: Child_Rig_16:Left_Clavicle
+    100064: Child_Rig_16:Left_Clavicle_Control
+    100066: Child_Rig_16:Left_Clavicle_Control_Group
+    100068: Child_Rig_16:Left_Elbow
+    100070: Child_Rig_16:Left_Elbow 1
+    100072: Child_Rig_16:Left_Elbow 2
+    100074: Child_Rig_16:Left_Elbow 3
+    100076: Child_Rig_16:Left_Elbow_FK
+    100078: Child_Rig_16:Left_Elbow_FK_Control
+    100080: Child_Rig_16:Left_Elbow_FK_Control_Group
+    100082: Child_Rig_16:Left_Elbow_IK
+    100084: Child_Rig_16:Left_Elbow_Twist
+    100086: Child_Rig_16:Left_FK_Ankle_Control
+    100088: Child_Rig_16:Left_FK_Ankle_Control_Group
+    100090: Child_Rig_16:Left_FK_Ball_Control
+    100092: Child_Rig_16:Left_FK_Ball_Control_Group
+    100094: Child_Rig_16:Left_FK_Knee_Control
+    100096: Child_Rig_16:Left_FK_Knee_Control_Group
+    100098: Child_Rig_16:Left_Foot_Control
+    100100: Child_Rig_16:Left_Foot_Control_Group
+    100102: Child_Rig_16:Left_Foot_Driver
+    100104: Child_Rig_16:Left_Foot_Driver_Group
+    100106: Child_Rig_16:Left_Forearm
+    100108: Child_Rig_16:Left_Forearm 1
+    100110: Child_Rig_16:Left_Forearm 2
+    100112: Child_Rig_16:Left_Forearm1
+    100114: Child_Rig_16:Left_Hand_Control
+    100116: Child_Rig_16:Left_Hand_Control_Group
+    100118: Child_Rig_16:Left_Hip
+    100120: Child_Rig_16:Left_Hip_Control
+    100122: Child_Rig_16:Left_Hip_Control_Group
+    100124: Child_Rig_16:Left_Hip_FK
+    100126: Child_Rig_16:Left_Hip_IK
+    100128: Child_Rig_16:Left_Hip_Twist
+    100130: Child_Rig_16:Left_IK_Control
+    100132: Child_Rig_16:Left_IK_Control_Group
+    100134: Child_Rig_16:Left_Index_1
+    100136: Child_Rig_16:Left_Index_2
+    100138: Child_Rig_16:Left_Index_3
+    100140: Child_Rig_16:Left_Index_4
+    100142: Child_Rig_16:Left_Index_5
+    100144: Child_Rig_16:Left_Knee
+    100146: Child_Rig_16:Left_Knee 1
+    100148: Child_Rig_16:Left_Knee 2
+    100150: Child_Rig_16:Left_Knee 3
+    100152: Child_Rig_16:Left_Knee_FK
+    100154: Child_Rig_16:Left_Knee_IK
+    100156: Child_Rig_16:Left_Knee_Twist
+    100158: Child_Rig_16:Left_Leg
+    100160: Child_Rig_16:Left_Leg_ikHandle
+    100162: Child_Rig_16:Left_Leg_Lower_Curve
+    100164: Child_Rig_16:Left_Leg_Lower_ikHandle
+    100166: Child_Rig_16:Left_Leg_Lower_Twist
+    100168: Child_Rig_16:Left_Leg_Upper_Curve
+    100170: Child_Rig_16:Left_Leg_Upper_ikHandle
+    100172: Child_Rig_16:Left_Leg_Upper_Twist
+    100174: Child_Rig_16:Left_Lower_Curve
+    100176: Child_Rig_16:Left_Lower_ikHandle
+    100178: Child_Rig_16:Left_Lower_Twist
+    100180: Child_Rig_16:Left_Middle_1
+    100182: Child_Rig_16:Left_Middle_2
+    100184: Child_Rig_16:Left_Middle_3
+    100186: Child_Rig_16:Left_Middle_4
+    100188: Child_Rig_16:Left_Middle_5
+    100190: Child_Rig_16:Left_Pinky_1
+    100192: Child_Rig_16:Left_Pinky_2
+    100194: Child_Rig_16:Left_Pinky_3
+    100196: Child_Rig_16:Left_Pinky_4
+    100198: Child_Rig_16:Left_Pinky_5
+    100200: Child_Rig_16:Left_Ring_1
+    100202: Child_Rig_16:Left_Ring_2
+    100204: Child_Rig_16:Left_Ring_3
+    100206: Child_Rig_16:Left_Ring_4
+    100208: Child_Rig_16:Left_Ring_5
+    100210: Child_Rig_16:Left_Shin
+    100212: Child_Rig_16:Left_Shin 1
+    100214: Child_Rig_16:Left_Shin 2
+    100216: Child_Rig_16:Left_Shin1
+    100218: Child_Rig_16:Left_Shoulder
+    100220: Child_Rig_16:Left_Shoulder_Control
+    100222: Child_Rig_16:Left_Shoulder_Control_Group
+    100224: Child_Rig_16:Left_Shoulder_FK
+    100226: Child_Rig_16:Left_Shoulder_IK
+    100228: Child_Rig_16:Left_Shoulder_Twist
+    100230: Child_Rig_16:Left_Thigh
+    100232: Child_Rig_16:Left_Thigh 1
+    100234: Child_Rig_16:Left_Thigh1
+    100236: Child_Rig_16:Left_Thigh2
+    100238: Child_Rig_16:Left_Thumb_1
+    100240: Child_Rig_16:Left_Thumb_2
+    100242: Child_Rig_16:Left_Thumb_3
+    100244: Child_Rig_16:Left_Thumb_4
+    100246: Child_Rig_16:Left_Toes
+    100248: Child_Rig_16:Left_Toes_FK
+    100250: Child_Rig_16:Left_Toes_IK
+    100252: Child_Rig_16:Left_Upper_Arm
+    100254: Child_Rig_16:Left_Upper_Arm 1
+    100256: Child_Rig_16:Left_Upper_Arm1
+    100258: Child_Rig_16:Left_Upper_Arm2
+    100260: Child_Rig_16:Left_Upper_Curve
+    100262: Child_Rig_16:Left_Upper_ikHandle
+    100264: Child_Rig_16:Left_Upper_Twist
+    100266: Child_Rig_16:Left_Wrist
+    100268: Child_Rig_16:Left_Wrist 1
+    100270: Child_Rig_16:Left_Wrist 2
+    100272: Child_Rig_16:Left_Wrist 3
+    100274: Child_Rig_16:Left_Wrist_FK
+    100276: Child_Rig_16:Left_Wrist_FK_Control
+    100278: Child_Rig_16:Left_Wrist_FK_Control_Group
+    100280: Child_Rig_16:Left_Wrist_IK
+    100282: Child_Rig_16:Left_Wrist_Twist
+    100284: Child_Rig_16:Mid_Spine_Control
+    100286: Child_Rig_16:Mid_Spine_Control_Group
+    100288: Child_Rig_16:Neck_Control
+    100290: Child_Rig_16:Neck_Control_Group
+    100292: Child_Rig_16:Neck_Joint
+    100294: Child_Rig_16:Pelvis_Control
+    100296: Child_Rig_16:Pelvis_Control_Group
+    100298: Child_Rig_16:Pelvis_Joint
+    100300: Child_Rig_16:Right_Ankle
+    100302: Child_Rig_16:Right_Ankle 1
+    100304: Child_Rig_16:Right_Ankle 2
+    100306: Child_Rig_16:Right_Ankle 3
+    100308: Child_Rig_16:Right_Ankle_FK
+    100310: Child_Rig_16:Right_Ankle_IK
+    100312: Child_Rig_16:Right_Ankle_Twist
+    100314: Child_Rig_16:Right_Ankle_Twist_Duplicate
+    100316: Child_Rig_16:Right_Arm
+    100318: Child_Rig_16:Right_Arm_FK
+    100320: Child_Rig_16:Right_Arm_IK
+    100322: Child_Rig_16:Right_Arm_ikHandle
+    100324: Child_Rig_16:Right_Arm_Twist
+    100326: Child_Rig_16:Right_Ball
+    100328: Child_Rig_16:Right_Ball_FK
+    100330: Child_Rig_16:Right_Ball_IK
+    100332: Child_Rig_16:Right_Clavicle
+    100334: Child_Rig_16:Right_Clavicle_Control
+    100336: Child_Rig_16:Right_Clavicle_Control_Group
+    100338: Child_Rig_16:Right_Elbow
+    100340: Child_Rig_16:Right_Elbow 1
+    100342: Child_Rig_16:Right_Elbow 2
+    100344: Child_Rig_16:Right_Elbow 3
+    100346: Child_Rig_16:Right_Elbow_FK
+    100348: Child_Rig_16:Right_Elbow_FK_Control
+    100350: Child_Rig_16:Right_Elbow_FK_Control_Group
+    100352: Child_Rig_16:Right_Elbow_IK
+    100354: Child_Rig_16:Right_Elbow_Twist
+    100356: Child_Rig_16:Right_FK_Ankle_Control
+    100358: Child_Rig_16:Right_FK_Ankle_Control_Group
+    100360: Child_Rig_16:Right_FK_Ball_Control
+    100362: Child_Rig_16:Right_FK_Ball_Control_Group
+    100364: Child_Rig_16:Right_FK_Knee_Control
+    100366: Child_Rig_16:Right_FK_Knee_Control_Group
+    100368: Child_Rig_16:Right_Foot_Control
+    100370: Child_Rig_16:Right_Foot_Control_Group
+    100372: Child_Rig_16:Right_Foot_Driver
+    100374: Child_Rig_16:Right_Foot_Driver_Group
+    100376: Child_Rig_16:Right_Forearm
+    100378: Child_Rig_16:Right_Forearm 1
+    100380: Child_Rig_16:Right_Forearm 2
+    100382: Child_Rig_16:Right_Forearm1
+    100384: Child_Rig_16:Right_Hand_Control
+    100386: Child_Rig_16:Right_Hand_Control_Group
+    100388: Child_Rig_16:Right_Hip
+    100390: Child_Rig_16:Right_Hip_Control
+    100392: Child_Rig_16:Right_Hip_Control_Group
+    100394: Child_Rig_16:Right_Hip_FK
+    100396: Child_Rig_16:Right_Hip_IK
+    100398: Child_Rig_16:Right_Hip_Twist
+    100400: Child_Rig_16:Right_IK_Control
+    100402: Child_Rig_16:Right_IK_Control_Group
+    100404: Child_Rig_16:Right_Index_1
+    100406: Child_Rig_16:Right_Index_2
+    100408: Child_Rig_16:Right_Index_3
+    100410: Child_Rig_16:Right_Index_4
+    100412: Child_Rig_16:Right_Index_5
+    100414: Child_Rig_16:Right_Knee
+    100416: Child_Rig_16:Right_Knee 1
+    100418: Child_Rig_16:Right_Knee 2
+    100420: Child_Rig_16:Right_Knee 3
+    100422: Child_Rig_16:Right_Knee_FK
+    100424: Child_Rig_16:Right_Knee_IK
+    100426: Child_Rig_16:Right_Knee_Twist
+    100428: Child_Rig_16:Right_Leg
+    100430: Child_Rig_16:Right_Leg_ikHandle
+    100432: Child_Rig_16:Right_Leg_Lower_Curve
+    100434: Child_Rig_16:Right_Leg_Lower_ikHandle
+    100436: Child_Rig_16:Right_Leg_Lower_Twist
+    100438: Child_Rig_16:Right_Leg_Upper_Curve
+    100440: Child_Rig_16:Right_Leg_Upper_ikHandle
+    100442: Child_Rig_16:Right_Leg_Upper_Twist
+    100444: Child_Rig_16:Right_Lower_Curve
+    100446: Child_Rig_16:Right_Lower_ikHandle
+    100448: Child_Rig_16:Right_Lower_Twist
+    100450: Child_Rig_16:Right_Middle_1
+    100452: Child_Rig_16:Right_Middle_2
+    100454: Child_Rig_16:Right_Middle_3
+    100456: Child_Rig_16:Right_Middle_4
+    100458: Child_Rig_16:Right_Middle_5
+    100460: Child_Rig_16:Right_Pinky_1
+    100462: Child_Rig_16:Right_Pinky_2
+    100464: Child_Rig_16:Right_Pinky_3
+    100466: Child_Rig_16:Right_Pinky_4
+    100468: Child_Rig_16:Right_Pinky_5
+    100470: Child_Rig_16:Right_Ring_1
+    100472: Child_Rig_16:Right_Ring_2
+    100474: Child_Rig_16:Right_Ring_3
+    100476: Child_Rig_16:Right_Ring_4
+    100478: Child_Rig_16:Right_Ring_5
+    100480: Child_Rig_16:Right_Shin
+    100482: Child_Rig_16:Right_Shin 1
+    100484: Child_Rig_16:Right_Shin 2
+    100486: Child_Rig_16:Right_Shin1
+    100488: Child_Rig_16:Right_Shoulder
+    100490: Child_Rig_16:Right_Shoulder_Control
+    100492: Child_Rig_16:Right_Shoulder_Control_Group
+    100494: Child_Rig_16:Right_Shoulder_FK
+    100496: Child_Rig_16:Right_Shoulder_IK
+    100498: Child_Rig_16:Right_Shoulder_Twist
+    100500: Child_Rig_16:Right_Thigh
+    100502: Child_Rig_16:Right_Thigh 1
+    100504: Child_Rig_16:Right_Thigh1
+    100506: Child_Rig_16:Right_Thigh2
+    100508: Child_Rig_16:Right_Thumb_1
+    100510: Child_Rig_16:Right_Thumb_2
+    100512: Child_Rig_16:Right_Thumb_3
+    100514: Child_Rig_16:Right_Thumb_4
+    100516: Child_Rig_16:Right_Toes
+    100518: Child_Rig_16:Right_Toes_FK
+    100520: Child_Rig_16:Right_Toes_IK
+    100522: Child_Rig_16:Right_Upper_Arm
+    100524: Child_Rig_16:Right_Upper_Arm 1
+    100526: Child_Rig_16:Right_Upper_Arm1
+    100528: Child_Rig_16:Right_Upper_Arm2
+    100530: Child_Rig_16:Right_Upper_Curve
+    100532: Child_Rig_16:Right_Upper_ikHandle
+    100534: Child_Rig_16:Right_Upper_Twist
+    100536: Child_Rig_16:Right_Wrist
+    100538: Child_Rig_16:Right_Wrist 1
+    100540: Child_Rig_16:Right_Wrist 2
+    100542: Child_Rig_16:Right_Wrist 3
+    100544: Child_Rig_16:Right_Wrist_FK
+    100546: Child_Rig_16:Right_Wrist_FK_Control
+    100548: Child_Rig_16:Right_Wrist_FK_Control_Group
+    100550: Child_Rig_16:Right_Wrist_IK
+    100552: Child_Rig_16:Right_Wrist_Twist
+    100554: Child_Rig_16:Root_Control
+    100556: Child_Rig_16:Root_Control_Group
+    100558: Child_Rig_16:Root_Joint
+    100560: Child_Rig_16:Spine_1
+    100562: Child_Rig_16:Spine_2
+    100564: Child_Rig_16:Spine_3
+    100566: Child_Rig_16:Spine_4
+    100568: Child_Rig_16:Spine_IK_1
+    100570: Child_Rig_16:Spine_IK_2
+    100572: Child_Rig_16:Spine_IK_3
+    100574: Child_Rig_16:Spine_IK_4
+    100576: Child_Rig_16:Spine_IK_5
+    100578: Child_Rig_16:Spine_IK_curve
+    100580: Child_Rig_16:Spine_IK_Group
+    100582: Child_Rig_16:Spine_IK_Handle
+    100584: Child_Rig_16:Top_Spine
+    100586: Child_Rig_16:Twist
+    100588: Child_Rig_16:Twist 1
+    100590: Child_Rig_16:Twist1
+    100592: Child_Rig_16:Twist2
+    100594: kid 1
+    400000: //RootNode
+    400002: Child_Rig
+    400004: Child_Rig_16:Base_Spine
+    400006: Child_Rig_16:Base_Spine_Control
+    400008: Child_Rig_16:Base_Spine_Control_Group
+    400010: Child_Rig_16:Chest_Control
+    400012: Child_Rig_16:Chest_Control_Group
+    400014: Child_Rig_16:Chest_Joint
+    400016: Child_Rig_16:Head_Control
+    400018: Child_Rig_16:Head_Control_Group
+    400020: Child_Rig_16:Head_Joint
+    400022: Child_Rig_16:IK
+    400024: Child_Rig_16:IK 1
+    400026: Child_Rig_16:IK1
+    400028: Child_Rig_16:IK2
+    400030: Child_Rig_16:Left_Ankle
+    400032: Child_Rig_16:Left_Ankle 1
+    400034: Child_Rig_16:Left_Ankle 2
+    400036: Child_Rig_16:Left_Ankle 3
+    400038: Child_Rig_16:Left_Ankle_FK
+    400040: Child_Rig_16:Left_Ankle_IK
+    400042: Child_Rig_16:Left_Ankle_Twist
+    400044: Child_Rig_16:Left_Ankle_Twist_Duplicate
+    400046: Child_Rig_16:Left_Arm
+    400048: Child_Rig_16:Left_Arm_FK
+    400050: Child_Rig_16:Left_Arm_IK
+    400052: Child_Rig_16:Left_Arm_ikHandle
+    400054: Child_Rig_16:Left_Arm_Twist
+    400056: Child_Rig_16:Left_Ball
+    400058: Child_Rig_16:Left_Ball_FK
+    400060: Child_Rig_16:Left_Ball_IK
+    400062: Child_Rig_16:Left_Clavicle
+    400064: Child_Rig_16:Left_Clavicle_Control
+    400066: Child_Rig_16:Left_Clavicle_Control_Group
+    400068: Child_Rig_16:Left_Elbow
+    400070: Child_Rig_16:Left_Elbow 1
+    400072: Child_Rig_16:Left_Elbow 2
+    400074: Child_Rig_16:Left_Elbow 3
+    400076: Child_Rig_16:Left_Elbow_FK
+    400078: Child_Rig_16:Left_Elbow_FK_Control
+    400080: Child_Rig_16:Left_Elbow_FK_Control_Group
+    400082: Child_Rig_16:Left_Elbow_IK
+    400084: Child_Rig_16:Left_Elbow_Twist
+    400086: Child_Rig_16:Left_FK_Ankle_Control
+    400088: Child_Rig_16:Left_FK_Ankle_Control_Group
+    400090: Child_Rig_16:Left_FK_Ball_Control
+    400092: Child_Rig_16:Left_FK_Ball_Control_Group
+    400094: Child_Rig_16:Left_FK_Knee_Control
+    400096: Child_Rig_16:Left_FK_Knee_Control_Group
+    400098: Child_Rig_16:Left_Foot_Control
+    400100: Child_Rig_16:Left_Foot_Control_Group
+    400102: Child_Rig_16:Left_Foot_Driver
+    400104: Child_Rig_16:Left_Foot_Driver_Group
+    400106: Child_Rig_16:Left_Forearm
+    400108: Child_Rig_16:Left_Forearm 1
+    400110: Child_Rig_16:Left_Forearm 2
+    400112: Child_Rig_16:Left_Forearm1
+    400114: Child_Rig_16:Left_Hand_Control
+    400116: Child_Rig_16:Left_Hand_Control_Group
+    400118: Child_Rig_16:Left_Hip
+    400120: Child_Rig_16:Left_Hip_Control
+    400122: Child_Rig_16:Left_Hip_Control_Group
+    400124: Child_Rig_16:Left_Hip_FK
+    400126: Child_Rig_16:Left_Hip_IK
+    400128: Child_Rig_16:Left_Hip_Twist
+    400130: Child_Rig_16:Left_IK_Control
+    400132: Child_Rig_16:Left_IK_Control_Group
+    400134: Child_Rig_16:Left_Index_1
+    400136: Child_Rig_16:Left_Index_2
+    400138: Child_Rig_16:Left_Index_3
+    400140: Child_Rig_16:Left_Index_4
+    400142: Child_Rig_16:Left_Index_5
+    400144: Child_Rig_16:Left_Knee
+    400146: Child_Rig_16:Left_Knee 1
+    400148: Child_Rig_16:Left_Knee 2
+    400150: Child_Rig_16:Left_Knee 3
+    400152: Child_Rig_16:Left_Knee_FK
+    400154: Child_Rig_16:Left_Knee_IK
+    400156: Child_Rig_16:Left_Knee_Twist
+    400158: Child_Rig_16:Left_Leg
+    400160: Child_Rig_16:Left_Leg_ikHandle
+    400162: Child_Rig_16:Left_Leg_Lower_Curve
+    400164: Child_Rig_16:Left_Leg_Lower_ikHandle
+    400166: Child_Rig_16:Left_Leg_Lower_Twist
+    400168: Child_Rig_16:Left_Leg_Upper_Curve
+    400170: Child_Rig_16:Left_Leg_Upper_ikHandle
+    400172: Child_Rig_16:Left_Leg_Upper_Twist
+    400174: Child_Rig_16:Left_Lower_Curve
+    400176: Child_Rig_16:Left_Lower_ikHandle
+    400178: Child_Rig_16:Left_Lower_Twist
+    400180: Child_Rig_16:Left_Middle_1
+    400182: Child_Rig_16:Left_Middle_2
+    400184: Child_Rig_16:Left_Middle_3
+    400186: Child_Rig_16:Left_Middle_4
+    400188: Child_Rig_16:Left_Middle_5
+    400190: Child_Rig_16:Left_Pinky_1
+    400192: Child_Rig_16:Left_Pinky_2
+    400194: Child_Rig_16:Left_Pinky_3
+    400196: Child_Rig_16:Left_Pinky_4
+    400198: Child_Rig_16:Left_Pinky_5
+    400200: Child_Rig_16:Left_Ring_1
+    400202: Child_Rig_16:Left_Ring_2
+    400204: Child_Rig_16:Left_Ring_3
+    400206: Child_Rig_16:Left_Ring_4
+    400208: Child_Rig_16:Left_Ring_5
+    400210: Child_Rig_16:Left_Shin
+    400212: Child_Rig_16:Left_Shin 1
+    400214: Child_Rig_16:Left_Shin 2
+    400216: Child_Rig_16:Left_Shin1
+    400218: Child_Rig_16:Left_Shoulder
+    400220: Child_Rig_16:Left_Shoulder_Control
+    400222: Child_Rig_16:Left_Shoulder_Control_Group
+    400224: Child_Rig_16:Left_Shoulder_FK
+    400226: Child_Rig_16:Left_Shoulder_IK
+    400228: Child_Rig_16:Left_Shoulder_Twist
+    400230: Child_Rig_16:Left_Thigh
+    400232: Child_Rig_16:Left_Thigh 1
+    400234: Child_Rig_16:Left_Thigh1
+    400236: Child_Rig_16:Left_Thigh2
+    400238: Child_Rig_16:Left_Thumb_1
+    400240: Child_Rig_16:Left_Thumb_2
+    400242: Child_Rig_16:Left_Thumb_3
+    400244: Child_Rig_16:Left_Thumb_4
+    400246: Child_Rig_16:Left_Toes
+    400248: Child_Rig_16:Left_Toes_FK
+    400250: Child_Rig_16:Left_Toes_IK
+    400252: Child_Rig_16:Left_Upper_Arm
+    400254: Child_Rig_16:Left_Upper_Arm 1
+    400256: Child_Rig_16:Left_Upper_Arm1
+    400258: Child_Rig_16:Left_Upper_Arm2
+    400260: Child_Rig_16:Left_Upper_Curve
+    400262: Child_Rig_16:Left_Upper_ikHandle
+    400264: Child_Rig_16:Left_Upper_Twist
+    400266: Child_Rig_16:Left_Wrist
+    400268: Child_Rig_16:Left_Wrist 1
+    400270: Child_Rig_16:Left_Wrist 2
+    400272: Child_Rig_16:Left_Wrist 3
+    400274: Child_Rig_16:Left_Wrist_FK
+    400276: Child_Rig_16:Left_Wrist_FK_Control
+    400278: Child_Rig_16:Left_Wrist_FK_Control_Group
+    400280: Child_Rig_16:Left_Wrist_IK
+    400282: Child_Rig_16:Left_Wrist_Twist
+    400284: Child_Rig_16:Mid_Spine_Control
+    400286: Child_Rig_16:Mid_Spine_Control_Group
+    400288: Child_Rig_16:Neck_Control
+    400290: Child_Rig_16:Neck_Control_Group
+    400292: Child_Rig_16:Neck_Joint
+    400294: Child_Rig_16:Pelvis_Control
+    400296: Child_Rig_16:Pelvis_Control_Group
+    400298: Child_Rig_16:Pelvis_Joint
+    400300: Child_Rig_16:Right_Ankle
+    400302: Child_Rig_16:Right_Ankle 1
+    400304: Child_Rig_16:Right_Ankle 2
+    400306: Child_Rig_16:Right_Ankle 3
+    400308: Child_Rig_16:Right_Ankle_FK
+    400310: Child_Rig_16:Right_Ankle_IK
+    400312: Child_Rig_16:Right_Ankle_Twist
+    400314: Child_Rig_16:Right_Ankle_Twist_Duplicate
+    400316: Child_Rig_16:Right_Arm
+    400318: Child_Rig_16:Right_Arm_FK
+    400320: Child_Rig_16:Right_Arm_IK
+    400322: Child_Rig_16:Right_Arm_ikHandle
+    400324: Child_Rig_16:Right_Arm_Twist
+    400326: Child_Rig_16:Right_Ball
+    400328: Child_Rig_16:Right_Ball_FK
+    400330: Child_Rig_16:Right_Ball_IK
+    400332: Child_Rig_16:Right_Clavicle
+    400334: Child_Rig_16:Right_Clavicle_Control
+    400336: Child_Rig_16:Right_Clavicle_Control_Group
+    400338: Child_Rig_16:Right_Elbow
+    400340: Child_Rig_16:Right_Elbow 1
+    400342: Child_Rig_16:Right_Elbow 2
+    400344: Child_Rig_16:Right_Elbow 3
+    400346: Child_Rig_16:Right_Elbow_FK
+    400348: Child_Rig_16:Right_Elbow_FK_Control
+    400350: Child_Rig_16:Right_Elbow_FK_Control_Group
+    400352: Child_Rig_16:Right_Elbow_IK
+    400354: Child_Rig_16:Right_Elbow_Twist
+    400356: Child_Rig_16:Right_FK_Ankle_Control
+    400358: Child_Rig_16:Right_FK_Ankle_Control_Group
+    400360: Child_Rig_16:Right_FK_Ball_Control
+    400362: Child_Rig_16:Right_FK_Ball_Control_Group
+    400364: Child_Rig_16:Right_FK_Knee_Control
+    400366: Child_Rig_16:Right_FK_Knee_Control_Group
+    400368: Child_Rig_16:Right_Foot_Control
+    400370: Child_Rig_16:Right_Foot_Control_Group
+    400372: Child_Rig_16:Right_Foot_Driver
+    400374: Child_Rig_16:Right_Foot_Driver_Group
+    400376: Child_Rig_16:Right_Forearm
+    400378: Child_Rig_16:Right_Forearm 1
+    400380: Child_Rig_16:Right_Forearm 2
+    400382: Child_Rig_16:Right_Forearm1
+    400384: Child_Rig_16:Right_Hand_Control
+    400386: Child_Rig_16:Right_Hand_Control_Group
+    400388: Child_Rig_16:Right_Hip
+    400390: Child_Rig_16:Right_Hip_Control
+    400392: Child_Rig_16:Right_Hip_Control_Group
+    400394: Child_Rig_16:Right_Hip_FK
+    400396: Child_Rig_16:Right_Hip_IK
+    400398: Child_Rig_16:Right_Hip_Twist
+    400400: Child_Rig_16:Right_IK_Control
+    400402: Child_Rig_16:Right_IK_Control_Group
+    400404: Child_Rig_16:Right_Index_1
+    400406: Child_Rig_16:Right_Index_2
+    400408: Child_Rig_16:Right_Index_3
+    400410: Child_Rig_16:Right_Index_4
+    400412: Child_Rig_16:Right_Index_5
+    400414: Child_Rig_16:Right_Knee
+    400416: Child_Rig_16:Right_Knee 1
+    400418: Child_Rig_16:Right_Knee 2
+    400420: Child_Rig_16:Right_Knee 3
+    400422: Child_Rig_16:Right_Knee_FK
+    400424: Child_Rig_16:Right_Knee_IK
+    400426: Child_Rig_16:Right_Knee_Twist
+    400428: Child_Rig_16:Right_Leg
+    400430: Child_Rig_16:Right_Leg_ikHandle
+    400432: Child_Rig_16:Right_Leg_Lower_Curve
+    400434: Child_Rig_16:Right_Leg_Lower_ikHandle
+    400436: Child_Rig_16:Right_Leg_Lower_Twist
+    400438: Child_Rig_16:Right_Leg_Upper_Curve
+    400440: Child_Rig_16:Right_Leg_Upper_ikHandle
+    400442: Child_Rig_16:Right_Leg_Upper_Twist
+    400444: Child_Rig_16:Right_Lower_Curve
+    400446: Child_Rig_16:Right_Lower_ikHandle
+    400448: Child_Rig_16:Right_Lower_Twist
+    400450: Child_Rig_16:Right_Middle_1
+    400452: Child_Rig_16:Right_Middle_2
+    400454: Child_Rig_16:Right_Middle_3
+    400456: Child_Rig_16:Right_Middle_4
+    400458: Child_Rig_16:Right_Middle_5
+    400460: Child_Rig_16:Right_Pinky_1
+    400462: Child_Rig_16:Right_Pinky_2
+    400464: Child_Rig_16:Right_Pinky_3
+    400466: Child_Rig_16:Right_Pinky_4
+    400468: Child_Rig_16:Right_Pinky_5
+    400470: Child_Rig_16:Right_Ring_1
+    400472: Child_Rig_16:Right_Ring_2
+    400474: Child_Rig_16:Right_Ring_3
+    400476: Child_Rig_16:Right_Ring_4
+    400478: Child_Rig_16:Right_Ring_5
+    400480: Child_Rig_16:Right_Shin
+    400482: Child_Rig_16:Right_Shin 1
+    400484: Child_Rig_16:Right_Shin 2
+    400486: Child_Rig_16:Right_Shin1
+    400488: Child_Rig_16:Right_Shoulder
+    400490: Child_Rig_16:Right_Shoulder_Control
+    400492: Child_Rig_16:Right_Shoulder_Control_Group
+    400494: Child_Rig_16:Right_Shoulder_FK
+    400496: Child_Rig_16:Right_Shoulder_IK
+    400498: Child_Rig_16:Right_Shoulder_Twist
+    400500: Child_Rig_16:Right_Thigh
+    400502: Child_Rig_16:Right_Thigh 1
+    400504: Child_Rig_16:Right_Thigh1
+    400506: Child_Rig_16:Right_Thigh2
+    400508: Child_Rig_16:Right_Thumb_1
+    400510: Child_Rig_16:Right_Thumb_2
+    400512: Child_Rig_16:Right_Thumb_3
+    400514: Child_Rig_16:Right_Thumb_4
+    400516: Child_Rig_16:Right_Toes
+    400518: Child_Rig_16:Right_Toes_FK
+    400520: Child_Rig_16:Right_Toes_IK
+    400522: Child_Rig_16:Right_Upper_Arm
+    400524: Child_Rig_16:Right_Upper_Arm 1
+    400526: Child_Rig_16:Right_Upper_Arm1
+    400528: Child_Rig_16:Right_Upper_Arm2
+    400530: Child_Rig_16:Right_Upper_Curve
+    400532: Child_Rig_16:Right_Upper_ikHandle
+    400534: Child_Rig_16:Right_Upper_Twist
+    400536: Child_Rig_16:Right_Wrist
+    400538: Child_Rig_16:Right_Wrist 1
+    400540: Child_Rig_16:Right_Wrist 2
+    400542: Child_Rig_16:Right_Wrist 3
+    400544: Child_Rig_16:Right_Wrist_FK
+    400546: Child_Rig_16:Right_Wrist_FK_Control
+    400548: Child_Rig_16:Right_Wrist_FK_Control_Group
+    400550: Child_Rig_16:Right_Wrist_IK
+    400552: Child_Rig_16:Right_Wrist_Twist
+    400554: Child_Rig_16:Root_Control
+    400556: Child_Rig_16:Root_Control_Group
+    400558: Child_Rig_16:Root_Joint
+    400560: Child_Rig_16:Spine_1
+    400562: Child_Rig_16:Spine_2
+    400564: Child_Rig_16:Spine_3
+    400566: Child_Rig_16:Spine_4
+    400568: Child_Rig_16:Spine_IK_1
+    400570: Child_Rig_16:Spine_IK_2
+    400572: Child_Rig_16:Spine_IK_3
+    400574: Child_Rig_16:Spine_IK_4
+    400576: Child_Rig_16:Spine_IK_5
+    400578: Child_Rig_16:Spine_IK_curve
+    400580: Child_Rig_16:Spine_IK_Group
+    400582: Child_Rig_16:Spine_IK_Handle
+    400584: Child_Rig_16:Top_Spine
+    400586: Child_Rig_16:Twist
+    400588: Child_Rig_16:Twist 1
+    400590: Child_Rig_16:Twist1
+    400592: Child_Rig_16:Twist2
+    400594: kid 1
+    4300000: kid
+    9500000: //RootNode
+    13700000: kid 1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

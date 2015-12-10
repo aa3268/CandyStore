@@ -1,0 +1,131 @@
+fileFormatVersion: 2
+guid: 288be66b92150466e8d00cfbe47cedd1
+timeCreated: 1447029308
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: candy_box81
+    100002: candy_box82
+    100004: candy_box83
+    100006: candy_box85
+    100008: candy_box86
+    100010: candy_box87
+    100012: candy_box88
+    100014: candy_box89
+    100016: candy_box90
+    100018: candy_box91
+    100020: candy_box92
+    100022: Display_pink
+    100024: //RootNode
+    400000: candy_box81
+    400002: candy_box82
+    400004: candy_box83
+    400006: candy_box85
+    400008: candy_box86
+    400010: candy_box87
+    400012: candy_box88
+    400014: candy_box89
+    400016: candy_box90
+    400018: candy_box91
+    400020: candy_box92
+    400022: Display_pink
+    400024: //RootNode
+    2300000: candy_box81
+    2300002: candy_box82
+    2300004: candy_box83
+    2300006: candy_box85
+    2300008: candy_box86
+    2300010: candy_box87
+    2300012: candy_box88
+    2300014: candy_box89
+    2300016: candy_box90
+    2300018: candy_box91
+    2300020: candy_box92
+    3300000: candy_box81
+    3300002: candy_box82
+    3300004: candy_box83
+    3300006: candy_box85
+    3300008: candy_box86
+    3300010: candy_box87
+    3300012: candy_box88
+    3300014: candy_box89
+    3300016: candy_box90
+    3300018: candy_box91
+    3300020: candy_box92
+    4300000: candy_box81
+    4300002: candy_box82
+    4300004: candy_box83
+    4300006: candy_box85
+    4300008: candy_box86
+    4300010: candy_box87
+    4300012: candy_box88
+    4300014: candy_box89
+    4300016: candy_box90
+    4300018: candy_box91
+    4300020: candy_box92
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
